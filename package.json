@@ -1,0 +1,24 @@
+{
+  "name": "dkcare-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "d3": "^7.8.2",
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4",
+    "gsap": "npm:@gsap/shockingly@^3.11.4",
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "stats.js": "^0.17.0",
+    "three": "^0.149.0",
+    "use-debounce": "^9.0.3"
+  }
+}
