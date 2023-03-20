@@ -8,7 +8,6 @@ import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger.js";
 import Image from "next/image";
 
-console.log('HOST',process.env['HOST'])
 
 
 let animation = {
@@ -16,8 +15,13 @@ let animation = {
   clips:''
 }
 const Loading = () => {
+  let hostname
+  if (typeof window !== 'undefined') {
+     hostname = window.location.href;
+    console.log('hostname',hostname)
+ }
   const router = useRouter()
-  console.log('router path',router.locale)
+  console.log('router path',router.basePath)
   const [model,setModel] = useState([])
   const [animations,setAnimations] = useState({})
   const manager = new THREE.LoadingManager()
@@ -30,7 +34,7 @@ let models = []
 const loader = new GLTFLoader(manager)
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
-loader.setPath(router.pathname)
+loader.setPath(hostname)
 loader.setDRACOLoader(dracoLoader);
 objects.forEach((object, idx) => {
   loader.load('poughkeepsie-sierra.gltf', gltf => {
