@@ -34,10 +34,10 @@ let models = []
 const loader = new GLTFLoader(manager)
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
-loader.setPath(hostname)
+// loader.setPath(hostname)
 loader.setDRACOLoader(dracoLoader);
 objects.forEach((object, idx) => {
-  loader.load('poughkeepsie-sierra.gltf', gltf => {
+  loader.load(hostname+'poughkeepsie-sierra.gltf', gltf => {
     // console.log(gltf)
     gltf.scene.castShadow = true;
     animation.mixer = new THREE.AnimationMixer(gltf.scene)
