@@ -2,12 +2,13 @@ import * as THREE from "three";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import {  useEffect, useRef, useState, } from "react";
-
+import { useRouter } from "next/router";
 import App from "./App";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger.js";
 import Image from "next/image";
 
+console.log('HOST',process.env['HOST'])
 
 
 let animation = {
@@ -15,6 +16,8 @@ let animation = {
   clips:''
 }
 const Loading = () => {
+  const router = useRouter()
+  console.log('router path',router.locale)
   const [model,setModel] = useState([])
   const [animations,setAnimations] = useState({})
   const manager = new THREE.LoadingManager()
@@ -27,9 +30,10 @@ let models = []
 const loader = new GLTFLoader(manager)
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+loader.setPath(router.pathname)
 loader.setDRACOLoader(dracoLoader);
 objects.forEach((object, idx) => {
-  loader.load(object.scene, gltf => {
+  loader.load('poughkeepsie-sierra.gltf', gltf => {
     // console.log(gltf)
     gltf.scene.castShadow = true;
     animation.mixer = new THREE.AnimationMixer(gltf.scene)
