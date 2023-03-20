@@ -19,7 +19,7 @@ const Loading = () => {
   const [animations,setAnimations] = useState({})
   const manager = new THREE.LoadingManager()
 const objects = [
-  { object: '/poughkeepsie-sierra.glb', name: 'city', group: new THREE.Group() },
+  { scene: '/poughkeepsie-sierra.glb', name: 'city', group: new THREE.Group() },
   // { path: '/car1.gltf', name: 'car', group: new THREE.Group() }
 
 ]
@@ -29,7 +29,7 @@ const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
 loader.setDRACOLoader(dracoLoader);
 objects.forEach((object, idx) => {
-  loader.load(object.object, gltf => {
+  loader.load(object.scene, gltf => {
     // console.log(gltf)
     gltf.scene.castShadow = true;
     animation.mixer = new THREE.AnimationMixer(gltf.scene)
