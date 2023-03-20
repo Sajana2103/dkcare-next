@@ -16,6 +16,7 @@ import ContentContainer from './content-container.jsx';
 import { chart } from './homepage/chart.jsx';
 
 function App({ isLoaded, models, animation }) {
+  console.log('isloaded models',isLoaded,models)
   // console.log('device pixal ratio :',window.devicePixelRatio)
   gsap.registerPlugin(ScrollTrigger,ScrollSmoother)
   let scrollSmooth
@@ -203,7 +204,7 @@ let mobileHeroContent
   
   }
   useEffect(() => {
-    if(isLoaded){
+    if(isLoaded ){
       size800 = document.body.clientWidth > 800
       size = { width: document.body.clientWidth, height: window.clientHeight }
       stats = new Stats()

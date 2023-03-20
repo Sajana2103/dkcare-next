@@ -8,19 +8,22 @@ import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger.js";
 import Image from "next/image";
 
-const manager = new THREE.LoadingManager()
-const camAndCar = new THREE.Group()
+
+
 let animation = {
   mixer:'',
   clips:''
 }
+const Loading = () => {
+  const [model,setModel] = useState([])
+  const [animations,setAnimations] = useState({})
+  const manager = new THREE.LoadingManager()
 const objects = [
-  { path: '../public/poughkeepsie-sierra.glb', name: 'city', group: new THREE.Group() },
+  { path: '/poughkeepsie-sierra.glb', name: 'city', group: new THREE.Group() },
   // { path: '/car1.gltf', name: 'car', group: new THREE.Group() }
 
 ]
-const models = []
-export const scene = new THREE.Scene()
+let models = []
 const loader = new GLTFLoader(manager)
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
@@ -64,14 +67,12 @@ objects.forEach((object, idx) => {
 })
 
 
-const Loading = () => {
 
   gsap.registerPlugin(ScrollTrigger)
   const loadingRef = useRef()
   const progressRef = useRef()
   const [isLoaded, setIsLoaded] = useState(false)
  
-  camAndCar.add(models[1])
 
 
   useEffect(() => {
@@ -91,8 +92,15 @@ const Loading = () => {
         .to(progressBar,{display:'none'})
         .to(loadingRef.current,{display:'none'})
 
-        }, 1500)
-        setIsLoaded(true)
+        if(models.length && animation.clips){
+          console.log('models Loaded?' ,models)
+          setModel(models)
+          setAnimations(animation)
+          setIsLoaded(true)
+        }
+      }, 1500)
+
+        console.log('Models ',models)
       };
       manager.onProgress = function (url, itemsLoaded, itemsTotal) {
         progressBar.value = (itemsLoaded / itemsTotal) * 100
@@ -114,9 +122,11 @@ const Loading = () => {
     
         <progress value="0" max="100" id="progress-bar" ref={progressRef}>LOADING</progress>
       </div>
-
-          <App isLoaded={isLoaded} objects={objects}
-            models={models}  animation={animation} />
+    
+   
+      <App isLoaded={isLoaded} objects={objects}
+        models={model}  animation={animations} />
+    
    
     </>
   )
