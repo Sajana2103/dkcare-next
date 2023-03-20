@@ -19,7 +19,7 @@ const Loading = () => {
   const [animations,setAnimations] = useState({})
   const manager = new THREE.LoadingManager()
 const objects = [
-  { scene: '/poughkeepsie-sierra.glb', name: 'city', group: new THREE.Group() },
+  { scene: '/poughkeepsie-sierra.gltf', name: 'city', group: new THREE.Group() },
   // { path: '/car1.gltf', name: 'car', group: new THREE.Group() }
 
 ]
