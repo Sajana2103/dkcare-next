@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useThrottledCallback } from 'use-debounce';
+import Image from "next/image";
 
 
 const Stories = () => {
@@ -49,8 +50,8 @@ const Stories = () => {
 
         <div ref={reviewRef} id="review-wrapper" >
           <div className="arrow-btn-wrapper">
-            <div className="black arrow-btn " onClick={rightBtn}><img style={{ transform: 'rotate(180deg)' }} src="/right-arrow.svg" /></div>
-            <div className="black arrow-btn " onClick={leftBtn}><img src="/right-arrow.svg" /></div>
+            <div className="black arrow-btn " onClick={rightBtn}><Image width={200} height={200} alt="Dk Care LLC reviews" style={{ transform: 'rotate(180deg)' }} src="/right-arrow.svg" /></div>
+            <div className="black arrow-btn " onClick={leftBtn}><Image width={200} height={200} alt="Dk Care LLC reviews" src="/right-arrow.svg" /></div>
           </div>
           
           <div className="flex-container " style={{ gap: '30px' }} id="review-con"  >

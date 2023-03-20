@@ -1,3 +1,4 @@
+import Image from "next/image.js";
 import React from "react";
 import Button from "./Button.js";
 
@@ -9,11 +10,11 @@ const Services = () => {
       <div className="blue-gr services-grid-1 " >
         <div className="services-left-img flex wrap f-align-cen" >
           <div style={{ width: '100%', padding: '2ch' }}>
-            <img className="serv-left-img" src="/Dk-Care-LLC-customers-3.jpg" />
+            <Image width={400} height={300} alt="Dk Care LLc Services" className="serv-left-img" src="/Dk-Care-LLC-customers-3.jpg" />
 
           </div>
           <div style={{ width: '100%', padding: '2ch' }}>
-            <img className="serv-left-img" src="/Dk-Care-LLC-customers-5.jpg" />
+            <Image width={400} height={300} alt="Dk Care LLc Services" className="serv-left-img" src="/Dk-Care-LLC-customers-5.jpg" />
 
           </div>
 
@@ -28,7 +29,7 @@ const Services = () => {
                 <p className=" white" id="services-main-line" >Our services can provide a vital
                   lifeline for individuals and ensure that everyone has access to healthcare and other essential services they need.
                 </p>
-                <img className="serv-right-top-img mobile " src="/Dk-Care-LLC-customers-main.jpg" />
+                <Image width={400} height={300} alt="Dk Care LLc Services" className="serv-right-top-img mobile " src="/Dk-Care-LLC-customers-main.jpg" />
 
               </article>
               <br />
@@ -61,11 +62,11 @@ frustrating, which is why we strive to provide a seamless and high-quality exper
               </div>
               <div className=" mobile flex " style={{ flexWrap: 'nowrap' }} >
                 <div>
-                  <img className="serv-right-btm-img mobile" src="/Dk-Care-LLC-customers-5.jpg" />
+                  <Image width={400} height={300} alt="Dk Care LLc Services" className="serv-right-btm-img mobile" src="/Dk-Care-LLC-customers-5.jpg" />
 
                 </div>
                 <div >
-                  <img className="serv-right-btm-img mobile" src="/Dk-Care-LLC-customers-1.jpg" />
+                  <Image width={400} height={300} alt="Dk Care LLc Services" className="serv-right-btm-img mobile" src="/Dk-Care-LLC-customers-1.jpg" />
 
                 </div>
               </div>
@@ -75,15 +76,15 @@ frustrating, which is why we strive to provide a seamless and high-quality exper
         </div>
         <div className="" id="services-img" style={{ padding: '10rem 0 10rem 2rem', }}>
           <div >
-            <img className="serv-right-top-img " src="/Dk-Care-LLC-customers-main.jpg" />
+            <Image width={400} height={300} alt="Dk Care LLc Services" className="serv-right-top-img " src="/Dk-Care-LLC-customers-main.jpg" />
           </div>
           <div className="flex" style={{ height: "30%" }}>
             <div >
-              <img className="serv-right-btm-img " src="/Dk-Care-LLC-customers-5.jpg" />
+              <Image width={400} height={300} alt="Dk Care LLc Services" className="serv-right-btm-img " src="/Dk-Care-LLC-customers-5.jpg" />
 
             </div>
             <div >
-              <img className="serv-right-btm-img " src="/Dk-Care-LLC-customers-1.jpg" />
+              <Image width={400} height={300} alt="Dk Care LLc Services" className="serv-right-btm-img " src="/Dk-Care-LLC-customers-1.jpg" />
 
             </div>
           </div>

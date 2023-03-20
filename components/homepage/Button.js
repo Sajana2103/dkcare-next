@@ -6,28 +6,7 @@ const Button = ({name}) => {
   // const btnTl = new gsap.timeline({paused:true,
   //   defaults:{duration:0.3,ease:'Power4.in'},
   // })
-  useEffect(() => {
-    if(btnRef.current){
-      
-      // blkButton = document.querySelectorAll('.btn-black')
-      // blkButton.forEach((btn) => {
-      //   btnTl
-      //   .fromTo(btn.querySelector('.round-right-arrow'),{xPercent:0},{xPercent:215})
-      //   .fromTo(btn.querySelector('.btn-text'),{opacity:1},{opacity:0},'<')
-
-      //   .fromTo(btn,{backgroundColor:'#333333'},{backgroundColor:'white'},'<')
-
-      //   .fromTo(btn.querySelector('.btn-text'),{xPercent:0},{xPercent:-50},'<+=50%')
-      //   .fromTo(btn.querySelector('.btn-text'),{color:'white'},{color:'#333333'},'<')
-      //   .fromTo(btn.querySelector('.btn-text'),{opacity:0,fontWeight:'300'},{opacity:1,fontWeight:'600'},'<')
-      //   .fromTo(btn.querySelector('.btn-text '),{fontWeight:'600'},{fontWeight:'1000'},'<')
-
-
-      // })
-      
-      // console.log('button black',blkButton)
-    }
-  },[btnRef.current])
+  
   const btnOnHover = () => {
     console.log('hover')
     btnTl.play(0)

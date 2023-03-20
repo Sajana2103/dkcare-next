@@ -86,7 +86,7 @@ const Content = () => {
               <br />
               <h2 className="blue">Convenience<hr /></h2>
 
-              <p className="text-med blue">When you're rushing to and from a medical
+              <p className="text-med blue">When you&apos;re rushing to and from a medical
                 appointment in a busy city, convenient travel makes all the difference.
               </p>
               <br />

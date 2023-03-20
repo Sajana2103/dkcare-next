@@ -122,7 +122,7 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
                   <div className="title-bd-blue"></div>
                 </div>
 
-                <p className="text-xlarge blue">When you're rushing to and from a medical
+                <p className="text-xlarge blue">When you&apos;re rushing to and from a medical
                   appointment in a busy city, convenient travel makes all the difference.
                 </p>
                 <br />

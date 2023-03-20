@@ -6,6 +6,7 @@ import {  useEffect, useRef, useState, } from "react";
 import App from "./App";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger.js";
+import Image from "next/image";
 
 const manager = new THREE.LoadingManager()
 const camAndCar = new THREE.Group()
@@ -14,7 +15,7 @@ let animation = {
   clips:''
 }
 const objects = [
-  { path: '/poughkeepsie-sierra.glb', name: 'city', group: new THREE.Group() },
+  { path: '../public/poughkeepsie-sierra.glb', name: 'city', group: new THREE.Group() },
   // { path: '/car1.gltf', name: 'car', group: new THREE.Group() }
 
 ]
@@ -109,8 +110,8 @@ const Loading = () => {
     <>
  
       <div id="loading-container" ref={loadingRef}>
-        <img style={{padding:'2rem'}} src="/logo.png"/>
-        {/* <h2 id="loading-text" >Loading..</h2> */}
+        <Image src="/logo.png" width={400} height={100}  alt="Dk Care Expertise Logo"  style={{padding:'2rem'}}/>
+    
         <progress value="0" max="100" id="progress-bar" ref={progressRef}>LOADING</progress>
       </div>
 

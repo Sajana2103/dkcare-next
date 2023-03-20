@@ -1,3 +1,4 @@
+import Image from "next/image.js";
 import React from "react";
 import Button from "./Button.js";
 
@@ -23,7 +24,7 @@ const Technologies = () => {
             <div>
               <div className="tech-img-1">
                 <div className="tech-img-box" id="tech-img-box-1" >
-                  <img className="tech-img" src="/Technologies-AI-powered-dash-cam.jpg" />
+                  <Image height={300} width={400} alt="DK Care LLC Technologies Ai Powered Dash Camera"  className="tech-img" src="/Technologies-AI-powered-dash-cam.jpg" />
 
                   <div className="tech-img-text">
                     <h2 className="blue " >AI-Powered Dash Camera</h2>
@@ -46,7 +47,7 @@ const Technologies = () => {
                 </div>
 
                 <div className="tech-img-box" id="tech-img-box-4" >
-                  <img className="tech-img" src="/Technologies-GPS-Location-Monitoring.jpg" />
+                  <Image height={300} width={400} alt="DK Care LLC Technologies GPS Location Monitoring"  className="tech-img" src="/Technologies-GPS-Location-Monitoring.jpg" />
 
                   <div className="tech-img-text" >
                     <h2 className="blue " >GPS Location
@@ -67,7 +68,7 @@ const Technologies = () => {
               </div>
 
               <div className="tech-img-box" id="tech-img-box-2" >
-                <img className="tech-img" src="/Technologies-driver-productivity.jpg" />
+                <Image height={300} width={400} alt="DK Care LLC Technologies Driver Productivity"  className="tech-img" src="/Technologies-driver-productivity.jpg" />
 
                 <div className="tech-img-text">
                   <h2 className="blue " >Improved Driver Productivity</h2>
@@ -82,7 +83,7 @@ const Technologies = () => {
               </div>
 
               <div className="tech-img-box" id="tech-img-box-3" >
-                <img className="tech-img" src="/Technologies-Downtime-Preventive-Strategies.jpg" />
+                <Image height={300} width={400} alt="DK Care LLC Technologies Downtime preventitive strategies"  className="tech-img" src="/Technologies-Downtime-Preventive-Strategies.jpg" />
 
                 <div className="tech-img-text">
                   <h2 className="blue " >Downtime Preventive Strategies</h2>

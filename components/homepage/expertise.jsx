@@ -1,4 +1,5 @@
 import Head from "next/head.js";
+import Image from "next/image.js";
 import React from "react";
 import Button from "./Button.js";
 
@@ -28,7 +29,7 @@ const Expertise = ({setPageName,openModal}) => {
               <div style={{ padding: '1ch 1ch 0.5ch 1rem' }}>
 
                 <div className="title-bd-container">
-                  <h2 className="white" style={{ paddingRight: '5px' }}>We're here to help</h2>
+                  <h2 className="white" style={{ paddingRight: '5px' }}>We&apos;re here to help</h2>
                   <div className="title-bd-white" style={{ width: '90%' }}></div>
                 </div>
 
@@ -50,8 +51,8 @@ const Expertise = ({setPageName,openModal}) => {
             </article>
           </div>
           <div className="flex-container wPer2 exp-img-con" style={{ height: '100%', }} >
-            <img className="exp-img " src="/Dk-Care-LLC-about-us-1.jpg" />
-            <img className="exp-img  " src="/Dk-Care-LLC-about-us-2.jpg" />
+            <Image height={400} width={600} className="exp-img " src="/Dk-Care-LLC-about-us-1.jpg" />
+            <Image height={400} width={600} className="exp-img  " src="/Dk-Care-LLC-about-us-2.jpg" />
           </div>
         </div>
 

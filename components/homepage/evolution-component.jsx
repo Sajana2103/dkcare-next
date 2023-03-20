@@ -29,14 +29,14 @@ const EvolutionCom = ({homeLoaded}) => {
                   if (y === year) {
 
                     return (
-                      <p className="year-css  white year-large" id={`year${year}`} name={year} >{year}</p>
+                      <p key={idx} className="year-css  white year-large" id={`year${year}`} name={year} >{year}</p>
 
                     )
                   } else {
                     translateNo++
                     return (
 
-                      <p className="year-css  white year-small" id={`year${year}`} name={year}
+                      <p key={idx} className="year-css  white year-small" id={`year${year}`} name={year}
                         style={{ transform: `translate(${translate[translateNo]}vw,0)` }}
                         onClick={(e) => selectYear(e)}
                       >{y}</p>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Covid = () => {
@@ -28,7 +29,7 @@ const Covid = () => {
           </div>
         </div>
         <div id="covid-aboutus">
-        <button><img src="/right-arrow.svg"/></button>
+        <button><Image height={500} width={500}  alt="Dk Care Expertise Covid Prevention"  src="/right-arrow.svg"/></button>
         <h1 className="title white">About us</h1>
         </div>
       </div>
