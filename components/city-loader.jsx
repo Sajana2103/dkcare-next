@@ -37,7 +37,7 @@ dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5
 // loader.setPath(hostname)
 loader.setDRACOLoader(dracoLoader);
 objects.forEach((object, idx) => {
-  loader.load(hostname+'poughkeepsie-sierra.gltf', gltf => {
+  loader.load('https://dkcare-next.sajana2103.vercel.app/poughkeepsie-sierra.gltf', gltf => {
     // console.log(gltf)
     gltf.scene.castShadow = true;
     animation.mixer = new THREE.AnimationMixer(gltf.scene)
