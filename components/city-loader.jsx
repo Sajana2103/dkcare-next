@@ -16,10 +16,7 @@ let animation = {
 }
 const Loading = () => {
   let hostname
-  if (typeof window !== 'undefined') {
-     hostname = window.location.href;
-    console.log('hostname',hostname)
- }
+ 
   const router = useRouter()
   console.log('router path',router.basePath)
   const [model,setModel] = useState([])
@@ -37,41 +34,45 @@ dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5
 // loader.setPath(hostname)
 loader.setDRACOLoader(dracoLoader);
 objects.forEach((object, idx) => {
-  loader.load('https://dkcare-next.sajana2103.vercel.app/poughkeepsie-sierra.gltf', gltf => {
-    // console.log(gltf)
-    gltf.scene.castShadow = true;
-    animation.mixer = new THREE.AnimationMixer(gltf.scene)
-    animation.clips = gltf.animations
-    console.log(gltf.animations)
-    
-    animation.mixer.clipAction(animation.clips[0]).play()
-
-    // animation.mixer.clipAction(animation.clips[3]).play()
-
-    gltf.scene.traverse((child) => {
-      // console.log(child)
-    
-      if (child instanceof THREE.Mesh) {
-        const m = child
-        m.receiveShadow = true
-        m.castShadow = true
-        // console.log(m)
-      }
-      if ((child instanceof THREE.DirectionalLight).isLight) {
-        const l = child
-        l.castShadow = true
-        l.shadow.bias = -0.5
-        l.shadow.mapSize.width = 1024
-        l.shadow.mapSize.height = 1024
-        // console.log(l)
-      }
-      
-    }, (load) => console.log(load))
-    objects[idx].group.add(gltf.scene)
-
-    models.push(new THREE.Group())
-    models[idx].add(gltf.scene)
-  })   
+  if (typeof window !== 'undefined') {
+    hostname = window.location.href;
+   console.log('hostname',hostname)
+   loader.load(hostname+'poughkeepsie-sierra.gltf', gltf => {
+     // console.log(gltf)
+     gltf.scene.castShadow = true;
+     animation.mixer = new THREE.AnimationMixer(gltf.scene)
+     animation.clips = gltf.animations
+     console.log(gltf.animations)
+     
+     animation.mixer.clipAction(animation.clips[0]).play()
+ 
+     // animation.mixer.clipAction(animation.clips[3]).play()
+ 
+     gltf.scene.traverse((child) => {
+       // console.log(child)
+     
+       if (child instanceof THREE.Mesh) {
+         const m = child
+         m.receiveShadow = true
+         m.castShadow = true
+         // console.log(m)
+       }
+       if ((child instanceof THREE.DirectionalLight).isLight) {
+         const l = child
+         l.castShadow = true
+         l.shadow.bias = -0.5
+         l.shadow.mapSize.width = 1024
+         l.shadow.mapSize.height = 1024
+         // console.log(l)
+       }
+       
+     }, (load) => console.log(load))
+     objects[idx].group.add(gltf.scene)
+ 
+     models.push(new THREE.Group())
+     models[idx].add(gltf.scene)
+   })   
+}
 })
 
 
