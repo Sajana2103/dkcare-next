@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const PressRelease = () => {
@@ -13,7 +14,7 @@ const PressRelease = () => {
         Cras erat eros, cursus sit amet augue nec, ultrices porttitor neque.
         Vivamus lacinia dignissim fermentum.
       </p>
-      <img className="" src="/family.jpeg"/>
+      <Image alt="DK Care LLC Press release" width={400} height={300} className="" src="/family.jpeg"/>
     </div>
   )
 }

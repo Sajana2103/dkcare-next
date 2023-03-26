@@ -5,18 +5,18 @@ const Covid = () => {
   return (
     <div className="main-section" id="covid">
       <div className="final-wrapper blue-gr2 con-pd" style={{ paddingTop: '10rem', paddingBottom: '10rem' }}>
-      <a id="covid-anchor"></a>
+        <a id="covid-anchor"></a>
 
-        <h2 className="title white text-large" >COVID-19 Guidelines and Preventive Measures</h2>
+        <h2 id="covid-title" className="title white text-large" >COVID-19 Guidelines and Preventive Measures</h2>
         <br />
 
-        <div className="flex-container wrap ">
+        <div className="flex-container wrap " id="covid-home-content">
           <p className="white  " id="covid-para1">We understands the severity of the current global COVID-19 pandemic and assures all prospective customers that our
             drivers and staff will be observing all recommended
             precautions and social-distancing rules.</p>
-          <div className="" style={{ padding: '0 0 0 1rem',width:'30%' }}>
+          <div className="covid-para2-con wPer40">
 
-            <p className="white semi-bold covid-para2" >Due to the current situation of the COVID-19
+            <p className="white semi-bold covid-para2 " >Due to the current situation of the COVID-19
               pandemic, we have made several changes to
               our services in order to meet new guidelines.
             </p>
@@ -29,8 +29,8 @@ const Covid = () => {
           </div>
         </div>
         <div id="covid-aboutus">
-        <button><Image height={500} width={500}  alt="Dk Care Expertise Covid Prevention"  src="/right-arrow.svg"/></button>
-        <h1 className="title white">About us</h1>
+          <button><Image height={200} width={200} alt="Dk Care Expertise Covid Prevention" src="/right-arrow.svg" /></button>
+          <h1 className="title white">About us</h1>
         </div>
       </div>
       <hr />

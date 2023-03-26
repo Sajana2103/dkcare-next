@@ -5,8 +5,13 @@ import Modal from "./modal";
 import HomePage from "./homepage/homepage";
 import Navigation from './navigation'
 import gsap from "gsap";
+import ScrollSmoother from "gsap/dist/ScrollSmoother";
+import {useRouter} from "next/router";
 
-const ContentContainer = ({ backToHero,backToHeroDesktop,isLoaded}) => {
+const ContentContainer = ({ backToHero,backToHeroDesktop,isLoaded,}) => {
+  const router = useRouter()
+  console.log('ScrollSmoother',)
+  let scrollSmooth = ScrollSmoother.get()
   const contentRef = useRef()
   const [pageName, setPageName] = useState({
     location:'hero',
@@ -25,22 +30,29 @@ const ContentContainer = ({ backToHero,backToHeroDesktop,isLoaded}) => {
   },[contentRef.current,isLoaded])
 
   const modalTL = gsap.timeline({defaults:{duration:0.5,ease:'Power1.in'}})
-const openModal = (page) => {
+const openModal = (page,query) => {
   if(page === 'home' || pageName.location === 'home'){
     
     
     if(modalOpen === true ){
-      console.log('close modal',modalOpen)
+      window.history.pushState('', '', `/`)
+
+      console.log('close modal',modalOpen,scrollSmooth)
       modalTL.fromTo('body',{overflowY:"hidden"}, {overflowY:"scroll"})
-      // .fromTo('.modal-wrapper',{opacity:0,xPercent:100},{opacity:1,xPercent:0})
       
+      // .fromTo('.modal-wrapper',{opacity:0,xPercent:100},{opacity:1,xPercent:0})
+
       setModalOpen(false)
+      if(scrollSmooth)scrollSmooth.paused(false)
       
     } else {
-      console.log('open modal',modalOpen)
+      window.history.pushState('', '', `/${query}`)
+      console.log('open modal',modalOpen,scrollSmooth)
       modalTL.fromTo('body', {overflowY:"scroll"}, {overflowY:"hidden"})
       
+      
       setModalOpen(true)
+      if(scrollSmooth) scrollSmooth.paused(true)
     }
   }
   else {

@@ -1,13 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
 import  ReactDOM from "react-dom";
 import PressRelease from "./moda-content/press-release";
+import ExpertiseComponent from "./pages/expertise-component";
 import Contact from "./pages/contact";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
 
 
 const Modal = ({modalOpen,pageName,openModal,setModalOpen}) => {
+  const modalRef = useRef()
+
+  // gsap.registerPlugin(ScrollTrigger,ScrollSmoother)
+  //   let smoothScroll = ScrollSmoother.create({
+  //     wrapper:'modal-wrapper',
+  //     content:'.modal',
+  //     smooth:2
+  //   })
+
 if(!modalOpen) return null
 
-const modalRef = useRef()
 
 let page 
 switch (pageName.pageName){
@@ -15,9 +27,9 @@ switch (pageName.pageName){
     page = <PressRelease/>
     break;
   case 'contact':
-    page = <Contact />
+    page = <ExpertiseComponent />
     break;
-    default : <div>Nothing to view</div>
+    default : <div></div>
 }
 console.log(page,modalOpen)
   return ReactDOM.createPortal(

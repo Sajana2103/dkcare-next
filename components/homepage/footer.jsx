@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "./Button.js";
 
-const Footer = ({setPageName,openModal}) => {
+const Footer = ({ setPageName, openModal }) => {
   return (
-    <footer id="#footer"
+    <footer id="footer"
       className="main-section blue-gr con-pd" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
       <a id="footer-anchor"></a>
 
@@ -12,18 +12,18 @@ const Footer = ({setPageName,openModal}) => {
           <h2 className="white semi-bold" >
             We are here to support you.
           </h2>
-         
+
         </div>
         <div name="contact" className="wPer3" onClick={() => {
-            setPageName({ pageName: 'contact', location: 'home' })
-            openModal('home')
-          }}>
-            <Button name={'Contact us'} />
-          </div>
-          <p className="white bold wPer3">A member of our team will contact
-            you shortly.</p>
+          setPageName({ pageName: 'contact', location: 'home' })
+          openModal('home')
+        }}>
+          <Button name={'Contact us'} />
+        </div>
+        <p className="white bold wPer3">A member of our team will contact
+          you shortly.</p>
 
-        <div className="links flex-container wrap ">
+        <div className="links flex-container ">
 
           <div className="semi-bold link-box wPer20" >
             <p className="white text-med">

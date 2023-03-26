@@ -3,7 +3,7 @@ import { useDebouncedCallback } from 'use-debounce'
 import * as d3 from 'd3'
 
 export const chart = () => {
-
+  
 
   let width = 0
   let height = 0
@@ -77,10 +77,13 @@ export const chart = () => {
         .domain([0, yVals[i]])
         .range([height, 0])
       const yAxis = d3.axisLeft(yScale)
-        .ticks(miles1a.length / 2)
+        .ticks(6)
         .tickSize(-width)
-        .tickFormat((d, c) => c * yAxesVals[i])
-
+        .tickFormat((d, c) =>{ 
+          console.log(d,c)
+        return  c * yAxesVals[i];
+        })
+        console.log(width,months.length - 1,margin,yVals[i],height,miles1a.length / 2,yAxesVals[i],-width)
       chart.append('g')
         .call(yAxis)
 
@@ -106,24 +109,26 @@ export const chart = () => {
 
     }
     const repeat = () => {
-
-      path.nodes().map((node) => {
-        let length = node.getTotalLength()
-        path.attr("stroke-dasharray", length + " " + length)
-          .attr("stroke-dashoffset", length)
-          .transition()
-          .ease(d3.easeLinear)
-          .attr("stroke-dashoffset", 0)
-          .duration(2000)
-          .on("end", () => setTimeout(repeat, 5000));
-      })
+      const charts = d3.selectAll(document.querySelectorAll('.svg-items'))
+      console.log('Charts',charts)
+      path = charts.selectAll(".line")
+        path.nodes().map((node) => {
+          let length = node.getTotalLength()
+          path.attr("stroke-dasharray", length + " " + length)
+            .attr("stroke-dashoffset", length)
+            .transition()
+            .ease(d3.easeLinear)
+            .attr("stroke-dashoffset", 0)
+            .duration(2000)
+            .on("end", () => setTimeout(repeat, 5000));
+        })
 
     }
 
     for (let i = 0; i < 4; i++) {
       createChart(i)
-      repeat()
     }
+    // repeat()
   }
 
 

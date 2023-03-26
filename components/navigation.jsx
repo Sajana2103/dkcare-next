@@ -2,19 +2,14 @@ import React, { useEffect,useRef } from "react";
 import { useThrottledCallback } from "use-debounce";
 import gsap from "gsap";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navigation = () => {
   const menuRef = useRef()
   let open = false
   let menuTl 
  
- 
-  
-  useEffect(() => {
-    if(menuRef.current){
-      
-    }
-  },[menuRef.current])
+
 
   const openMenu = () => {
 console.log(menuTl)
@@ -46,8 +41,8 @@ console.log(menuTl)
     <div>
       <div className="navigation-main blue">
 
-        <div><img id="logo" src="logo.png"/></div>
-      <div onClick={throttledClick} className="menu-icon" ><img className="icons" src="menu.png"/>
+        <div><Image width={300} height={200} alt="Dk Care LLC Logo" id="logo" src="/logo.png"/></div>
+      <div onClick={throttledClick} className="menu-icon" ><Image  width={300} height={200} alt="Dk Care LLC Logo" id="menuicon" className="icons" src="/menu.png"/>
       <h3 className="menu-text">
         Menu
         </h3>
@@ -59,10 +54,12 @@ console.log(menuTl)
       <div id="menu-container" >
         <div className="menu-items " >
 
-        <Link  target="_blank" href="/expertise">
+        <Link onClick={throttledClick}  target="_blank" href="/expertise">
         <h2 className="">Expertise</h2>
         </Link>
-        <h2 className="">Menu Item</h2>
+        <Link onClick={throttledClick}  target="_blank" href="/services">
+        <h2 className="">Services</h2>
+        </Link>
         <h2 className="">Menu Item</h2>
         <h2 className="">Menu Item</h2>
         </div>

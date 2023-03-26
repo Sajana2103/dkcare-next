@@ -19,7 +19,7 @@ const Services = () => {
           </div>
 
         </div>
-        <div className="services-wrapper " style={{ padding: '10rem 0 10rem 2rem' }}>
+        <div className="services-wrapper " >
           <h2 className="title white " id="services-title" >Services
 </h2>
 

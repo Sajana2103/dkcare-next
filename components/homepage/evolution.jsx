@@ -8,12 +8,12 @@ const Evolution = ({size}) => {
     <div className="main-section" id="evolution">
             <a id="evolution-anchor"></a>
 
-        <div className="evolution-wrapper blue-gr con-pd" style={{ paddingTop: '10rem', paddingBottom: '10rem' }}>
+        <div className="evolution-wrapper blue-gr con-pd con-tb" >
           <h1 className="title white " id="evo-title" >The evolution of our company</h1>
           <p className="text-med white evo-tagline max1080">DK Care LLC formed in September 2019 with a
                 couple of fleet and drivers with the mission of providing exceptional NEMT services.</p>
 
-          <div className="flex-container wrap years-wrapper " >
+          <div className="flex-container wrap years-wrapper " id="yearsAndChartWrapper" >
             <div id="years-wrapper" className="wPer1" >
               <div className="chart-vh" id="year">
                 <p className="year-css  white year-large" id="y2019" >2019</p>

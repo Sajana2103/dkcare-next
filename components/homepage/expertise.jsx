@@ -1,17 +1,18 @@
 import Head from "next/head.js";
 import Image from "next/image.js";
 import React from "react";
+import Link from "next/link.js";
 import Button from "./Button.js";
 
-const Expertise = ({setPageName,openModal}) => {
+const Expertise = ({ setPageName, openModal }) => {
   return (
-    <div className="main-section" id="expertise" style={{ paddingBottom: '10rem', paddingTop: '10rem' }}>
-<a id="expertise-anchor"></a>
+    <div className="main-section con-tb" id="expertise" >
+      <a id="expertise-anchor"></a>
       <div className="expertise-wrapper grey-gr con-pd " >
 
 
         <h2 id="expertise-title" className="title blue">Our Expertise
-</h2>
+        </h2>
 
         <div className="flex-container wrap exp-text">
 
@@ -41,28 +42,31 @@ const Expertise = ({setPageName,openModal}) => {
                     options for your needs.</p>
 
                 </div>
-                <div name="contact" onClick={() => {
-                  setPageName({pageName:'contact',location:'home'})
-                  openModal('home')
-                }}>
-                <Button name={'Contact us'} />
+                <div name="contact" 
+                onClick={() => {
+                  setPageName({ pageName: 'contact', location: 'home' })
+                  openModal('home','expertise')
+                }}
+                >
+                  <Button name={'Contact us'} />
                 </div>
+               
               </div>
             </article>
           </div>
           <div className="flex-container wPer2 exp-img-con" style={{ height: '100%', }} >
-            <Image height={400} width={600} className="exp-img " src="/Dk-Care-LLC-about-us-1.jpg" />
-            <Image height={400} width={600} className="exp-img  " src="/Dk-Care-LLC-about-us-2.jpg" />
+            <Image height={400} width={600} alt="Dk Care Expertise about us" className="exp-img " src="/Dk-Care-LLC-about-us-1.jpg" />
+            <Image height={400} width={600} alt="Dk Care Expertise about us" className="exp-img  " src="/Dk-Care-LLC-about-us-2.jpg" />
           </div>
         </div>
 
       </div>
-      <div className="expertise-wrapper-2 con-pd" >
+      <div className="expertise-wrapper-2 con-pd con-tb" >
 
-        <div className="flex-container wrap " style={{ paddingTop: '4rem' }} >
+        <div className="flex-container wrap "  >
 
           <div className="wPer1 blue exp-text-boxes"  >
-          
+
             <div className="title-bd-container hero-titles">
               <h2 className="blue">Reliable, Safe & Convenient</h2>
               <div className="title-bd-blue"></div>
@@ -75,7 +79,7 @@ const Expertise = ({setPageName,openModal}) => {
           </div>
           <br />
           <div className="wPer1 blue exp-text-boxes">
-            
+
             <div className="title-bd-container hero-titles">
               <h2 className="blue">Independence & Autonomy</h2>
               <div className="title-bd-blue"></div>
@@ -104,7 +108,7 @@ const Expertise = ({setPageName,openModal}) => {
           </div>
           <br />
           <div className="wPer1 blue exp-text-boxes">
-         
+
             <div className="title-bd-container hero-titles">
               <h2 className="blue">DK Care</h2>
               <div className="title-bd-blue"></div>

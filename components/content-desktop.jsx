@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import cls from 'classnames'
 import Modal from './modal.jsx';
 import Contact from './pages/contact.jsx';
-
+import styles from './content-desktop.module.css'
 
 const DesktopContent = ({ setPageName, setModalOpen }) => {
   // const [modalOpen,setModalOpen] = useState(false)
@@ -12,27 +13,26 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
   return (
     <>
       <div id="desktop-hero-content" className="content-desktop con-pd " >
-        <div className="desktop-page " id="desktop-first"
-          style={{ paddingTop: '10rem', textAlign: 'right', }}>
+        <div className="desktop-page " id="desktop-first">
           <div className="" >
             <div className="section flex f-end" >
-              <h1 className="title blue  " >
+              <h1 className={cls("title blue tr ",styles.heroTitle1)} >
                 Providing Reliable and Safe Transportation Since 2019
               </h1>
             </div>
             <div className="section flex f-end  pd-title">
-              <p className="blue text-med " >DK Care has offered a range of NEMT services for
+              <p className="blue text-med tr wPer3" >DK Care has offered a range of NEMT services for
                 individuals who need to travel to medical appointments,
                 pharmacies, and other essential locations.</p>
             </div>
-            <div className="section flex f-end  pd-title">
-              <p style={{ paddingBottom: '1rem' }} className="black text-small">DK Care has offered a range of services for individuals who need to travel to medical appointments,
+            <div className="section flex f-end  pd-title  ">
+              <p style={{ paddingBottom: '1rem' }} className="black text-small wPer3 tr">DK Care has offered a range of services for individuals who need to travel to medical appointments,
                 pharmacies, and other essential locations.</p>
             </div>
             {/* <p className="black text-small">2022-08-23</p> */}
           </div>
-          <div className="section">
-            <button className="btn-orange" style={{ float: 'right' }}
+          <div className="section flex f-end ">
+            <button className="btn-orange" 
               name="press-release" onClick={(e) => {
                 setPageName({ pageName: 'press-release', location: 'hero' })
                 setModalOpen(true)
@@ -53,7 +53,6 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
                   patients. Our vehicles are
                   designed for a peaceful and comfortable journey.
                 </p>
-                <br />
               </div>
 
             </div>
@@ -64,7 +63,6 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
               </div>
               <p className="blue text-large">We ensure the safety of our
                 patients with trained drivers and secure transport.</p>
-              <br />
             </div>
             <div className="section desktop-sections" >
               <div className="title-bd-container hero-titles">
@@ -74,7 +72,6 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
               <p className="blue text-large">Experienced staff assist
                 patients during transport,
                 ensuring a smooth and easy journey.</p>
-              <br />
             </div>
             <div className="section desktop-sections" >
               <div className="title-bd-container hero-titles">
@@ -84,7 +81,6 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
               <p className="blue text-large">Our vehicles accommodate
                 patients with disabilities, making transport accessible
                 for all.</p>
-              <br />
             </div>
 
           </div>
@@ -128,7 +124,7 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
                 <br />
               </div>
             </div>
-            <div className="desktop-transport-grid2 ">
+            <div className="section desktop-transport-grid2 ">
               <div className="desktop-sections" id="list-third">
                 <div >
                   <div className="title-bd-container hero-titles" >
@@ -137,14 +133,14 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
                   </div>
                 </div>
                 <div className="flex blue text-xlarge " >
-                  <div className="section flex" style={{ flexWrap: 'wrap', }}>
+                  <div className=" flex" style={{ flexWrap: 'wrap', }}>
                     <div className="tab2 list-items"><span >01</span><h4>Doctors Appointments</h4></div>
                     <div className="tab2 list-items"><span >02</span><h4 >Physical Therapy</h4></div>
                     <div className="tab2 list-items"><span >03</span><h4 >Dialysis Treatment</h4></div>
                     <div className="tab2 list-items"><span >04</span><h4 >Outpatient Surgery</h4></div>
                     <div className="tab2 list-items"><span >05</span><h4 >Outpatient Programs</h4></div>
                   </div>
-                  <div className="section flex" style={{ flexWrap: 'wrap' }}>
+                  <div className=" flex" style={{ flexWrap: 'wrap' }}>
                     <div className="tab2 list-items"><span >06</span><h4 >Dental Appointments</h4></div>
                     <div className="tab2 list-items"><span >07</span><h4 >Treatment Centers</h4></div>
                     <div className="tab2 list-items"><span >08</span><h4 >Optometrist Visits</h4></div>
@@ -159,9 +155,9 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
                   <div className="title-bd-white"></div>
                 </div>
                 <div>
-                  <h2 className="section white bd-btm" >Our Drivers</h2>
-                  <h2 className="section white bd-btm" >Vehicle Fleet</h2>
-                  <h2 className="section white bd-btm" >DK Care Safety Guides</h2>
+                  <h2 className=" white bd-btm" >Our Drivers</h2>
+                  <h2 className=" white bd-btm" >Vehicle Fleet</h2>
+                  <h2 className=" white bd-btm" >DK Care Safety Guides</h2>
                 </div>
               </div>
             </div>

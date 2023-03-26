@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Contact = () => {
@@ -8,7 +9,7 @@ const Contact = () => {
       <p className="semi-bold black">
         Some content.
       </p>
-      <img src="/family.jpeg" style={{width:'400px',objectFit:'cover'}}/>
+      <Image alt="DK Care LLC Contact" src="/family.jpeg" style={{width:'400px',objectFit:'cover'}}/>
     </div>
   )
 }

@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { gsap } from "gsap/dist/gsap";
+import { Draggable } from 'gsap/dist/Draggable';
+
 import { useThrottledCallback } from 'use-debounce';
 import Image from "next/image";
 
 
 const Stories = () => {
   const reviewRef = useRef()
-  let reviewCards 
+  let reviewCards =useRef([])
   let oldx = 0
   let direction = ''
   let cardWidth
@@ -14,19 +16,40 @@ const Stories = () => {
   let xProgress = 0
   useEffect(() => {
     if (reviewRef.current) {
+      if(window.devicePixelRatio < 2){
+        let reivewBoxWrapper = document.querySelectorAll(".review-box-wrapper")
+        let minX = -(reivewBoxWrapper[0].getBoundingClientRect().width * reivewBoxWrapper.length-1)
+        console.log(minX,reivewBoxWrapper)
+        gsap.registerPlugin(Draggable)
+  
+        Draggable.create('#review-con',
+        {
+          bounds: {minX:minX,maxX:0},
+          type: 'x',
+          
+          inertia: true,
+          // autoScroll: 1,
+          edgeResistance: 0.65,
+          // throwProps: true,
+        })
+      }
+      // $(window).resize(function(){  
+      //   Draggable.get('.slide').applyBounds("#container");
+      // });
+      
       cardWidth = document.querySelector('.review-box-wrapper').offsetWidth + 30
-      reviewCards = gsap.utils.toArray('.review-box-wrapper')
-      xPerCard = 100 / reviewCards.length - 1
+      reviewCards.current = gsap.utils.toArray('.review-box-wrapper')
+      xPerCard = 100 / reviewCards.current.length - 1
     }
   }, [reviewRef.current])
 
   const slideBtns = gsap.timeline({ defaults: { duration: 0.3, ease: 'Power2.in', } })
   const leftBtn = () => {
-    if (xProgress > (-cardWidth * reviewCards.length - 1)) {
+    if (xProgress > (-cardWidth * reviewCards.current.length - 1)) {
 
       xProgress -= cardWidth
       // console.log('left', xProgress)
-      slideBtns.to(reviewCards, { translateX: xProgress })
+      slideBtns.to(reviewCards.current, { translateX: xProgress })
     }
 
   }
@@ -34,7 +57,7 @@ const Stories = () => {
     if (xProgress < 0) {
       xProgress += cardWidth
       // console.log('right', xProgress)
-      slideBtns.to(reviewCards, { translateX: xProgress })
+      slideBtns.to(reviewCards.current, { translateX: xProgress })
     }
   }
   let dataSpeed = 0.1
@@ -42,17 +65,17 @@ const Stories = () => {
     <div className="main-section" id="customers" >
         <a id="customers-anchor"></a>
 
-      <div className="customers-wrapper con-pd" >
+      <div className="customers-wrapper con-pd con-tb" >
         <div>
           <h1 className="title blue bold tc" id="customer-title">Customer Stories</h1>
           <br />
         </div>
 
         <div ref={reviewRef} id="review-wrapper" >
-          <div className="arrow-btn-wrapper">
-            <div className="black arrow-btn " onClick={rightBtn}><Image width={200} height={200} alt="Dk Care LLC reviews" style={{ transform: 'rotate(180deg)' }} src="/right-arrow.svg" /></div>
-            <div className="black arrow-btn " onClick={leftBtn}><Image width={200} height={200} alt="Dk Care LLC reviews" src="/right-arrow.svg" /></div>
-          </div>
+          {/* <div className="arrow-btn-wrapper">
+            <div className="black arrow-btn " onClick={rightBtn}><Image width={30} height={30} alt="Dk Care LLC reviews" style={{ transform: 'rotate(180deg)' }} src="/right-arrow.svg" /></div>
+            <div className="black arrow-btn " onClick={leftBtn}><Image width={30} height={30} alt="Dk Care LLC reviews" src="/right-arrow.svg" /></div>
+          </div> */}
           
           <div className="flex-container " style={{ gap: '30px' }} id="review-con"  >
             <div className="review-box-wrapper" >

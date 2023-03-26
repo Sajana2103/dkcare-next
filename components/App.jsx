@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect,useState } from 'react'
+import { useContext, useRef, useEffect, useState } from 'react'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 import * as THREE from "three";
@@ -9,26 +9,27 @@ import { useDebouncedCallback } from 'use-debounce'
 import { useThrottledCallback } from 'use-debounce';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import {ScrollSmoother} from 'gsap/dist/ScrollSmoother';
+import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
+import { InertiaPlugin } from 'gsap/dist/InertiaPlugin';
+import { MorphSVGPlugin } from 'gsap/dist/MorphSVGPlugin';
 import Stats from 'stats.js'
 import { sky } from './background.jsx';
 import ContentContainer from './content-container.jsx';
 import { chart } from './homepage/chart.jsx';
 
 function App({ isLoaded, models, animation }) {
-  console.log('isloaded models',isLoaded,models)
   // console.log('device pixal ratio :',window.devicePixelRatio)
-  gsap.registerPlugin(ScrollTrigger,ScrollSmoother)
-  let scrollSmooth
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, InertiaPlugin, MorphSVGPlugin)
+  let scrollSmooth = useRef()
 
-  let size800 
+  let isDesktop = useRef()
   const debounced = useDebouncedCallback((value) => {
     setSizes(value)
   }, 1000)
   const checkPosition = () => {
     if (scrollY === 0) {
       backToHeroDesktop()
-      // if(size800) backToHeroDesktop()
+      // if(isDesktop.current) backToHeroDesktop()
       // else backToHero()
 
     }
@@ -39,7 +40,7 @@ function App({ isLoaded, models, animation }) {
   let rotationSpeed = -0.2
   let reqAnimId
   const clock = new THREE.Clock();
-  let stats 
+  let stats
   const { mixer, clips } = animation
 
   // document.body.appendChild(stats.dom)
@@ -63,7 +64,7 @@ function App({ isLoaded, models, animation }) {
     sectionHeights = [0]
 
   let desktopPages
-let mobileHeroContent
+  let mobileHeroContent
   const touch = {
     startX: 0,
     startY: 0,
@@ -76,136 +77,136 @@ let mobileHeroContent
 
   let camera
   // const light = models[0].getObjectByName('Sun')
-  let body 
-  let frontWheels 
-  let backWheels 
-  let plane 
+  let body
+  let frontWheels
+  let backWheels
+  let plane
   // const orangeTrack = models[0].getObjectByName('Plane003')
 
-  let sun 
+  let sun
 
-  let pos 
-  let position 
-  let carLight 
+  let pos
+  let position
+  let carLight
 
   let renderer
-  let renderTarget 
+  let renderTarget
   let renderPass
-  let composer 
+  let composer
 
   const sceneAnimation = () => {
     // --- CAMERA
 
-  renderer = new THREE.WebGLRenderer({
-    antialias: true
-  })
-  // scene.add(city)
-  renderer.physicallyCorrectLights = true;
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 0.5;
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap
-
-
-  
-  // const rover = models[0].getObjectByName('rover_pos')
-
-  carLight.intensity = 50
-  carLight.castShadow = true
-  carLight.target = body
-  carLight.shadow.mapSize.width = 1024
-  carLight.shadow.mapSize.height = 1024
-  carLight.shadow.bias = -0.001
-
-  sun.shadow.camera.right = -50;
-  sun.shadow.camera.top = -50
-  sun.shadow.camera.left = 50;
-  sun.shadow.camera.bottom = 50;
-
-  const light = new THREE.DirectionalLight(0xffffff, 1);
-  sun.target = plane
-  const camArea = 500
-  let mapSize = 1024 * 4
-  sun.castShadow = true
-  sun.intensity = 10
-  sun.shadow.bias = -0.01
-  sun.shadow.mapSize.width = mapSize
-  sun.shadow.mapSize.height = mapSize
-  sun.shadow.camera.right = -camArea;
-  sun.shadow.camera.top = -camArea
-  sun.shadow.camera.left = camArea;
-  sun.shadow.camera.bottom = camArea;
-  sun.shadow.blurSamples = 1
-  light.shadow.camera.far = 5000
-  light.shadow.camera.near = 1000
-
-
-  const helper = new THREE.CameraHelper(sun.shadow.camera);
-  let d = 100;
-  let r = 2;
-
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x5B7DC2, 0.0025);
-  // scene.add( new THREE.CameraHelper( sun.shadow.camera ) )
-  const hemiLight = new THREE.HemisphereLight(0xE5F0FF, 0xffffff, 10);
-  hemiLight.position.set(0, 1000, 0)
-  const hemiHelper = new THREE.HemisphereLightHelper(hemiLight, 5);
-  scene.add(hemiLight)
-  // scene.add(hemiHelper)
-
-  plane.receiveShadow = true
-
-  camera.lookAt(body.position.x)
-
-  new RGBELoader()
-    .load('venice_sunrise_1k.hdr', function (texture) {
-
-      texture.mapping = THREE.EquirectangularReflectionMapping;
-      scene.environment = texture;
+    renderer = new THREE.WebGLRenderer({
+      antialias: true
     })
+    // scene.add(city)
+    renderer.physicallyCorrectLights = true;
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.5;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
 
-  // --- RENDERER
 
-  // CONTORLS ---------------------------------------------------
-  // const camera = models[0].getObjectByName('Camera2')
-  // camera.near= 10
-  // camera.far = 10000
-  // console.log(camera)
-  // camera.far = 5000
+    // const rover = models[0].getObjectByName('rover_pos')
+
+    carLight.intensity = 50
+    carLight.castShadow = true
+    carLight.target = body
+    carLight.shadow.mapSize.width = 1024
+    carLight.shadow.mapSize.height = 1024
+    carLight.shadow.bias = -0.001
+
+    sun.shadow.camera.right = -50;
+    sun.shadow.camera.top = -50
+    sun.shadow.camera.left = 50;
+    sun.shadow.camera.bottom = 50;
+
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    sun.target = plane
+    const camArea = 500
+    let mapSize = 1024 * 4
+    sun.castShadow = true
+    sun.intensity = 10
+    sun.shadow.bias = -0.01
+    sun.shadow.mapSize.width = mapSize
+    sun.shadow.mapSize.height = mapSize
+    sun.shadow.camera.right = -camArea;
+    sun.shadow.camera.top = -camArea
+    sun.shadow.camera.left = camArea;
+    sun.shadow.camera.bottom = camArea;
+    sun.shadow.blurSamples = 1
+    light.shadow.camera.far = 5000
+    light.shadow.camera.near = 1000
 
 
-  // const controls = new OrbitControls(camera,renderer.domElement);
-  // controls.listenToKeyEvents(window); // optional
+    const helper = new THREE.CameraHelper(sun.shadow.camera);
+    let d = 100;
+    let r = 2;
 
-  // // controls.addEventListener('change', render); // call this only in static scenes (i.e., if there is no animation loop)
-  // controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
-  // controls.dampingFactor = 0.05;
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x5B7DC2, 0.0025);
+    // scene.add( new THREE.CameraHelper( sun.shadow.camera ) )
+    const hemiLight = new THREE.HemisphereLight(0xE5F0FF, 0xffffff, 10);
+    hemiLight.position.set(0, 1000, 0)
+    const hemiHelper = new THREE.HemisphereLightHelper(hemiLight, 5);
+    scene.add(hemiLight)
+    // scene.add(hemiHelper)
 
-  // controls.screenSpacePanning = false;
+    plane.receiveShadow = true
 
-  // controls.minDistance = 0.1;
-  // controls.maxDistance = 10000;
+    camera.lookAt(body.position.x)
 
-  // controls.maxPolarAngle = Math.PI / 2;
+    new RGBELoader()
+      .load('venice_sunrise_1k.hdr', function (texture) {
 
-  // scene.add(hemiLight);
-  // scene.add(light);
+        texture.mapping = THREE.EquirectangularReflectionMapping;
+        scene.environment = texture;
+      })
 
-  // scene.add(ground);
-  scene.add(sky)
-  scene.add(models[0])
-  renderTarget = new THREE.WebGLRenderTarget(size.width, size.height, { samples: 4 });
 
-  renderPass = new RenderPass(scene, camera);
-  composer = new EffectComposer(renderer, renderTarget);
-  composer.addPass(renderPass);
-  
+    // --- RENDERER
+
+    // CONTORLS ---------------------------------------------------
+    // const camera = models[0].getObjectByName('Camera2')
+    // camera.near= 10
+    // camera.far = 10000
+    // console.log(camera)
+    // camera.far = 5000
+
+
+    // const controls = new OrbitControls(camera,renderer.domElement);
+    // controls.listenToKeyEvents(window); // optional
+
+    // // controls.addEventListener('change', render); // call this only in static scenes (i.e., if there is no animation loop)
+    // controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+    // controls.dampingFactor = 0.05;
+
+    // controls.screenSpacePanning = false;
+
+    // controls.minDistance = 0.1;
+    // controls.maxDistance = 10000;
+
+    // controls.maxPolarAngle = Math.PI / 2;
+
+    // scene.add(hemiLight);
+    // scene.add(light);
+
+    // scene.add(ground);
+    scene.add(sky)
+    scene.add(models[0])
+    renderTarget = new THREE.WebGLRenderTarget(size.width, size.height, { samples: 4 });
+
+    renderPass = new RenderPass(scene, camera);
+    composer = new EffectComposer(renderer, renderTarget);
+    composer.addPass(renderPass);
+
   }
   useEffect(() => {
-    if(isLoaded ){
-      size800 = document.body.clientWidth > 800
+    if (isLoaded) {
+      isDesktop.current = window.devicePixelRatio < 2
       size = { width: document.body.clientWidth, height: window.clientHeight }
       stats = new Stats()
       stats.showPanel(2)
@@ -216,14 +217,14 @@ let mobileHeroContent
       frontWheels = models[0].getObjectByName('wheels_front')
       backWheels = models[0].getObjectByName('wheels_back')
       plane = models[0].getObjectByName('Plane')
-    
+
       sun = models[0].getObjectByName('Sun')
-    
+
       pos = new THREE.Vector3()
       position = models[0].getObjectByName('position')
       carLight = models[0].getObjectByName('Point')
       document.addEventListener("wheel", handleWheel);
-            document.addEventListener("touchstart", handleTouchStart);
+      document.addEventListener("touchstart", handleTouchStart);
       document.addEventListener("touchmove", handleTouchMove);
       document.addEventListener("touchend", handleTouchEnd);
       window.addEventListener('scroll', posHandler)
@@ -231,41 +232,41 @@ let mobileHeroContent
       sceneAnimation()
       container.current.appendChild(renderer.domElement)
       onResize();
-   
+
       tick();
     }
-  },[isLoaded])
+  }, [isLoaded])
 
   const onResize = () => {
-    if(isLoaded){
+    if (isLoaded) {
 
       size.height = window.innerHeight;
       size.width = document.body.clientWidth;
-      size800 = size.width > 800
+      isDesktop.current = window.devicePixelRatio < 2
       // if (navRef.current) navRef.current.style.width = `${document.body.clientWidth}px`;
       camera.aspect = size.width / size.height
       camera.updateProjectionMatrix()
-      
+
       renderer.setSize(size.width, size.height)
       composer.setSize(size.width, size.height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     }
-    
-    
+
+
   }
- 
+
 
   // --- TICK
   // let mouse = { x: camera.position.x, y: camera.position.y }
   // window.addEventListener('mousemove',(e) => {
-    //   e.preventDefault()
-    //   mouse.x = (e.clientX/window.innerWidth) * 2 -1
-    //   mouse.y = (e.clientY/window.innerHeight) * 2 -1
-    //   // camera.position.set(camera.position.x + 1)
-    //   camera.position.y -= mouse.y
-    //   camera.position.x += -mouse.x
-    //   // gsap.to(camera.position,{x:camera.position.x+(-mouse.x*3),y:camera.position.y+(mouse.y)})
-    // })
+  //   e.preventDefault()
+  //   mouse.x = (e.clientX/window.innerWidth) * 2 -1
+  //   mouse.y = (e.clientY/window.innerHeight) * 2 -1
+  //   // camera.position.set(camera.position.x + 1)
+  //   camera.position.y -= mouse.y
+  //   camera.position.x += -mouse.x
+  //   // gsap.to(camera.position,{x:camera.position.x+(-mouse.x*3),y:camera.position.y+(mouse.y)})
+  // })
 
 
   // console.log(camAndCar)
@@ -384,24 +385,24 @@ let mobileHeroContent
   const changeAnimationDesktop = () => {
     const camTl = gsap.timeline({ defaults: { ease: `Power1.easeOut`, duration: 2 } })
     if (next === 0) {
-      camTl.to(camera.position, { y: 2, x: -4,z:6, duration: 2 })
-      camTl.to(position.position,{ x: 200,y:-300,z:100}, '<')
+      camTl.to(camera.position, { y: 2, x: -4, z: 6, duration: 2 })
+      camTl.to(position.position, { x: 200, y: -300, z: 100 }, '<')
       // camTl.to(camera.rotation, {  x: -3, duration: 2 },'<')
       mixer.clipAction(clips[0]).play()
 
     }
 
     console.log(next)
-    if(next === 1){
-      camTl.to(camera.position, { y: -1.3,x:-10,z:0, duration: 2 })
+    if (next === 1) {
+      camTl.to(camera.position, { y: -1.3, x: -10, z: 0, duration: 2 })
 
-      camTl.to(position.position, { x: -300,y:-400,z:300}, '<')
+      camTl.to(position.position, { x: -300, y: -400, z: 300 }, '<')
 
     }
     else if (next === 2) {
       console.log('clip', next)
       camTl.to(camera.position, { y: 50, x: -7, duration: 2 })
-      camTl.to(position.position, { x: -300,y:1000,z:300}, '<')
+      camTl.to(position.position, { x: -300, y: 1000, z: 300 }, '<')
     }
     else if (next === 3) {
       console.log('clip', next)
@@ -444,7 +445,7 @@ let mobileHeroContent
     }
 
   }
- 
+
   // const touch = {
   //   startX: 0,
   //   startY: 0,
@@ -460,24 +461,21 @@ let mobileHeroContent
   };
 
   useEffect(() => {
-    if (mainRef.current && container.current && contentRef.current && isLoaded ) {
+    if (mainRef.current && container.current && contentRef.current && isLoaded) {
 
-      if (size800) {
-        changeAnimationDesktop()
-      } else changeAnimation()
-      console.log('size',size)
 
-      if(contentRef.current && size800) {
-      }
+      changeAnimationDesktop()
+
+
       desktopPages = document.querySelectorAll('.desktop-page')
-      
-      if(contentRef.current && !size800) {
+
+      if (contentRef.current && !isDesktop.current) {
         mobileHeroContent = document.querySelector('#mobile-hero-content')
         // sections = mobileHeroContent.querySelectorAll('section')
         sectionChildren = document.querySelectorAll('.sections')
 
       }
-      
+
       // titles = document.querySelectorAll('.title')
       // const tl = gsap.timeline({
       //   ...tlDefaults,
@@ -492,24 +490,25 @@ let mobileHeroContent
       // })
       // tl.to('.title', { opacity: 1 })
       slideInDesktop()
-      // if (size800) {
+      // if (isDesktop.current) {
       //   slideInDesktop()
       // } else slideInMobile();
       // for (let i = 0; i < sections.length; i++) {
       //   sectionHeights.push(sections[i].offsetHeight + sectionHeights[i])
       //   contentHeight += sections[i].offsetHeight
       // }
-      if(size800){
-
-        scrollSmooth= ScrollSmoother.create({
-          wrapper:'.smooth-wrapper',
-          content:'.smooth-content',
-          smooth:2,
-          effects:true
+      if (isDesktop.current) {
+        chart()
+        scrollSmooth.current = ScrollSmoother.create({
+          wrapper: '.smooth-wrapper',
+          content: '.smooth-content',
+          smooth: 2,
+          effects: true
         })
-        scrollSmooth.paused(true)
+        scrollSmooth.current.paused(true)
+        console.log('scrollSmooth.current ', scrollSmooth.current)
       }
-      
+
 
     }
   }, [isLoaded])
@@ -537,10 +536,10 @@ let mobileHeroContent
   }
   const backToHeroDesktop = () => {
     console.log('reverse End of SCENE')
-    if(size800){
+    if (isDesktop.current) {
 
-      scrollSmooth.scrollTop(0)
-      scrollSmooth.paused(true)
+      scrollSmooth.current.scrollTop(0)
+      scrollSmooth.current.paused(true)
     }
     // scrollSmooth.kill()
 
@@ -556,18 +555,19 @@ let mobileHeroContent
 
     tick()
     backHero
-    .to('#anchors',{display:'none',opacity:0,duration:0.3})
-    .fromTo('#homepage', { display: 'block', opacity: 0 }, { opacity: 1, duration: 1 })
+      .to('#anchors', { display: 'none', opacity: 0, duration: 0.3 })
+      .fromTo('#homepage', { display: 'block', opacity: 0 }, { opacity: 1, duration: 1 })
       // .to('#homepage', { display: 'none', duration: 0 })
       .to('#App', { position: 'fixed' }, '<')
       .to('#scene', { display: 'block', yPercent: 0, }, '<')
       .to('#scene', { opacity: 1, duration: 1 }, '<')
       .to('#desktop-hero-content', { display: 'block', opacity: 1 }, '<')
-      .to('#scroll-skip', { opacity: 1 }, '<')
-      window.scrollTo(0,0)
+      .to('#scroll-skip', { opacity: 1,display:'flex' }, '<')
+    window.scrollTo(0, 0)
 
   }
-  const gsapTimelines = (screen, action) => {
+  const gsapTimelines = (screen, action, ) => {
+    let pixelRatio = window.devicePixelRatio < 2
     let ctx = gsap.context(() => {
 
       const expTl = gsap.timeline({
@@ -576,10 +576,10 @@ let mobileHeroContent
           trigger: '#expertise',
           start: 'top top',
           end: 'bottom bottom',
-          endTrigger: '#services',
+          // endTrigger: '#services',
           ease: 'Power4.in',
-          toggleActions: 'play complete none none',
-          pin: size800? true : false,
+          toggleActions: 'play complete reverse reverse',
+          // pin: pixelRatio ? true : false,
           scrub: true,
           // markers: true,
           id: 'Expertise',
@@ -590,10 +590,10 @@ let mobileHeroContent
           trigger: '#services',
           start: 'top top',
           end: 'bottom bottom',
-          endTrigger: '#technologies',
+          // endTrigger: '#technologies',
           ease: 'Power4.in',
-          toggleActions: 'play complete none none',
-          pin: size800? true : false,
+          toggleActions: 'play complete reverse reverse',
+          // pin: pixelRatio ? true : false,
           scrub: true,
           // markers: true,
           id: 'Services',
@@ -606,8 +606,8 @@ let mobileHeroContent
           end: 'bottom bottom',
           endTrigger: '#evolution',
           ease: 'Power4.in',
-          toggleActions: 'play complete none none',
-          pin: size800? true : false,
+          toggleActions: 'play complete reverse reverse',
+          pin: pixelRatio ? true : false,
           scrub: true,
           // markers: true,
           id: 'technologies',
@@ -617,34 +617,57 @@ let mobileHeroContent
         scrollTrigger: {
           trigger: '#evolution',
           start: 'top top',
-          end: 'bottom bottom',
-          endTrigger: '#customers',
+          // end: 'bottom bottom',
+          // endTrigger: '#customers',
           ease: 'Power0',
           toggleActions: 'play complete reverse reverse',
-          pin: size800? true : false,
-          onEnter:chart(),
+          // pin: pixelRatio ? true : false,
+          // onEnter: pixelRatio ? chart() : '',
           scrub: 1,
           // onEnter: chart(),
           // markers: true,
           id: 'evolution',
         }
       })
-
-
-
       const customerTL = gsap.timeline({
         scrollTrigger: {
           trigger: '#customers',
           start: 'top top',
           end: 'bottom bottom',
-          endTrigger: '.final-wrapper',
+          // endTrigger: '.final-wrapper',
           ease: 'Power0',
           toggleActions: 'play complete reverse reverse',
-          pin: size800? true : false,
+          pin: pixelRatio ? true : false,
           pinSpacing: true,
           scrub: 3,
           // markers: true,
           id: 'customers',
+        }
+      })
+
+      const covidTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#covid',
+          start: 'top center',
+          end: 'bottom bottom',
+          // endTrigger: '.final-wrapper',
+          ease: 'Power0',
+          toggleActions: 'play complete reverse reverse',
+          // markers: true,
+          id: 'covid',
+        }
+      })
+      const footerTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#footer',
+          start: 'top center',
+          end: 'bottom center',
+          // endTrigger: '.final-wrapper',
+          ease: 'Power0',
+          toggleActions: 'play complete reverse reverse',
+
+          // markers: true,
+          id: 'footer',
         }
       })
       // const reviewContainer = document.querySelector('#review-con').scrollWidth
@@ -656,7 +679,7 @@ let mobileHeroContent
       //     end: `+=${container.offsetWidth}`,
       //     endTrigger: '.final-wrapper',
       //     toggleActions: 'play complete reverse reverse',
-      //     pin: size800? true : false,
+      //     pin: isDesktop.current? true : false,
       //     pinSpacing: true,
       //     scrub: 3,
       //     // markers: true,
@@ -672,20 +695,57 @@ let mobileHeroContent
         techTl.revert()
         evoTl.revert()
         customerTL.revert()
+        covidTL.revert()
+        footerTL.revert()
+
         return
       }
       if (screen === 'desktop' && action === 'homepage') {
-        expTl.fromTo('#expertise-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+        const reviewBox = document.querySelectorAll('.review-box-wrapper')
+
+        const anchors = document.querySelectorAll('.a-tags-home')
+        let anchorsMarkers = false
+        let ids = ['#expertise', '#services', '#technologies', '#evolution', '#customers', '#covid', '#footer',]
+        gsap.timeline({ scrollTrigger: { trigger: ids[0], start: 'top center', end: 'bottom center', markers: anchorsMarkers, toggleActions: 'play reset complete reset', } })
+          .fromTo(anchors[0], { color: '#1e4d8c' }, { color: '#ed7036' })
+        gsap.timeline({ scrollTrigger: { trigger: ids[1], start: 'top center', end: 'bottom center', markers: anchorsMarkers, toggleActions: 'play reset complete reset', } })
+          .fromTo(anchors[1], { color: '#1e4d8c' }, { color: '#ed7036' })
+
+        gsap.timeline({ scrollTrigger: { trigger: ids[2], start: 'top center', end: 'bottom top', endTrigger: '#evolution', markers: anchorsMarkers, toggleActions: 'play reset complete reset', } })
+          .fromTo(anchors[2], { color: '#1e4d8c' }, { color: '#ed7036' })
+
+        gsap.timeline({ scrollTrigger: { trigger: ids[3], start: 'top center', end: '+=2500', markers: anchorsMarkers, toggleActions: 'play reset complete reset', } })
+          .fromTo(anchors[3], { color: '#1e4d8c' }, { color: '#ed7036' })
+
+        gsap.timeline({ scrollTrigger: { trigger: ids[4], start: 'top center', end: 'bottom center', markers: anchorsMarkers, toggleActions: 'play reset complete reset', } })
+          .fromTo(anchors[4], { color: '#1e4d8c' }, { color: '#ed7036' })
+
+        gsap.timeline({ scrollTrigger: { trigger: ids[5], start: 'top center', end: 'bottom center', markers: anchorsMarkers, toggleActions: 'play reset complete reset', } })
+          .fromTo(anchors[5], { color: '#1e4d8c' }, { color: '#ed7036' })
+
+
+        expTl
+          // to(anchors[0], { color: '#ed7036' }, '<')
+          .fromTo('#expertise-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo('.exp-img', { scale: 0 }, { scale: 1, stagger: 1 }, '<')
           .fromTo('.exp-text-boxes', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 })
 
-        servicesTl.fromTo('#services-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
-          .fromTo('.serv-right-top-img', { objectPosition:'0 20%'},  { objectPosition:'0 40%'}, '<')
-          .fromTo('.serv-right-btm-img', {opacity: 0, objectPosition:'0 20%'},  {opacity: 1, objectPosition:'0 40%',stagger:1}, '<')
+
+        servicesTl
+          // .to(anchors[0], { color: '#1e4d8c' }, '<')
+          // .to(anchors[1], { color: '#ed7036' }, '<')
+          .fromTo('#services-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+
+          .fromTo('.serv-right-top-img', { objectPosition: '0 20%' }, { objectPosition: '0 40%' }, '<')
+          .fromTo('.serv-right-btm-img', { opacity: 0, objectPosition: '0 20%' }, { opacity: 1, objectPosition: '0 40%', stagger: 1 }, '<')
           .fromTo('.patient-health', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 })
 
 
-        techTl.fromTo('#tech-title-main', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+
+        techTl
+          // .to(anchors[1], { color: '#1e4d8c' }, '<')
+          // .to(anchors[2], { color: '#ed7036' }, '<')
+          .fromTo('#tech-title-main', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo('#tech-img-box-1', { opacity: 0 }, { opacity: 1, stagger: 1 })
           .fromTo('#tech-bd-left', { opacity: 0, height: '0%' }, { opacity: 1, height: '100%' })
           .fromTo('#tech-bd-left', { opacity: 0, width: '0%' }, { opacity: 1, width: '100%' }, '<+=25%')
@@ -698,7 +758,190 @@ let mobileHeroContent
           .fromTo('#tech-img-box-4', { opacity: 0 }, { opacity: 1 }, '<')
 
 
-        evoTl.fromTo('#evo-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+        evoTl
+          // .to(anchors[2], { color: '#1e4d8c' }, '<')
+          // .to(anchors[3], { color: '#ed7036' }, '<')
+          .fromTo('#evo-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+        let svgItems = gsap.utils.toArray(".svg-items");
+        let chartDetails = gsap.utils.toArray(".chart-details");
+        console.log('svgItems', svgItems, document.querySelector('#svg-conent-1'))
+        let svgTween = gsap.timeline({
+          ease: "none", // <-- IMPORTANT!
+          scrollTrigger: {
+            trigger: "#evolution",
+            start: '+=100',
+            pin: true,
+            scrub: 1,
+            pinSpacer: true,
+            pinSpacing: 'margin',
+            anticipatePin: 1,
+            //  markers: true,
+            //snap: directionalSnap(1 / (sections.length - 1)),
+            end: "+=2500",
+            // endTrigger:'#customers',
+            toggleActions: 'play complete reverse reverse'
+          }
+        })
+        // MorphSVGPlugin.convertToPath("circle, rect, ellipse, line, polygon, polyline");
+        for (let i = 0; i < 4; i++) {
+          svgTween.set(svgItems[i], { xPercent: i * -100 },);
+          svgTween.set(chartDetails[i], { xPercent: i * -100, opacity: i > 0 ? 0 : 1 },);
+        }
+
+
+
+        svgTween
+          .fromTo('#y2019', { xPercent: 0, fontSize: '6rem' }, { xPercent: -100, fontSize: '2rem' }, '<')
+          .fromTo(chartDetails[0], { xPercent: 0, opacity: 1, }, { opacity: 0, xPercent: -100 }, '<+=50%')
+        svgTween.fromTo(svgItems[0].children[0], { opacity: 1 }, { opacity: 0 }, '<');
+        svgTween.fromTo(svgItems[1], { opacity: 0 }, { opacity: 1 }, '<');
+        svgTween.to(svgItems[0].children[1], { duration: 1, morphSVG: svgItems[1].children[1] }, '<');
+        svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[1].children[2] }, '<');
+        svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[1].children[3] }, '<');
+        svgTween
+          .fromTo('#y2020', { translateX: '50vw', fontSize: '2rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '6rem' }, '<')
+          .fromTo(chartDetails[1], { xPercent: 0, opacity: 0, }, { opacity: 1, xPercent: -100 }, '<')
+          .fromTo('#y2019', { xPercent: -100, }, { xPercent: -300, },)
+          .fromTo('#y2020', { xPercent: 0, fontSize: '6rem', opacity: 0.5 }, { opacity: 1, xPercent: -100, fontSize: '2rem' }, '<')
+          .fromTo(chartDetails[1], { xPercent: -100, opacity: 1, }, { opacity: 0, xPercent: -200 }, '<+=50%')
+
+        svgTween.fromTo(svgItems[1].children[0], { opacity: 1 }, { opacity: 0 });
+        svgTween.fromTo(svgItems[2], { opacity: 0 }, { opacity: 1 }, '<');
+        svgTween.to(svgItems[0].children[1], { duration: 1, morphSVG: svgItems[2].children[1] }, '<');
+        svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[2].children[2] }, '<');
+        svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[2].children[3] }, '<');
+        svgTween
+          .fromTo('#y2021', { translateX: '60vw', fontSize: '2rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '6rem' }, '<')
+          .fromTo(chartDetails[2], { xPercent: -100, opacity: 0, }, { opacity: 1, xPercent: -200 }, '<')
+          .fromTo('#y2020', { xPercent: -100, }, { xPercent: -300, },)
+          .fromTo('#y2021', { xPercent: 0, fontSize: '6rem', opacity: 0.5 }, { opacity: 1, xPercent: -100, fontSize: '2rem' }, '<')
+          .fromTo(chartDetails[2], { xPercent: -200, opacity: 1, }, { opacity: 0, xPercent: -300 }, '<+=50%')
+
+
+        svgTween.fromTo(svgItems[2].children[0], { opacity: 1 }, { opacity: 0 });
+        svgTween.fromTo(svgItems[3], { opacity: 0 }, { opacity: 1 }, '<');
+        svgTween.to(svgItems[0].children[1], { duration: 1, morphSVG: svgItems[3].children[1] }, '<');
+        svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[3].children[2] }, '<');
+        svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[3].children[3] }, '<');
+        svgTween.fromTo('#y2022', { translateX: '70vw', fontSize: '2rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '6rem' }, '<')
+          .fromTo(chartDetails[3], { xPercent: -200, opacity: 0, }, { opacity: 1, xPercent: -300 }, '<')
+          .fromTo('#y2021', { xPercent: -200, }, { xPercent: -300, },)
+
+
+
+        let xPerReview = 100 * reviewBox.length
+        customerTL
+          .set(reviewBox, { translateX: size.width / 2 })
+          // .to(anchors[3], { color: '#1e4d8c' }, '<')
+          // .to(anchors[4], { color: '#ed7036' }, '<')
+          .fromTo('#customer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+
+        covidTL
+          // .to(anchors[4], { color: '#1e4d8c' }, '<')
+          // .to(anchors[5], { color: '#ed7036' }, '<')
+          .fromTo('#covid-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+
+        footerTL
+          // .to(anchors[5], { color: '#1e4d8c' }, '<')
+          // .to(anchors[6], { color: '#ed7036' }, '<')
+          .fromTo('.footer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+        // .to(reviewBox,{xPercent:-xPerReview,stagger:0})
+        // reviewsTL.to(reviewBox,{x:() => -(reviewContainer.scrollWidth - reviewBox[0].clientWidth) + "px"},)
+      }
+
+      else if (screen === 'mobile' && action === 'homepage') {
+        let start = 'top 20%'
+        let actions = 'play complete reverse reverse'
+        const expTlMobile = gsap.timeline({
+          defaults: { duration: 1 },
+          scrollTrigger: {
+            trigger: '#expertise',
+            start: start,
+            end: 'bottom bottom',
+            // endTrigger: '#services',
+            ease: 'Power4.in',
+            toggleActions: actions,
+            scrub: true,
+            // markers: true,
+            id: 'Expertise',
+          }
+        })
+        const servicesTlMobile = gsap.timeline({
+          scrollTrigger: {
+            trigger: '#services',
+            start: 'top center',
+            end: 'bottom bottom',
+            // endTrigger: '#technologies',
+            ease: 'Power4.in',
+            toggleActions: actions,
+            scrub: true,
+            // markers: true,
+            id: 'Services',
+          }
+        })
+
+        const techTlMobile = gsap.timeline({
+          scrollTrigger: {
+            trigger: '#technologies',
+            start: 'top bottom',
+            end: '+=2000',
+            endTrigger: '.text-align-center',
+
+            ease: 'Power4.in',
+            toggleActions: actions,
+            scrub: true,
+            // markers: true,
+            id: 'technologies',
+          }
+        })
+        const evoTlMobile = gsap.timeline({
+          trigger: "#evolution",
+          start: '+=100',
+          pin: true,
+          scrub: 1,
+          pinSpacer: true,
+          pinSpacing: 'margin',
+          anticipatePin: 1,
+          onEnter: chart(),
+          //  markers: true,
+          //snap: directionalSnap(1 / (sections.length - 1)),
+          end: "+=2500",
+          // endTrigger:'#customers',
+          toggleActions: 'play complete reverse reverse'
+        })
+
+        const customerTLMobile = gsap.timeline({
+          scrollTrigger: {
+            trigger: '#customers',
+            start: 'top 25%',
+            ease: 'Power0',
+            toggleActions: 'play complete reverse reverse',
+            scrub: 3,
+            // markers: true,
+            id: 'customers',
+          }
+        })
+
+        expTlMobile.fromTo('#expertise-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+          .fromTo('.exp-img', { scale: 0 }, { scale: 1, stagger: 1 }, '<')
+          .fromTo('.exp-text-boxes', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 })
+
+        servicesTlMobile.fromTo('#services-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+          .fromTo('.patient-health', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 }, '<')
+          .fromTo('.serv-right-top-img', { objectPosition: '0 20%' }, { objectPosition: '0 40%' }, '<')
+          .fromTo('.serv-right-btm-img', { opacity: 0, objectPosition: '0 20%' }, { opacity: 1, objectPosition: '0 40%', stagger: 1 }, '<')
+
+        let techmobile = document.querySelector('.mobile-technologies')
+        let techImgBox = techmobile.querySelectorAll('.tech-img-box')
+        let dashedLines = techmobile.querySelectorAll('.border-wrapper-mobile')
+        console.log(techImgBox, dashedLines)
+        techTlMobile.set('.border-mobile', { translateX: dashedLines[0].getBoundingClientRect().width / 2 })
+          .fromTo('#tech-title-main', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+          .fromTo(techImgBox, { opacity: 0, scale: 0 }, { scale: 1, opacity: 1, stagger: 1 })
+          .fromTo(dashedLines, { scaleY: 0, yPercent: -60 }, { scaleY: 1.2, stagger: 1, yPercent: 0 }, '<+=25%')
+
+
+        evoTlMobile.fromTo('#evo-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
         let svgItems = gsap.utils.toArray(".svg-items");
         let chartDetails = gsap.utils.toArray(".chart-details");
 
@@ -706,71 +949,65 @@ let mobileHeroContent
           ease: "none", // <-- IMPORTANT!
           scrollTrigger: {
             trigger: "#evolution",
-            start:'+=200',
+            start: 'top top',
             pin: true,
-            scrub: 3,
+            scrub: 2,
             //  markers: true,
             //snap: directionalSnap(1 / (sections.length - 1)),
-            end: "+=2500"
+            end: "+=2500",
+            id: 'chart',
+
           }
         })
-        svgTween
-        .fromTo(svgItems[0],{xPercent: 0,},{xPercent: -100})
-        .fromTo('#y2019',{xPercent:0,fontSize:'8rem'},{xPercent:-100,fontSize:'3rem'},'<')
-        .fromTo(chartDetails[0],{xPercent: 0,opacity: 1,},{opacity: 0,xPercent: -100},'<+=50%')
-        .fromTo(svgItems[0],{   opacity: 1,},{opacity: 0},'<')
-
-        .fromTo(svgItems[1],{   opacity: 0,},{opacity: 1},'<+=50%')
-        .fromTo(svgItems[1],{   xPercent: 0,},{   xPercent: -100},'<')
-        .fromTo('#y2020',{translateX:'50vw',fontSize:'3rem',opacity:0.5},{opacity:1,translateX:'0',fontSize:'8rem'},'<')
-        .fromTo(chartDetails[1],{xPercent: 0,opacity: 0,},{opacity: 1,xPercent: -100},'<')
-        .fromTo('#y2019',{xPercent:-100,},{xPercent:-300,},)
-        .fromTo('#y2020',{xPercent:0,fontSize:'8rem',opacity:0.5},{opacity:1,xPercent:-100,fontSize:'3rem'},'<')
-        .fromTo(svgItems[1],{   xPercent: -100,},{   xPercent: -200},'<')
-        .fromTo(chartDetails[1],{xPercent: -100,opacity: 1,},{opacity: 0,xPercent: -200},'<+=50%')
-        .fromTo(svgItems[1],{   opacity: 1,},{opacity: 0},'<+=55%')
-
-        .fromTo(svgItems[2],{   opacity: 0,},{opacity: 1},'<+=50%')
-        .fromTo(svgItems[2],{   xPercent: -100,},{   xPercent: -200},'<')
-        .fromTo('#y2021',{translateX:'60vw',fontSize:'3rem',opacity:0.5},{opacity:1,translateX:'0',fontSize:'8rem'},'<')
-        .fromTo(chartDetails[2],{xPercent: -100,opacity: 0,},{opacity: 1,xPercent: -200},'<')
-        .fromTo('#y2020',{xPercent:-100,},{xPercent:-300,},)
-        .fromTo('#y2021',{xPercent:0,fontSize:'8rem',opacity:0.5},{opacity:1,xPercent:-100,fontSize:'3rem'},'<')
-        .fromTo(svgItems[2],{   xPercent: -200,},{   xPercent: -300},'<')
-        .fromTo(chartDetails[2],{xPercent: -200,opacity: 1,},{opacity: 0,xPercent: -300},'<+=50%')
-        .fromTo(svgItems[2],{   opacity: 1,},{opacity: 0},'<+=55%')
-
-        .fromTo(svgItems[3],{   opacity: 0,},{opacity: 1},'<+=50%')
-        .fromTo(svgItems[3],{   xPercent: -200,},{   xPercent: -300},'<')
-        .fromTo('#y2022',{translateX:'70vw',fontSize:'3rem',opacity:0.5},{opacity:1,translateX:'0',fontSize:'8rem'},'<')
-        .fromTo(chartDetails[3],{xPercent: -200,opacity: 0,},{opacity: 1,xPercent: -300},'<')
-        .fromTo('#y2021',{xPercent:-200,},{xPercent:-300,},)
-     
-        const reviewBox = document.querySelectorAll('.review-box-wrapper')
-
-        let xPerReview = 100 * reviewBox.length
-        customerTL.set(reviewBox, { translateX: size.width / 2 })
-          .fromTo('#customer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
-          // .to(reviewBox,{xPercent:-xPerReview,stagger:0})
-          // reviewsTL.to(reviewBox,{x:() => -(reviewContainer.scrollWidth - reviewBox[0].clientWidth) + "px"},)
+        for (let i = 0; i < 4; i++) {
+          svgTween.set(svgItems[i], { xPercent: i * -100 },);
+          svgTween.set(chartDetails[i], { xPercent: i * -100, opacity: i > 0 ? 0 : 1 },);
         }
-    //   else if(screen==='mobile' && action==='homepage'){
-    //     const expMob = gsap.timeline({defaults:{duration:1,ease:'Power2.in'},
-    //   scrollTrigger:{
-    //     trigger: '#expertise',
-    //       start: 'top 30%',
-    //       end: 'bottom bottom',
-    //       endTrigger: '.expertise-wrapper-2',
-    //       ease: 'Power4.in',
-    //       toggleActions: 'play complete reverse reverse',
-    //       // pin: true,
-    //       // scrub: true,
-    //       // markers: true,
-    //       id: 'Expertise-Mob'
-    //   }})
-    //   expMob.fromTo('#expertise-title',{yPercent:10,opacity:0},{yPercent:0,opacity:1})
-    //   .fromTo('.exp-img', { scale:0}, { scale: 1, stagger: 1 }, '<')
-    // }
+
+
+
+        svgTween
+          .fromTo('#y2019', { xPercent: 0, fontSize: '3rem' }, { xPercent: -100, fontSize: '1rem' }, '<')
+          .fromTo(chartDetails[0], { xPercent: 0, opacity: 1, }, { opacity: 0, xPercent: -100 }, '<+=50%')
+        svgTween.fromTo(svgItems[0].children[0], { opacity: 1 }, { opacity: 0 }, '<');
+        svgTween.fromTo(svgItems[1], { opacity: 0 }, { opacity: 1 }, '<');
+        svgTween.to(svgItems[0].children[1], { duration: 1, morphSVG: svgItems[1].children[1] }, '<');
+        svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[1].children[2] }, '<');
+        svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[1].children[3] }, '<');
+        svgTween
+          .fromTo('#y2020', { translateX: '50vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
+          .fromTo(chartDetails[1], { xPercent: 0, opacity: 0, }, { opacity: 1, xPercent: -100 }, '<')
+          .fromTo('#y2019', { xPercent: -100, }, { xPercent: -300, },)
+          .fromTo('#y2020', { xPercent: 0, fontSize: '3rem', opacity: 0.5 }, { opacity: 1, xPercent: -100, fontSize: '1rem' }, '<')
+          .fromTo(chartDetails[1], { xPercent: -100, opacity: 1, }, { opacity: 0, xPercent: -200 }, '<+=50%')
+
+        svgTween.fromTo(svgItems[1].children[0], { opacity: 1 }, { opacity: 0 });
+        svgTween.fromTo(svgItems[2], { opacity: 0 }, { opacity: 1 }, '<');
+        svgTween.to(svgItems[0].children[1], { duration: 1, morphSVG: svgItems[2].children[1] }, '<');
+        svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[2].children[2] }, '<');
+        svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[2].children[3] }, '<');
+        svgTween
+          .fromTo('#y2021', { translateX: '60vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
+          .fromTo(chartDetails[2], { xPercent: -100, opacity: 0, }, { opacity: 1, xPercent: -200 }, '<')
+          .fromTo('#y2020', { xPercent: -100, }, { xPercent: -300, },)
+          .fromTo('#y2021', { xPercent: 0, fontSize: '3rem', opacity: 0.5 }, { opacity: 1, xPercent: -100, fontSize: '1rem' }, '<')
+          .fromTo(chartDetails[2], { xPercent: -200, opacity: 1, }, { opacity: 0, xPercent: -300 }, '<+=50%')
+
+
+        svgTween.fromTo(svgItems[2].children[0], { opacity: 1 }, { opacity: 0 });
+        svgTween.fromTo(svgItems[3], { opacity: 0 }, { opacity: 1 }, '<');
+        svgTween.to(svgItems[0].children[1], { duration: 1, morphSVG: svgItems[3].children[1] }, '<');
+        svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[3].children[2] }, '<');
+        svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[3].children[3] }, '<');
+        svgTween.fromTo('#y2022', { translateX: '70vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
+          .fromTo(chartDetails[3], { xPercent: -200, opacity: 0, }, { opacity: 1, xPercent: -300 }, '<')
+          .fromTo('#y2021', { xPercent: -200, }, { xPercent: -300, },)
+
+        customerTLMobile
+          .fromTo('#customer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+
+      }
+
     })
     return () => ctx.revert(); // cleanup! 
   }
@@ -799,18 +1036,19 @@ let mobileHeroContent
       if (size.width < 800 && funcRan === 0) {
         // console.log('mobile homepage ran : ', funcRan)
         gsapTimelines('mobile', 'homepage')
-        
+
         //end of set time out
-      } 
-    },!funcRan?  sceneTl.duration() * 1000 : 0)
+      }
+    }, !funcRan ? sceneTl.duration() * 1000 : 0)
     setTimeout(() => {
       sceneTl.to('body', { overflow: 'scroll', overflowY: 'scroll' },)
-      
-    },!funcRan? sceneTl.duration() * 1500 : 0)
+
+    }, !funcRan ? sceneTl.duration() * 1500 : 0)
     funcRan++
   }
   const skipHeroDesktop = () => {
-    if(size800)scrollSmooth.paused(false)
+    let pixelRatio = window.devicePixelRatio < 2
+    if (isDesktop.current) scrollSmooth.current.paused(false)
 
     showScene = false
     cancelAnimationFrame(reqAnimId)
@@ -821,58 +1059,63 @@ let mobileHeroContent
       }
     })
       .to('#scene', { opacity: 0, duration: 0 })
-      .to('#desktop-hero-content', { display: 'none', opacity:0}, '<')
-      .to('#scroll-skip', { opacity: 0 }, '<')
-      .to('#scene', { display: 'none', yPercent: -100, duration: 0.1,})
-      .to('#App', { position:size800? 'fixed' : 'relative' }, '<')
+      .to('#desktop-hero-content', { display: 'none', opacity: 0 }, '<')
+      .to('#scroll-skip', { opacity: 0 ,display:'none'}, '<')
+      .to('#scene', { display: 'none', yPercent: -100, duration: 0.1, })
+      .to('#App', { position: isDesktop.current ? 'fixed' : 'relative' }, '<')
       .to('#homepage', { display: 'block', }, '<')
       .fromTo('#homepage', { opacity: 0 }, { opacity: 1, duration: 1 })
-      .to('#anchors',{display:'flex',opacity:1,duration:2})
+      .to('#anchors', { display: 'flex', opacity: 1, duration: 2 })
     console.log('duration', sceneTl.duration())
     // .to('.sections', { translateY: sectionHeights[sectionHeights.length-1] },'<')
     console.log('sceneTl End of SCENE', listening)
     console.log(size)
 
     setTimeout(() => {
-      if (size.width > 400 && funcRan === 0) {
+      if (pixelRatio && funcRan === 0) {
         funcRan++
-        console.log('homepage ran : ', funcRan)
-        gsapTimelines('desktop', 'homepage')
+        console.log('homepage desktop ran : ', funcRan)
+        gsapTimelines('desktop', 'homepage', pixelRatio)
 
         //end of set time out
       }
+      else if (!pixelRatio && funcRan === 0) {
+        funcRan++
+        console.log('homepage mobile ran : ', funcRan)
+        gsapTimelines('mobile', 'homepage', pixelRatio)
+      }
     }, sceneTl.duration() * 1000)
     setTimeout(() => {
-      console.log('setTimeout body',funcRan)
-      sceneTl.fromTo('body',{overflowY:'none'}, {  overflowY: 'scroll' },)
-    
+      console.log('setTimeout body', funcRan)
+      sceneTl.fromTo('body', { overflowY: 'none' }, { overflowY: 'scroll' },)
 
-    }, sceneTl.duration() * 1000 )
+
+    }, sceneTl.duration() * 1000)
   }
   // Slides a section in on scroll down
- 
+
   let sectionCountMobile
   const slideInMobile = () => {
     if (current !== undefined) gsap.set(sectionChildren[current], { zIndex: 0 });
     sectionCountMobile = sectionChildren[next] ? sectionChildren[next].getElementsByTagName('section') : 'end'
-    console.log('slide in section mobile',sectionCountMobile)
+    console.log('slide in section mobile', sectionCountMobile)
     changeAnimation()
     // gsap.set(sections[next], { zIndex: 1 });
-    if(sectionCountMobile === 'end'){
+    if (sectionCountMobile === 'end') {
       const tl = gsap
-      .timeline({
-        paused: true,
-        defaults: tlDefaults,
-        onComplete: () => {
-          console.log('tl mobile runs')
+        .timeline({
+          paused: true,
+          defaults: tlDefaults,
+          onComplete: () => {
+            console.log('tl mobile runs')
             listening = true;
             current = next;
-        }
-      })
-      .to(sectionChildren[current], { opacity: 0 },)
-      .to(sectionChildren[current], { display: 'none' },)
-  
-    tl.play(0);
+          }
+        })
+        .to(sectionChildren[current], { opacity: 0 },)
+        .to(sectionChildren[current], { display: 'none' },)
+
+      tl.play(0);
     } else {
 
       const tl = gsap
@@ -881,21 +1124,21 @@ let mobileHeroContent
           defaults: tlDefaults,
           onComplete: () => {
             console.log('tl mobile runs')
-              listening = true;
-              current = next;
+            listening = true;
+            current = next;
           }
         })
         .to(sectionChildren[current], { opacity: 0 },)
         .to(sectionChildren[current], { display: 'none' },)
         .fromTo(sectionChildren[next], { display: 'none' }, { display: 'block' }, '<')
         .fromTo(sectionChildren[next], { opacity: 0 }, { opacity: 1 })
-        .fromTo(sectionCountMobile, { opacity: 0 ,yPercent:-10}, { yPercent:0,opacity: 1 ,stagger:1})
+        .fromTo(sectionCountMobile, { opacity: 0, yPercent: -10 }, { yPercent: 0, opacity: 1, stagger: 1 })
       tl.play(0);
     }
   }
 
   // Slides a section out on scroll up
- 
+
   function slideOutMobile() {
     desktopSlide--
     changeAnimationDesktop()
@@ -919,12 +1162,12 @@ let mobileHeroContent
   function handleDirectionMobile() {
     listening = false;
 
-    if (next === sectionChildren.length-1 && direction === 'down' && showScene) {
+    if (next === sectionChildren.length - 1 && direction === 'down' && showScene) {
 
       skipHero()
     }
 
- 
+
     if (direction === "down" && next < sectionChildren.length && showScene) {
       next = current + 1;
 
@@ -936,11 +1179,11 @@ let mobileHeroContent
       slideOutMobile();
     } else if (showScene) listening = true
   }
- 
+
   //DESKTOP SLIDE-IN
   let desktopSlide = 0
-  let sectionCount 
- 
+  let sectionCount
+
   function slideInDesktop() {
     desktopSlide++
     console.log('slide in', desktopSlide)
@@ -948,20 +1191,20 @@ let mobileHeroContent
     sectionCount = desktopPages[next] ? desktopPages[next].getElementsByClassName('section') : 'end'
     changeAnimationDesktop()
     // gsap.set(sections[next], { zIndex: 1 });
-    if(sectionCount === 'end'){
+    if (sectionCount === 'end') {
       const tl = gsap
-      .timeline({
-        paused: true,
-        defaults: tlDefaults,
-        onComplete: () => {
+        .timeline({
+          paused: true,
+          defaults: tlDefaults,
+          onComplete: () => {
             listening = true;
             current = next;
-        }
-      })
-      .to(desktopPages[current], { opacity: 0 },)
-      .to(desktopPages[current], { display: 'none' },)
-  
-    tl.play(0);
+          }
+        })
+        .to(desktopPages[current], { opacity: 0 },)
+        .to(desktopPages[current], { display: 'none' },)
+
+      tl.play(0);
     } else {
 
       const tl = gsap
@@ -969,15 +1212,15 @@ let mobileHeroContent
           paused: true,
           defaults: tlDefaults,
           onComplete: () => {
-              listening = true;
-              current = next;
+            listening = true;
+            current = next;
           }
         })
         .to(desktopPages[current], { opacity: 0 },)
         .to(desktopPages[current], { display: 'none' },)
         .fromTo(desktopPages[next], { display: 'none' }, { display: 'block' }, '<')
         .fromTo(desktopPages[next], { opacity: 0 }, { opacity: 1 })
-        .fromTo(sectionCount, { opacity: 0 ,yPercent:-10}, { yPercent:0,opacity: 1 ,stagger:1})
+        .fromTo(sectionCount, { opacity: 0, yPercent: -10 }, { yPercent: 0, opacity: 1, stagger: 1 })
       tl.play(0);
     }
     // camTl.to(camera.position, camTrack[next])
@@ -1008,9 +1251,9 @@ let mobileHeroContent
 
     listening = false;
 
-    if (next === desktopPages.length-1 && direction === 'down' && showScene) {
+    if (next === desktopPages.length - 1 && direction === 'down' && showScene) {
       skipHeroDesktop()
-      // if(size800){
+      // if(isDesktop.current){
 
       //   skipHeroDesktop()
       // } else skipHero()
@@ -1035,7 +1278,7 @@ let mobileHeroContent
     // TESTING desktop with mobile
     handleDirectionDesktop();
 
-    // if (size800) {
+    // if (isDesktop.current) {
     //   handleDirectionDesktop();
 
     // } else handleDirectionMobile();
@@ -1061,34 +1304,33 @@ let mobileHeroContent
     touch.dy = t.pageY - touch.startY;
     if (touch.dy > 10) direction = "up";
     if (touch.dy < -10) direction = "down";
-    if (size800) {
-      handleDirectionDesktop();
 
-    } else handleDirectionDesktop();
+      handleDirectionDesktop(); 
   }
 
 
-console.log('isMoblie:',size800,size)
+  console.log('isMoblie:', isDesktop.current, size)
   return (
-    <div id="App"  className="smooth-wrapper" ref={mainRef}>
-           <div  >
-        
+    <div id="App" className="smooth-wrapper" ref={mainRef}>
+      <div  >
+
         <div id="scene" ref={container} >
         </div>
-        <div className='cen' id="scroll-skip" style={{ display: 'flex', position: 'absolute', bottom: '4rem', right: '4rem' }}>
-          <h3 className='text-large blue'>Scroll Down or </h3><h3 style={{ paddingLeft: '0.5ch' }} className="orange text-large skip"
+        <div className='cen' id="scroll-skip" >
+          { isDesktop.current? <h3 className='text-large blue'>Scroll Down or </h3> : <></>}
+          <h3 style={{ paddingLeft: '0.5ch' }} className="orange text-large skip"
             onClick={() => {
               //Testing Desktop for mobile
               skipHeroDesktop()
               // if(size.width>800) skipHeroDesktop()
               // else skipHeroDesktop()
-              }}> Skip</h3>
+            }}> Skip Intro</h3>
         </div>
       </div>
-          <div ref={contentRef}>
-            <ContentContainer 
-            backToHero={backToHero} backToHeroDesktop={backToHeroDesktop} isLoaded={isLoaded}/>
-            </div> 
+      <div ref={contentRef}>
+        <ContentContainer
+          backToHero={backToHero} backToHeroDesktop={backToHeroDesktop} isLoaded={isLoaded} scrollSmooth={scrollSmooth} />
+      </div>
     </div>
   )
 }
