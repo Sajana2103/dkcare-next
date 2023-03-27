@@ -85,7 +85,7 @@ const HomePage = ({ size, setPageName, openModal, backToHeroDesktop, backToHero 
       {
         pixelRatio < 2 &&
         <div id="anchors">
-          <div className="flex wrap  bold blue" style={{ gap: '0.2rem' }} >
+          <div id="anchors-con" className="flex wrap  bold blue">
 
             <span className="a-tags-home" onClick={() => {scrollSmooth.scrollTo('#expertise',0.2,'top -150px')}} >Expertise</span>
             <span className="a-tags-home"  onClick={() => {scrollSmooth.scrollTo('#services',0.2,'top -150px')}}>Services</span>

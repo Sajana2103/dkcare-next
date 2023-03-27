@@ -23,7 +23,7 @@ const Loading = () => {
   const [animations, setAnimations] = useState({})
   const manager = new THREE.LoadingManager()
   const objects = [
-    { scene: '/poughkeepsie-sierra.gltf', name: 'city', group: new THREE.Group() },
+    { scene: '/poughkeepsie-sierra3.gltf', name: 'city', group: new THREE.Group() },
     // { path: '/car1.gltf', name: 'car', group: new THREE.Group() }
 
   ]
@@ -37,7 +37,7 @@ const Loading = () => {
     if (typeof window !== 'undefined') {
       hostname = window.location.href;
       console.log('hostname', hostname)
-      loader.load(hostname + 'poughkeepsie-sierra.gltf', gltf => {
+      loader.load(hostname + 'poughkeepsie-sierra3.gltf', gltf => {
         // console.log(gltf)
         gltf.scene.castShadow = true;
         animation.mixer = new THREE.AnimationMixer(gltf.scene)

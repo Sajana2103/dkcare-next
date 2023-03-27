@@ -3,6 +3,7 @@ import cls from 'classnames'
 import Modal from './modal.jsx';
 import Contact from './pages/contact.jsx';
 import styles from './content-desktop.module.css'
+import Link from "next/link.js";
 
 const DesktopContent = ({ setPageName, setModalOpen }) => {
   // const [modalOpen,setModalOpen] = useState(false)
@@ -32,11 +33,14 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
             {/* <p className="black text-small">2022-08-23</p> */}
           </div>
           <div className="section flex f-end ">
+            <Link href="/services" target="_blank">
+
             <button className="btn-orange" 
-              name="press-release" onClick={(e) => {
-                setPageName({ pageName: 'press-release', location: 'hero' })
-                setModalOpen(true)
-              }}>Press Release</button>
+              // name="press-release" onClick={(e) => {
+              //   setPageName({ pageName: 'press-release', location: 'hero' })
+              //   setModalOpen(true)}}
+              >Press Release</button>
+            </Link>
           </div>
         </div>
 

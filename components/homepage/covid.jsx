@@ -4,6 +4,7 @@ import React from "react";
 const Covid = () => {
   return (
     <div className="main-section" id="covid">
+      {/* <Image src="/mesh-gradient-2.png" className="mesh-gradient" height={500} width={500}/> */}
       <div className="final-wrapper blue-gr2 con-pd" style={{ paddingTop: '10rem', paddingBottom: '10rem' }}>
         <a id="covid-anchor"></a>
 
@@ -33,7 +34,6 @@ const Covid = () => {
           <h1 className="title white">About us</h1>
         </div>
       </div>
-      <hr />
 
 
     </div>

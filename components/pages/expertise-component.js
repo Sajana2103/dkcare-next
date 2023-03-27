@@ -9,7 +9,7 @@ import Head from "next/head"
 const ExpertiseComponent = () => {
 
   return (
-    <div >
+    <div className='page-content-wrapper'>
       <Head>
         <title>Expertise</title>
       </Head>

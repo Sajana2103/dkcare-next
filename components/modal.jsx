@@ -11,16 +11,11 @@ import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
 const Modal = ({modalOpen,pageName,openModal,setModalOpen}) => {
   const modalRef = useRef()
 
-  // gsap.registerPlugin(ScrollTrigger,ScrollSmoother)
-  //   let smoothScroll = ScrollSmoother.create({
-  //     wrapper:'modal-wrapper',
-  //     content:'.modal',
-  //     smooth:2
-  //   })
-
-if(!modalOpen) return null
-
-
+  if(!modalOpen) {
+ 
+    return null
+  }
+   
 let page 
 switch (pageName.pageName){
   case 'press-release':
@@ -41,7 +36,7 @@ console.log(page,modalOpen)
         else setModalOpen(false)
       }
     }}>
-      <div  ref={modalRef} className="modal ">
+      <div  ref={modalRef} className="modal" id="modal-content">
 
       {page}
       </div>

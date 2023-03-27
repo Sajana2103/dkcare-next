@@ -92,10 +92,12 @@ section {
   color: white;
   opacity: 1;
 }
-#logo-loading{
+
+#logo-loading {
   height: auto;
-  width: 50%;
+  width: 20%;
 }
+
 .btn-black {
   background-color: #333333;
   border-radius: 2rem;
@@ -405,9 +407,11 @@ section {
   flex-direction: column;
   border: 1px blue solid;
 }
-.con-tb{
+
+.con-tb {
   padding: 10rem 0 10rem 0;
 }
+
 .desktop-page {
   display: none;
   padding-top: 6rem;
@@ -496,9 +500,11 @@ section {
 .exp-img-con {
   flex-wrap: nowrap;
 }
-.expertise-wrapper-2{
+
+.expertise-wrapper-2 {
   padding: 4rem 0 0 0;
 }
+
 .expertise-wrapper-2 .title-bd-container h2 {
   font-size: 1rem;
 }
@@ -654,7 +660,7 @@ section {
 .border-mobile {
   border-left: 1px dashed #1e4d8c;
   height: 100%;
-  width:1px;
+  width: 1px;
 
 }
 
@@ -757,12 +763,15 @@ progress::-webkit-progress-value {
   height: 100vh;
   position: fixed;
   width: 10rem;
-  left: 0;
-  top: 0;
+  top: 45%;
   z-index: 9000;
   display: none;
   align-items: center;
   max-width: 10rem;
+}
+
+#anchors-con {
+  gap: 0.2rem;
 }
 
 #anchors span {
@@ -835,7 +844,7 @@ progress::-webkit-progress-value {
 .modal-wrapper {
   top: 0;
   left: 0;
-  right:0;
+  right: 0;
   bottom: 0;
   z-index: 10000;
   position: fixed;
@@ -845,8 +854,12 @@ progress::-webkit-progress-value {
   display: grid;
   align-content: center;
   justify-content: center;
-  
+
 }
+
+#homepage {}
+
+.smooth-content {}
 
 .modal-wrapper-homepage {
   z-index: 10000;
@@ -860,8 +873,13 @@ progress::-webkit-progress-value {
   overflow: hidden;
 }
 
+.page-content-wrapper {
+  height: 100vh;
+  padding-top: 10vh;
+}
+
 .modal {
-  z-index: 1000;
+  z-index: 10000;
   background-color: white;
   display: grid;
   align-content: center;
@@ -869,15 +887,17 @@ progress::-webkit-progress-value {
   width: 80vw;
   height: 80vh;
   /* padding: 5rem; */
-  overflow: scroll;
+  overflow-y: scroll;
 }
-#scroll-skip{
+
+#scroll-skip {
   display: flex;
   position: absolute;
   bottom: 4rem;
   right: 4rem;
   z-index: 10001;
 }
+
 .home-wrapper {
   width: 100%;
 }
@@ -916,7 +936,7 @@ progress::-webkit-progress-value {
 
 #review-wrapper {
   width: 90vw;
-    overflow-y: hidden;
+  overflow-y: hidden;
   overflow-x: scroll;
 }
 
@@ -976,13 +996,14 @@ progress::-webkit-progress-value {
   background-color: rgb(247, 247, 247);
   width: 20rem;
   box-shadow: 0rem 0.5rem 1rem rgb(220, 224, 226);
-  border: solid 2px  rgb(247, 247, 247);
+  border: solid 2px rgb(247, 247, 247);
   padding: 2rem 1rem 2rem 1rem;
   text-align: center;
   z-index: 100;
   transition-duration: 0.3s;
 }
-.review-box:hover{
+
+.review-box:hover {
   border: solid 2px var(--orange);
   transition-duration: 0.3s;
 
@@ -1015,9 +1036,20 @@ progress::-webkit-progress-value {
   align-items: center;
   justify-content: center;
 }
-#covid-home-content{
+/* 
+#covid .mesh-gradient {
+  position: absolute;
+  height: 13%;
+  width: 100vw;
+  border: red solid 1px;
+  z-index: -1;
+  object-fit: fill;
+} */
+
+#covid-home-content {
   flex-wrap: nowrap;
 }
+
 #covid h2 {
   text-align: center;
   padding: 0 0 2rem 0;
@@ -1098,11 +1130,37 @@ progress::-webkit-progress-value {
 
 .covid-para2-con {
   padding: 0 0 0 1rem;
-  
+
 }
+
+#footer {
+  border-top: 1px white solid;
+  padding-top: 5rem;
+}
+
+#footer-content {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.footer-title {
+  width: 100%;
+
+  padding-right: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-title h2 {
+  font-size: 3rem;
+}
+
+.footer-title p {}
+
 
 .links {
   padding-top: 1.4rem;
+  padding-left: 1.4rem;
 }
 
 .link-box {
@@ -1110,7 +1168,7 @@ progress::-webkit-progress-value {
 }
 
 .link-box .text-med {
-  padding-top: 1rem;
+  padding-top: 0 0 0 1rem;
 }
 
 .link {
@@ -1123,12 +1181,6 @@ progress::-webkit-progress-value {
   cursor: pointer;
 }
 
-.footer-title {
-  width: 35vw;
-  font-size: 2rem;
-  padding-right: 2rem;
-
-}
 
 .desktop-sections {
   width: 30%;
@@ -1202,9 +1254,10 @@ progress::-webkit-progress-value {
   height: 40vh;
   width: 200px;
 }
-.evolution-wrapper{
+
+.evolution-wrapper {
   height: 100vh;
- }
+}
 
 .chart-box {
   width: 6rem;
@@ -1325,21 +1378,22 @@ progress::-webkit-progress-value {
 .svg-items {
   /* margin: 0 0 0 1rem; */
 }
+
 /* #svg-content-2 {display: none;}
 #svg-content-3 {display: none;}
 
 #svg-content-4{display: none;} */
 
-#svg-content-2 path{
+#svg-content-2 path {
   opacity: 0;
 }
 
-#svg-content-3 path{
+#svg-content-3 path {
   opacity: 0;
 }
 
 
-#svg-content-4 path{
+#svg-content-4 path {
   opacity: 0;
 }
 
@@ -1363,26 +1417,58 @@ progress::-webkit-progress-value {
   #desktop-third h1 {
     font-size: 4rem;
   }
+  #desktop-first h1 {
+    font-size: 5rem;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
-  .covid-para2-con{
+  #anchors {
+
+    z-index: 10001;
+    height: 6rem;
+    top: 4rem;
+    max-width: 100%;
+  }
+
+  #anchors-con {
+    /* border: 1px red solid; */
+
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    height: 6rem;
+    margin-left: 2rem;
+  }
+
+
+  #anchors span {
+    width: auto;
+    padding: 2%;
+  }
+
+  .covid-para2-con {
     padding: 0rem;
   }
+
   .fg {
     gap: 1rem;
   }
+
   #covid-para1 {
     width: 100%;
     padding-right: 2rem;
     font-size: large;
     font-weight: 500;
   }
+
   .con-pd {
     padding-left: 5rem;
     padding-right: 5rem;
   }
-  .con-pd-tb{
+
+  .con-pd-tb {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
@@ -1438,7 +1524,7 @@ progress::-webkit-progress-value {
 
   .exp-img {
     width: 300px;
-    height:200px;
+    height: 200px;
   }
 
   .title {
@@ -1485,20 +1571,24 @@ progress::-webkit-progress-value {
     font-weight: 500;
     padding: 0.5rem 0 0.5rem;
   }
+
   #covid-aboutus {
     padding: 2rem 0 2rem 0;
   }
+
   #covid-aboutus button {
     padding: 2rem 0 2rem 0;
     scale: 0.8;
     border-radius: 5rem;
     transform: translateY(2rem);
   }
+
   #covid h2 {
     font-size: 2rem;
     letter-spacing: normal;
 
   }
+
   #covid h1 {
     text-align: center;
     font-size: 3rem;
@@ -1506,6 +1596,7 @@ progress::-webkit-progress-value {
     font-weight: 600;
     letter-spacing: 0.1rem;
   }
+
   #services-main-line {
     font-size: medium;
     font-weight: 400;
@@ -1514,12 +1605,18 @@ progress::-webkit-progress-value {
 }
 
 @media only screen and (max-width: 1080px) {
-  .wPer40{
+  #logo-loading {
+    height: auto;
+    width: 50%;
+  }
+
+  .wPer40 {
     width: 100%;
   }
+
   .title {
     font-size: 4rem;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .years-wrapper .evo-tagline {
@@ -1575,13 +1672,13 @@ progress::-webkit-progress-value {
     width: 100%;
   }
 
- .text-align-center {
-  text-align: center;
+  .text-align-center {
+    text-align: center;
     height: 20vh;
     display: grid;
     height: auto;
     padding: 1rem 0 1rem 0;
-  
+
   }
 
 
@@ -1593,17 +1690,19 @@ progress::-webkit-progress-value {
   .mobile {
     display: none;
   }
+
   #tech-our-founders {
     font-size: small;
     font-weight: 600;
     padding: 0;
   }
+
   #tech-we-pride {
     font-size: small;
     padding: 0 0 0 0;
     transform: translate(0, 0);
   }
-  
+
   .chart-box {
     width: 5rem;
     /* height: 4rem; */
@@ -1613,23 +1712,43 @@ progress::-webkit-progress-value {
     font-size: 0.6rem;
     width: 4rem;
   }
-  .chart-box h3{
+
+  .chart-box h3 {
     font-size: 1rem;
   }
+
   .evo-box {
     height: 4.5rem;
     width: 5rem;
   }
 
+  #footer-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .link-box .text-med {
+    padding-top: 1rem 0 0 0;
+  }
 }
 
 @media only screen and (max-width: 800px) {
-  #anchors{
+
+  .desktop-transport-grid2,
+  #desktop-transport-2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  #anchors {
     display: none;
   }
-  #covid-home-content{
+
+  #covid-home-content {
     flex-wrap: wrap;
   }
+
   .wPer1 {
     width: 100%;
   }
@@ -1681,6 +1800,10 @@ progress::-webkit-progress-value {
     gap: 0.5rem;
   }
 
+  #nemt-desktop {
+    margin-top: 1rem;
+  }
+
   #nemt-content h1 {
     font-size: 2rem;
     width: 10rem;
@@ -1706,6 +1829,7 @@ progress::-webkit-progress-value {
   }
 
   #our-drivers {
+    margin-top: 1rem;
     width: 100%;
   }
 
@@ -1720,6 +1844,10 @@ progress::-webkit-progress-value {
   .title {
     font-size: 3rem;
   }
+  #desktop-first .title {
+    font-size: 4rem;
+  }
+
 
   .exp-img-con {
     flex-wrap: nowrap;
@@ -1775,7 +1903,11 @@ progress::-webkit-progress-value {
     font-size: 2rem;
     font-weight: 500;
   }
+  #desktop-first .title {
+    font-size: 3rem;
+    font-weight: 500;
 
+  }
   .wPer20 {
     width: 100%;
   }
@@ -1784,7 +1916,8 @@ progress::-webkit-progress-value {
     font-size: 1.2rem;
     padding-right: 5px;
   }
-  .links{
+
+  .links {
     flex-wrap: wrap;
   }
 }
@@ -1795,13 +1928,16 @@ progress::-webkit-progress-value {
     font-size: 2rem;
     font-weight: 500;
   }
-  .customers-wrapper .con-tb{
+
+  .customers-wrapper .con-tb {
     padding: 4rem 0 2rem 0;
 
   }
-  .con-tb{
+
+  .con-tb {
     padding: 2rem 0 2rem 0;
   }
+
   .btn-orange {
     height: 1.5rem;
   }
@@ -1810,6 +1946,7 @@ progress::-webkit-progress-value {
     padding: 1rem 2rem 4rem 2rem;
     height: 1rem;
   }
+
   .exp-img {
     width: 50%;
     height: 8rem;
@@ -1845,7 +1982,7 @@ progress::-webkit-progress-value {
     padding-right: 5px;
   }
 
- 
+
   .pd-title {
     padding: 0.1ch 0 0.1ch 0;
   }
@@ -1870,36 +2007,38 @@ progress::-webkit-progress-value {
 
 }
 
-/* @media only screen and (max-width:1200) {
- 
-  #scene{
-
-    position: fixed;
-      top:0;
-      left:0;
-  }
-} */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 
   body {
     overflow-y: scroll;
     overflow-x: hidden;
   }
+
+  #logo-loading {
+    height: auto;
+    width: 50%;
+  }
+  #desktop-first .title {
+    font-size: 2rem;
+    font-weight: 600;
+  }
   .cen {
     margin: 0;
     width: auto;
     padding: 10px;
   }
-  
-  #scroll-skip{
+
+  #scroll-skip {
     bottom: 0rem;
     top: 1rem;
     right: 0.2rem;
-    
+
   }
-  #scroll-skip h3{
+
+  #scroll-skip h3 {
     font-size: 0.8rem;
   }
+
   .hero-titles {
     padding: 0 0 0.5rem 0;
   }
@@ -1913,7 +2052,8 @@ progress::-webkit-progress-value {
     flex-wrap: wrap;
     gap: 0;
   }
-  #desktop-transport h1{
+
+  #desktop-transport h1 {
     font-size: 1.8rem;
     font-weight: 600;
   }
@@ -1935,7 +2075,7 @@ progress::-webkit-progress-value {
   }
 
   #nemt-desktop {
-  margin-top: 1rem;
+    margin-top: 1rem;
     padding: 1rem;
   }
 
@@ -1961,30 +2101,39 @@ progress::-webkit-progress-value {
     flex-wrap: wrap;
     gap: 0;
   }
-  #desktop-third .flex-container{
-    gap:0;
+
+  #desktop-third .flex-container {
+    gap: 0;
   }
+
   #list-third span,
   h4 {
     font-size: small;
   }
-  .tab2{
+
+  .tab2 {
     grid-template-columns: 2rem auto;
   }
-  #our-drivers{
+
+  #our-drivers {
     padding: 1rem;
     margin-top: 1rem;
   }
-  #our-drivers h4,h2{
+
+  #our-drivers h4,
+  h2 {
     font-size: small;
     font-weight: 500;
   }
+
   #desktop-transport-2 h1 {
     width: 100%;
   }
-  .expertise-wrapper-2{
+
+  .expertise-wrapper-2 {
     padding: 1rem 0 0 0;
   }
+
   .wPer20 {
     width: 100%;
   }
@@ -2009,15 +2158,17 @@ progress::-webkit-progress-value {
     left: 0;
   }
 
-  
+
 
   #desktop-hero-content {
     /* border: red 1px solid; */
     /* width: 70%; */
   }
+
   .desktop-technologies {
     display: none;
   }
+
   #anchors {
     display: none;
   }
@@ -2035,9 +2186,11 @@ progress::-webkit-progress-value {
     font-weight: 600;
     letter-spacing: 0.1rem;
   }
-  #covid-home-content{
+
+  #covid-home-content {
     flex-wrap: wrap;
   }
+
   .chart-details {
     flex-wrap: nowrap;
     display: none;
@@ -2047,6 +2200,7 @@ progress::-webkit-progress-value {
     height: 4.5rem;
     width: 5rem;
   }
+
   #chart-div {
     width: 80vw;
   }
@@ -2081,17 +2235,20 @@ progress::-webkit-progress-value {
     padding: 0 0 0 0;
     transform: translate(0, 0);
   }
- .evolution-wrapper{
-  height: 100vh;
- }
+
+  .evolution-wrapper {
+    height: 100vh;
+  }
 
   #review-con {
     width: auto;
     padding: 1rem;
   }
-.covid-para2-con{
-  padding: 0rem;
-}
+
+  .covid-para2-con {
+    padding: 0rem;
+  }
+
   #covid h2 {
     font-size: 2rem;
     letter-spacing: normal;
@@ -2117,24 +2274,27 @@ progress::-webkit-progress-value {
   #covid-aboutus {
     padding: 2rem 0 2rem 0;
   }
-.nextBtn{
-  padding: 2rem 0 2rem 0;
 
-}
-.nextBtn h1 {
-  text-align: center;
-  font-size: 3rem;
-  padding: 0 0 2rem 0;
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-}
+  .nextBtn {
+    padding: 2rem 0 2rem 0;
+
+  }
+
+  .nextBtn h1 {
+    text-align: center;
+    font-size: 3rem;
+    padding: 0 0 2rem 0;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+  }
+
   #covid-aboutus button {
     padding: 2rem 0 2rem 0;
     scale: 0.8;
     border-radius: 5rem;
     transform: translateY(2rem);
   }
- 
+
 
   .nextBtn button {
     padding: 2rem 0 2rem 0;
@@ -2147,10 +2307,18 @@ progress::-webkit-progress-value {
     width: 2rem;
     height: 2rem;
   }
-  .modal{
+
+  .modal {
     display: block;
   }
-  .links{
+
+  #footer-content {
+    display: flex;
     flex-wrap: wrap;
   }
+
+  .links {
+    flex-wrap: wrap;
+  }
+
 }

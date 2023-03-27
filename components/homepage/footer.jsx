@@ -1,27 +1,31 @@
+import Image from "next/image.js";
 import React from "react";
 import Button from "./Button.js";
 
 const Footer = ({ setPageName, openModal }) => {
   return (
     <footer id="footer"
-      className="main-section blue-gr con-pd" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+      className="main-section blue-gr con-pd" >
       <a id="footer-anchor"></a>
+   
 
-      <div className="flex-container wrap">
-        <div className="footer-title wPer3">
+      <div id="footer-content" className="">
+
+        <div className="footer-title ">
           <h2 className="white semi-bold" >
             We are here to support you.
           </h2>
 
+          <div name="contact" className="wPer3" onClick={() => {
+            setPageName({ pageName: 'contact', location: 'home' })
+            openModal('home')
+          }}>
+            <Button name={'Contact us'} />
+          </div>
+          <p className="white text-small semi-bold">A member of our team will contact
+            you shortly.
+            </p>
         </div>
-        <div name="contact" className="wPer3" onClick={() => {
-          setPageName({ pageName: 'contact', location: 'home' })
-          openModal('home')
-        }}>
-          <Button name={'Contact us'} />
-        </div>
-        <p className="white bold wPer3">A member of our team will contact
-          you shortly.</p>
 
         <div className="links flex-container ">
 

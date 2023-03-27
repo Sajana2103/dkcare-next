@@ -384,21 +384,36 @@ function App({ isLoaded, models, animation }) {
   }
   const changeAnimationDesktop = () => {
     const camTl = gsap.timeline({ defaults: { ease: `Power1.easeOut`, duration: 2 } })
+  
+    console.log(next)
     if (next === 0) {
-      camTl.to(camera.position, { y: 2, x: -4, z: 6, duration: 2 })
-      camTl.to(position.position, { x: 200, y: -300, z: 100 }, '<')
+      if(!isDesktop.current){
+      camTl.to(camera.position, { y: -1.2, x: -6, z: -3, duration: 2 })
+
+      camTl.to(position.position, { x: -50, y: 0, z: 250 }, '<')
+     } else {
+      camTl.to(camera.position, { y: -1.3, x: -6, z: -3, duration: 2 })
+
+      camTl.to(position.position, { x: -50, y: 0, z: 300 }, '<')
+     }
+
+    }
+    if (next === 1) {
+      if(!isDesktop.current){
+          camTl.to(camera.position, { y: 2, x: -4, z: 12, duration: 2 })
+      camTl.to(position.position, { x: 100, y: -50, z: 500 }, '<')
       // camTl.to(camera.rotation, {  x: -3, duration: 2 },'<')
       mixer.clipAction(clips[0]).play()
+      } else{
+
+        camTl.to(camera.position, { y: 0, x: -1, z: 8, duration: 2 })
+        camTl.to(position.position, { x: 0, y: -150, z: 300 }, '<')
+        // camTl.to(camera.rotation, {  x: -3, duration: 2 },'<')
+        mixer.clipAction(clips[0]).play()
+      }
 
     }
 
-    console.log(next)
-    if (next === 1) {
-      camTl.to(camera.position, { y: -1.3, x: -10, z: 0, duration: 2 })
-
-      camTl.to(position.position, { x: -300, y: -400, z: 300 }, '<')
-
-    }
     else if (next === 2) {
       console.log('clip', next)
       camTl.to(camera.position, { y: 50, x: -7, duration: 2 })
@@ -574,7 +589,7 @@ function App({ isLoaded, models, animation }) {
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: '#expertise',
-          start: 'top top',
+          start: 'top 150px',
           end: 'bottom bottom',
           // endTrigger: '#services',
           ease: 'Power4.in',
@@ -588,7 +603,7 @@ function App({ isLoaded, models, animation }) {
       const servicesTl = gsap.timeline({
         scrollTrigger: {
           trigger: '#services',
-          start: 'top top',
+          start: 'top 100px',
           end: 'bottom bottom',
           // endTrigger: '#technologies',
           ease: 'Power4.in',
@@ -632,7 +647,7 @@ function App({ isLoaded, models, animation }) {
       const customerTL = gsap.timeline({
         scrollTrigger: {
           trigger: '#customers',
-          start: 'top top',
+          start: 'top 100px',
           end: 'bottom bottom',
           // endTrigger: '.final-wrapper',
           ease: 'Power0',
@@ -660,7 +675,7 @@ function App({ isLoaded, models, animation }) {
       const footerTL = gsap.timeline({
         scrollTrigger: {
           trigger: '#footer',
-          start: 'top center',
+          start: 'top bottom',
           end: 'bottom center',
           // endTrigger: '.final-wrapper',
           ease: 'Power0',
@@ -801,7 +816,7 @@ function App({ isLoaded, models, animation }) {
         svgTween
           .fromTo('#y2020', { translateX: '50vw', fontSize: '2rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '6rem' }, '<')
           .fromTo(chartDetails[1], { xPercent: 0, opacity: 0, }, { opacity: 1, xPercent: -100 }, '<')
-          .fromTo('#y2019', { xPercent: -100, }, { xPercent: -300, },)
+          .fromTo('#y2019', { xPercent: -100, }, { xPercent: -500, },)
           .fromTo('#y2020', { xPercent: 0, fontSize: '6rem', opacity: 0.5 }, { opacity: 1, xPercent: -100, fontSize: '2rem' }, '<')
           .fromTo(chartDetails[1], { xPercent: -100, opacity: 1, }, { opacity: 0, xPercent: -200 }, '<+=50%')
 
@@ -813,7 +828,7 @@ function App({ isLoaded, models, animation }) {
         svgTween
           .fromTo('#y2021', { translateX: '60vw', fontSize: '2rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '6rem' }, '<')
           .fromTo(chartDetails[2], { xPercent: -100, opacity: 0, }, { opacity: 1, xPercent: -200 }, '<')
-          .fromTo('#y2020', { xPercent: -100, }, { xPercent: -300, },)
+          .fromTo('#y2020', { xPercent: -100, }, { xPercent: -500, },)
           .fromTo('#y2021', { xPercent: 0, fontSize: '6rem', opacity: 0.5 }, { opacity: 1, xPercent: -100, fontSize: '2rem' }, '<')
           .fromTo(chartDetails[2], { xPercent: -200, opacity: 1, }, { opacity: 0, xPercent: -300 }, '<+=50%')
 
@@ -825,7 +840,7 @@ function App({ isLoaded, models, animation }) {
         svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[3].children[3] }, '<');
         svgTween.fromTo('#y2022', { translateX: '70vw', fontSize: '2rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '6rem' }, '<')
           .fromTo(chartDetails[3], { xPercent: -200, opacity: 0, }, { opacity: 1, xPercent: -300 }, '<')
-          .fromTo('#y2021', { xPercent: -200, }, { xPercent: -300, },)
+          .fromTo('#y2021', { xPercent: -200, }, { xPercent: -500, },)
 
 
 
@@ -1065,7 +1080,6 @@ function App({ isLoaded, models, animation }) {
       .to('#App', { position: isDesktop.current ? 'fixed' : 'relative' }, '<')
       .to('#homepage', { display: 'block', }, '<')
       .fromTo('#homepage', { opacity: 0 }, { opacity: 1, duration: 1 })
-      .to('#anchors', { display: 'flex', opacity: 1, duration: 2 })
     console.log('duration', sceneTl.duration())
     // .to('.sections', { translateY: sectionHeights[sectionHeights.length-1] },'<')
     console.log('sceneTl End of SCENE', listening)
@@ -1088,6 +1102,8 @@ function App({ isLoaded, models, animation }) {
     setTimeout(() => {
       console.log('setTimeout body', funcRan)
       sceneTl.fromTo('body', { overflowY: 'none' }, { overflowY: 'scroll' },)
+      .to('#anchors', { display: 'block', opacity: 1, duration: 2 })
+
 
 
     }, sceneTl.duration() * 1000)
