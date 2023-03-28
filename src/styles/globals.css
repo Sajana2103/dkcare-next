@@ -39,32 +39,6 @@ section {
   opacity: 0;
 }
 
-/* @font-face {
-  font-family: "Manrope";
-  font-style: normal;
-  font-weight: 500;
-  src: url(/fonts/Manrope-Regular.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Manrope";
-  font-style: normal;
-  font-weight: 400;
-  src: url(/fonts/Manrope-Medium.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Manrope";
-  font-style: normal;
-  font-weight: 600;
-  src: url(/fonts/Manrope-SemiBold.ttf) format("truetype");
-}
-@font-face {
-  font-family: "Manrope";
-  font-style: normal;
-  font-weight: 800;
-  src: url(/fonts/Manrope-Bold.ttf) format("truetype");
-} */
 
 #App {
   position: fixed;
@@ -74,6 +48,11 @@ section {
   height: 100vh;
 
   font-size: clamp(0.66rem, 2vw, 1rem);
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .bd-red {
@@ -789,15 +768,21 @@ progress::-webkit-progress-value {
 }
 
 .navigation-main {
-  width: 95vw;
+  width: 100%;
   height: 6rem;
   position: fixed;
   display: grid;
   align-items: center;
-  grid-template-columns: auto auto 60% auto;
-  gap: 2ch;
-  padding: 0 3rem 3rem 3rem;
-  z-index: 10000;
+  grid-template-columns: 20% auto 60%;
+
+  z-index: 10001;
+}
+
+#logo {
+  padding: 1rem;
+  object-fit: scale-down;
+  width: 90%;
+  height: auto;
 }
 
 #menu {
@@ -805,7 +790,7 @@ progress::-webkit-progress-value {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
+  z-index: 10000;
 }
 
 .menu-icon {
@@ -821,25 +806,135 @@ progress::-webkit-progress-value {
 }
 
 #menu-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
   justify-content: center;
-  height: 100vh;
+
 }
 
-.menu-items h2 {
-  font-size: 4rem;
+#menu-logo {
+  height: 100vh;
+  background: linear-gradient(90deg, rgba(30, 77, 140, 1) 0%, rgba(40, 84, 153, 1) 100%);
+}
+
+#menu-links {
+
+  display: grid;
+  border-right: #6181ac solid 1px;
+  height: 100vh;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(30, 77, 140, 1) 0%, rgba(40, 84, 153, 1) 100%);
+}
+
+#menu-items {
+  padding-left: 5rem;
+  line-height: 7rem;
+  display: grid;
+  grid-template-rows: auto;
+  flex-wrap: wrap;
+}
+
+#menu-items h2 {
+  font-weight: 500;
+  font-size: 7rem;
   transition-duration: 0.3s;
   color: white;
 }
 
-.menu-items h2:hover {
-  cursor: pointer;
-  background-color: white;
-  color: #ed7036;
-  transition-duration: 0.2s;
+#menu-items span {
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  width: 0%;
+  scale: 0 0;
+
+  transition-duration: 0.8s;
 }
+
+#menu-items h2:hover span {
+  cursor: pointer;
+  scale: 1 1;
+  width: 10%;
+
+  transition-duration: 0.3s;
+
+  transform: translate(0%, -50%);
+  border: red 1px;
+}
+
+#menu-contact {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3rem;
+  background-color: var(--blue);
+  height: 100vh;
+}
+
+
+#contact-numbers {
+  display: grid;
+  grid-template-rows: 30% ;
+  gap: 0.5rem;
+  justify-content: center;
+  height: auto;
+ 
+}
+
+.contact-number {
+  display: grid;
+  justify-content: center;
+  padding-bottom: 1rem;
+  height: 2rem;
+}
+
+.contact-number h2 {
+  padding-bottom: 0.3rem;
+}
+
+#contact-numbers .number {
+  background-color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-weight: 900;
+}
+
+#menu-other-links {
+  width: 100%;
+}
+
+.madeBy {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+#links-faq {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+#links-faq .text-xlarge {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+#menu-privacy {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+#menu-privacy p{
+  font-size: large;
+  font-weight: 400;
+}
+
 
 .modal-wrapper {
   top: 0;
@@ -896,6 +991,7 @@ progress::-webkit-progress-value {
   bottom: 4rem;
   right: 4rem;
   z-index: 10001;
+  flex-wrap: nowrap;
 }
 
 .home-wrapper {
@@ -1036,6 +1132,7 @@ progress::-webkit-progress-value {
   align-items: center;
   justify-content: center;
 }
+
 /* 
 #covid .mesh-gradient {
   position: absolute;
@@ -1214,10 +1311,6 @@ progress::-webkit-progress-value {
   padding: 0.2rem 0 0.2rem 0;
 }
 
-#logo {
-  width: auto;
-  height: auto;
-}
 
 #menuicon {
   width: 2.5rem;
@@ -1417,6 +1510,9 @@ progress::-webkit-progress-value {
   #desktop-third h1 {
     font-size: 4rem;
   }
+  #menu-contact {
+    padding: 1rem;
+  }
   #desktop-first h1 {
     font-size: 5rem;
   }
@@ -1447,7 +1543,9 @@ progress::-webkit-progress-value {
     width: auto;
     padding: 2%;
   }
-
+  #menu-contact {
+    padding: 1rem;
+  }
   .covid-para2-con {
     padding: 0rem;
   }
@@ -1844,6 +1942,7 @@ progress::-webkit-progress-value {
   .title {
     font-size: 3rem;
   }
+
   #desktop-first .title {
     font-size: 4rem;
   }
@@ -1903,11 +2002,13 @@ progress::-webkit-progress-value {
     font-size: 2rem;
     font-weight: 500;
   }
+
   #desktop-first .title {
     font-size: 3rem;
     font-weight: 500;
 
   }
+
   .wPer20 {
     width: 100%;
   }
@@ -1943,7 +2044,9 @@ progress::-webkit-progress-value {
   }
 
   .navigation-main {
-    padding: 1rem 2rem 4rem 2rem;
+    grid-template-columns: 40% auto 0px;
+
+    padding: 1rem 0rem 4rem 0rem;
     height: 1rem;
   }
 
@@ -2007,6 +2110,13 @@ progress::-webkit-progress-value {
 
 }
 
+@media only screen and (-webkit-max-device-pixel-ratio: 1) {
+  #menu-container {
+
+    grid-template-columns: 20% 60% 20%;
+  }
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 
   body {
@@ -2014,14 +2124,137 @@ progress::-webkit-progress-value {
     overflow-x: hidden;
   }
 
+  .navigation-main {
+    grid-template-columns: 50% auto 0px;
+
+    padding: 0rem 0rem 4rem 0rem;
+    height: 1rem;
+  }
+
+  #menu-container {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 0% 55% 45%;
+    background: linear-gradient(0deg, rgba(30, 77, 140, 1) 0%, rgba(40, 84, 153, 1) 100%);
+
+
+  }
+
+  #menu-contact {
+    height: 100%;
+    background: none;
+    padding: 2rem 2rem 0 2rem;
+
+  }
+
+  #menu-logo {
+    height: 0px;
+    background: none;
+
+  }
+
+  #menu-links {
+    height: 100%;
+    background: none;
+    border-right: none;
+
+  }
+
+  #menu-items {
+    padding: 4rem 1.5rem 0.5rem 1.5rem;
+    border: none;
+  }
+
+  #menu-items h2 {
+    font-weight: 500;
+    font-size: 2.5rem;
+    transition-duration: 0.3s;
+    color: white;
+    line-height: 3rem;
+    padding-bottom: 0.3rem;
+
+  }
+
+  #menu-privacy {
+    padding-top: 0.5rem;
+    flex-wrap: nowrap;
+    gap: 0rem;
+  }
+  #menu-privacy .text-large{
+    font-size: small;
+  }
+
+  #logo {
+    padding: 1rem;
+    width: 90%;
+  }
+
+  .madeBy {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-top: 1rem;
+
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+    
+  }
+
+  #menu-other-links {
+    padding: 1rem;
+  }
+
+  #links-faq {
+    flex-direction: row;
+    gap: 1rem;
+    padding-top: 0rem;
+  }
+
+  #links-faq .text-xlarge {
+    font-size: x-large;
+    font-weight: 500;
+  
+  }
+  
+  #contact-numbers {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    justify-content: center;
+
+  }
+
+  .contact-number {
+    display: grid;
+    justify-content: center;
+    padding-bottom: 1rem;
+    height: 1.5rem;
+  }
+
+  .contact-number h2 {
+    padding-bottom: 0.3rem;
+  }
+
+  #contact-numbers .number {
+    background-color: white;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-weight: 900;
+    height: 1.5rem;
+  }
+
   #logo-loading {
     height: auto;
     width: 50%;
   }
+
   #desktop-first .title {
     font-size: 2rem;
     font-weight: 600;
   }
+
   .cen {
     margin: 0;
     width: auto;
@@ -2032,7 +2265,6 @@ progress::-webkit-progress-value {
     bottom: 0rem;
     top: 1rem;
     right: 0.2rem;
-
   }
 
   #scroll-skip h3 {
