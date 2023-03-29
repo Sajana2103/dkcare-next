@@ -578,6 +578,9 @@ function App({ isLoaded, models, animation }) {
       .to('#scene', { opacity: 1, duration: 1 }, '<')
       .to('#desktop-hero-content', { display: 'block', opacity: 1 }, '<')
       .to('#scroll-skip', { opacity: 1,display:'flex' }, '<')
+    if(!isDesktop)backHero.to('#scroll-skip-mobile', { opacity: 1,display:'flex' }, '<')
+
+
     window.scrollTo(0, 0)
 
   }
@@ -779,7 +782,6 @@ function App({ isLoaded, models, animation }) {
           .fromTo('#evo-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
         let svgItems = gsap.utils.toArray(".svg-items");
         let chartDetails = gsap.utils.toArray(".chart-details");
-        console.log('svgItems', svgItems, document.querySelector('#svg-conent-1'))
         let svgTween = gsap.timeline({
           ease: "none", // <-- IMPORTANT!
           scrollTrigger: {
@@ -802,8 +804,6 @@ function App({ isLoaded, models, animation }) {
           svgTween.set(svgItems[i], { xPercent: i * -100 },);
           svgTween.set(chartDetails[i], { xPercent: i * -100, opacity: i > 0 ? 0 : 1 },);
         }
-
-
 
         svgTween
           .fromTo('#y2019', { xPercent: 0, fontSize: '6rem' }, { xPercent: -100, fontSize: '2rem' }, '<')
@@ -843,28 +843,18 @@ function App({ isLoaded, models, animation }) {
           .fromTo('#y2021', { xPercent: -200, }, { xPercent: -500, },)
 
 
-
-        let xPerReview = 100 * reviewBox.length
         customerTL
           .set(reviewBox, { translateX: size.width / 2 })
-          // .to(anchors[3], { color: '#1e4d8c' }, '<')
-          // .to(anchors[4], { color: '#ed7036' }, '<')
           .fromTo('#customer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
 
-        covidTL
-          // .to(anchors[4], { color: '#1e4d8c' }, '<')
-          // .to(anchors[5], { color: '#ed7036' }, '<')
-          .fromTo('#covid-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+        covidTL.fromTo('#covid-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
 
-        footerTL
-          // .to(anchors[5], { color: '#1e4d8c' }, '<')
-          // .to(anchors[6], { color: '#ed7036' }, '<')
-          .fromTo('.footer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
-        // .to(reviewBox,{xPercent:-xPerReview,stagger:0})
-        // reviewsTL.to(reviewBox,{x:() => -(reviewContainer.scrollWidth - reviewBox[0].clientWidth) + "px"},)
+        footerTL.fromTo('.footer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+        
       }
 
       else if (screen === 'mobile' && action === 'homepage') {
+
         let start = 'top 20%'
         let actions = 'play complete reverse reverse'
         const expTlMobile = gsap.timeline({
@@ -911,17 +901,13 @@ function App({ isLoaded, models, animation }) {
         })
         const evoTlMobile = gsap.timeline({
           trigger: "#evolution",
-          start: '+=100',
-          pin: true,
-          scrub: 1,
-          pinSpacer: true,
-          pinSpacing: 'margin',
-          anticipatePin: 1,
+          start: '+=50px',
+          // pin: true,
+          // scrub: 1,
+          // anticipatePin: 1,
           onEnter: chart(),
           //  markers: true,
-          //snap: directionalSnap(1 / (sections.length - 1)),
           end: "+=2500",
-          // endTrigger:'#customers',
           toggleActions: 'play complete reverse reverse'
         })
 
@@ -959,16 +945,20 @@ function App({ isLoaded, models, animation }) {
         evoTlMobile.fromTo('#evo-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
         let svgItems = gsap.utils.toArray(".svg-items");
         let chartDetails = gsap.utils.toArray(".chart-details");
-
+        console.log('chart details',chartDetails)
         let svgTween = gsap.timeline({
           ease: "none", // <-- IMPORTANT!
           scrollTrigger: {
             trigger: "#evolution",
-            start: 'top top',
+            start: '+=100px',
             pin: true,
-            scrub: 2,
+            scrub: 1,
+            pinSpacer: true,
+            pinSpacing: 'margin',
+            anticipatePin: 1,
             //  markers: true,
             //snap: directionalSnap(1 / (sections.length - 1)),
+            endTrigger:'#customers',
             end: "+=2500",
             id: 'chart',
 
@@ -976,25 +966,25 @@ function App({ isLoaded, models, animation }) {
         })
         for (let i = 0; i < 4; i++) {
           svgTween.set(svgItems[i], { xPercent: i * -100 },);
-          svgTween.set(chartDetails[i], { xPercent: i * -100, opacity: i > 0 ? 0 : 1 },);
+          svgTween.set(chartDetails[i], {yPercent: i * -100, opacity: i > 0 ? 0 : 1 });
         }
 
 
 
         svgTween
-          .fromTo('#y2019', { xPercent: 0, fontSize: '3rem' }, { xPercent: -100, fontSize: '1rem' }, '<')
-          .fromTo(chartDetails[0], { xPercent: 0, opacity: 1, }, { opacity: 0, xPercent: -100 }, '<+=50%')
+          .fromTo('#y2019', { xPercent: 0, fontSize: '3rem' }, { xPercent: -300, fontSize: '1rem' }, '<')
+          .fromTo(chartDetails[0], { opacity: 1 }, { opacity: 0, }, '<+=50%')
         svgTween.fromTo(svgItems[0].children[0], { opacity: 1 }, { opacity: 0 }, '<');
         svgTween.fromTo(svgItems[1], { opacity: 0 }, { opacity: 1 }, '<');
         svgTween.to(svgItems[0].children[1], { duration: 1, morphSVG: svgItems[1].children[1] }, '<');
         svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[1].children[2] }, '<');
         svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[1].children[3] }, '<');
         svgTween
-          .fromTo('#y2020', { translateX: '50vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
-          .fromTo(chartDetails[1], { xPercent: 0, opacity: 0, }, { opacity: 1, xPercent: -100 }, '<')
+          .fromTo('#y2020', { translateX: '40vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
+          .fromTo(chartDetails[1], {  opacity: 0,yPercent:0  }, { opacity: 1, yPercent:-100  }, '<')
           .fromTo('#y2019', { xPercent: -100, }, { xPercent: -300, },)
-          .fromTo('#y2020', { xPercent: 0, fontSize: '3rem', opacity: 0.5 }, { opacity: 1, xPercent: -100, fontSize: '1rem' }, '<')
-          .fromTo(chartDetails[1], { xPercent: -100, opacity: 1, }, { opacity: 0, xPercent: -200 }, '<+=50%')
+          .fromTo('#y2020', { xPercent: 0, fontSize: '3rem', opacity: 0.5 }, { opacity: 1, xPercent:  -300, fontSize: '1rem' }, '<')
+          .fromTo(chartDetails[1], {  opacity: 1,  }, { opacity: 0}, '<+=50%')
 
         svgTween.fromTo(svgItems[1].children[0], { opacity: 1 }, { opacity: 0 });
         svgTween.fromTo(svgItems[2], { opacity: 0 }, { opacity: 1 }, '<');
@@ -1002,11 +992,11 @@ function App({ isLoaded, models, animation }) {
         svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[2].children[2] }, '<');
         svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[2].children[3] }, '<');
         svgTween
-          .fromTo('#y2021', { translateX: '60vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
-          .fromTo(chartDetails[2], { xPercent: -100, opacity: 0, }, { opacity: 1, xPercent: -200 }, '<')
+          .fromTo('#y2021', { translateX: '55vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
+          .fromTo(chartDetails[2], {  opacity: 0,yPercent:-100  }, { opacity: 1, yPercent:-200  }, '<')
           .fromTo('#y2020', { xPercent: -100, }, { xPercent: -300, },)
-          .fromTo('#y2021', { xPercent: 0, fontSize: '3rem', opacity: 0.5 }, { opacity: 1, xPercent: -100, fontSize: '1rem' }, '<')
-          .fromTo(chartDetails[2], { xPercent: -200, opacity: 1, }, { opacity: 0, xPercent: -300 }, '<+=50%')
+          .fromTo('#y2021', { xPercent: 0, fontSize: '3rem', opacity: 0.5 }, { opacity: 1, xPercent: -300, fontSize: '1rem' }, '<')
+          .fromTo(chartDetails[2], {  opacity: 1,  }, { opacity: 0}, '<+=50%')
 
 
         svgTween.fromTo(svgItems[2].children[0], { opacity: 1 }, { opacity: 0 });
@@ -1015,8 +1005,8 @@ function App({ isLoaded, models, animation }) {
         svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[3].children[2] }, '<');
         svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[3].children[3] }, '<');
         svgTween.fromTo('#y2022', { translateX: '70vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
-          .fromTo(chartDetails[3], { xPercent: -200, opacity: 0, }, { opacity: 1, xPercent: -300 }, '<')
-          .fromTo('#y2021', { xPercent: -200, }, { xPercent: -300, },)
+        .fromTo(chartDetails[2], {  opacity: 0,yPercent:-100 }, { opacity: 1, yPercent:-200  }, '<')
+        .fromTo('#y2021', { xPercent: -200, }, { xPercent: -300, },)
 
         customerTLMobile
           .fromTo('#customer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
@@ -1080,6 +1070,9 @@ function App({ isLoaded, models, animation }) {
       .to('#App', { position: isDesktop.current ? 'fixed' : 'relative' }, '<')
       .to('#homepage', { display: 'block', }, '<')
       .fromTo('#homepage', { opacity: 0 }, { opacity: 1, duration: 1 })
+      if(!isDesktop.current){
+        console.log('scroll skip mobile')
+        gsap.to('#scroll-skip-mobile', { opacity: 0 ,display:'none'}, '')}
     console.log('duration', sceneTl.duration())
     // .to('.sections', { translateY: sectionHeights[sectionHeights.length-1] },'<')
     console.log('sceneTl End of SCENE', listening)
@@ -1318,8 +1311,9 @@ function App({ isLoaded, models, animation }) {
     const t = e.changedTouches[0];
     touch.dx = t.pageX - touch.startX;
     touch.dy = t.pageY - touch.startY;
-    if (touch.dy > 10) direction = "up";
-    if (touch.dy < -10) direction = "down";
+    console.log
+    if (touch.dy > 20) direction = "up"; else direction='click'
+    if (touch.dy < -20) direction = "down"; 
 
       handleDirectionDesktop(); 
   }
@@ -1332,19 +1326,13 @@ function App({ isLoaded, models, animation }) {
 
         <div id="scene" ref={container} >
         </div>
-        <div className='cen' id="scroll-skip" >
-          { isDesktop.current? <h3 className='text-large blue'>Scroll Down or </h3> : <></>}
-          <h3 style={{ paddingLeft: '0.5ch' }} className="orange text-large skip"
-            onClick={() => {
-              //Testing Desktop for mobile
-              skipHeroDesktop()
-              // if(size.width>800) skipHeroDesktop()
-              // else skipHeroDesktop()
-            }}> Skip Intro</h3>
-        </div>
+     
+          
+    
+        
       </div>
       <div ref={contentRef}>
-        <ContentContainer
+        <ContentContainer skipHeroDesktop={skipHeroDesktop}
           backToHero={backToHero} backToHeroDesktop={backToHeroDesktop} isLoaded={isLoaded} scrollSmooth={scrollSmooth} />
       </div>
     </div>

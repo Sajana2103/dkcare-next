@@ -8,7 +8,7 @@ import gsap from "gsap";
 import ScrollSmoother from "gsap/dist/ScrollSmoother";
 import {useRouter} from "next/router";
 
-const ContentContainer = ({ backToHero,backToHeroDesktop,isLoaded,}) => {
+const ContentContainer = ({ backToHero,backToHeroDesktop,isLoaded,skipHeroDesktop}) => {
   const router = useRouter()
   console.log('ScrollSmoother',)
   let scrollSmooth = ScrollSmoother.get()
@@ -64,8 +64,18 @@ console.log('conent container use effect',size,size.width > 1200,isMobile)
   return (
    
       <div ref={contentRef} >
+        <div className='cen' id="scroll-skip" >
+         <h3 className='text-large blue'>Scroll Down or </h3> 
+          <h3 style={{ paddingLeft: '0.5ch' }} className="orange text-large skip"
+            onClick={() => {
+              //Testing Desktop for mobile
+              skipHeroDesktop()
+              // if(size.width>800) skipHeroDesktop()
+              // else skipHeroDesktop()
+            }}> Skip Intro</h3>
+        </div>
       <Modal pageName={pageName} openModal={openModal} modalOpen={modalOpen} setModalOpen={setModalOpen}/>
-      <Navigation />
+      <Navigation skipHeroDesktop={skipHeroDesktop} pageName={pageName}/>
       
 
 <DesktopContent setPageName={setPageName} setModalOpen={setModalOpen} />

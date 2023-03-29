@@ -12,6 +12,7 @@ const PageWrapper = ({title,page}) => {
   
   useEffect(() => {
     gsap.fromTo('body',{overflowY:'hidden'},{overflowY:'scroll'})
+    gsap.to('.page-content-wrapper',{height:'auto'})
 
     let scrollSmoother = ScrollSmoother.create({
       content: '.page-content',

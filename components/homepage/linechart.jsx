@@ -87,7 +87,7 @@ const LineChart = ({ size }) => {
       <div id="chart-div" ref={svgCon} className="chart-vh" >
 
       </div>
-      <div className="flex" id="evo-color-boxes" style={{ width: '150%' }}>
+      <div className="" id="evo-color-boxes" >
 
         <div className="chart-details" >
           <div className="chart-box ">
