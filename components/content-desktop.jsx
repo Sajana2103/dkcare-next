@@ -100,8 +100,8 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
               </div>
               <div id="nemt-content">
 
-                <h1 className=" white" >NEMT</h1>
-                <p className="text-small white ">Non Emergency transportation services provide a vital service for individuals who may have
+                <h1 style={{paddingRight:'1rem'}} className=" white" >NEMT</h1>
+                <p  className="text-small white ">Non Emergency transportation services provide a vital service for individuals who may have
                   difficulty getting to appointments or running errands due to physical limitations, disability, or lack of access to a personal vehicle. </p>
               </div>
             </div>

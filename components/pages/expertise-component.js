@@ -15,7 +15,7 @@ const ExpertiseComponent = () => {
       </Head>
       <div id="exp-intro" className={cls(styles.container)} >
 
-        <h1 className={cls(" blue bold text-large", styles.mainTitle)}>Our Expertise</h1>
+        <h1 id='exp-main-title' className={cls("split-text blue bold text-large", styles.mainTitle)}>Our Expertise</h1>
         <div className={cls("gap40", styles.flex2)}>
           <p className={cls("text-large blue bold wPer40 pdTopBtm", styles.pdTopBtm, styles.textL)}>We provide a vital lifeline
             for individuals who need to get to medical appointments.</p>
@@ -39,7 +39,12 @@ const ExpertiseComponent = () => {
       </div>
 
       <div id="exp-reliability " className={cls(styles.container)}>
-        <h2 className={cls('blue', styles.secTitle)}>Reliability</h2>
+        <div className='bd-line-wrapper'>
+          <div className='bd-line'></div>
+          <h2 className={cls('blue split-text', styles.secTitle)}>Reliability</h2>
+          <div className='bd-line'></div>
+        </div>
+
         <div className={cls("gap40", styles.flex2)}>
           <div className="wPer40">
             <p className={cls("text-large blue bold pdTopBtm", styles.pdTopBtm, styles.textL)}
@@ -61,7 +66,11 @@ const ExpertiseComponent = () => {
       </div>
 
       <div id="exp-passenger-safety " className={cls(styles.container)}>
-        <h2 className={cls('blue', styles.secTitle)}>Passenger Safety</h2>
+        <div className='bd-line-wrapper'>
+          <div className='bd-line'></div>
+          <h2 className={cls('blue split-text ', styles.secTitle)}>Passenger Safety</h2>
+          <div className='bd-line'></div>
+        </div>
         <div className={cls("gap40", styles.flex2)}>
           <Image className={styles.img50} width={400} height={100} src="/Dk-Care-LLC-customers-1.jpg"
             alt="passenger safety" />
@@ -82,7 +91,11 @@ const ExpertiseComponent = () => {
       </div>
 
       <div id="exp-autonomy " className={cls(styles.container)}>
-        <h2 className={cls('blue', styles.secTitle)}>Autonomy</h2>
+        <div className='bd-line-wrapper'>
+          <div className='bd-line'></div>
+          <h2 className={cls('blue split-text ', styles.secTitle)}>Autonomy</h2>
+          <div className='bd-line'></div>
+        </div>
         <div className={cls("gap40", styles.flex2)}>
           <div className="wPer40">
             <p className={cls("text-large blue bold pdTopBtm", styles.pdTopBtm, styles.textL)}
@@ -104,7 +117,11 @@ const ExpertiseComponent = () => {
       </div>
 
       <div id="exp-convenience" className={cls(styles.container)}>
-        <h2 className={cls('blue', styles.secTitle)}>Convenience</h2>
+      <div className='bd-line-wrapper'>
+          <div className='bd-line'></div>
+          <h2 className={cls('blue split-text ', styles.secTitle)}>Convenience</h2>
+          <div className='bd-line'></div>
+        </div>
         <div className={cls("gap40", styles.flex2)}>
           <Image className={styles.img50} width={400} height={100} src="/Dk-Care-LLC-customers-3.jpg"
             alt="Convenience" />
@@ -126,9 +143,10 @@ const ExpertiseComponent = () => {
       </div>
 
       <div id="exp-patient-comfort-care" className={cls('blue-gr2 ', styles.container)}>
+      
         <div className={cls("gap40", styles.flex2)}>
           <div className="wPer2">
-            <h2 className={cls('white', styles.mainTitle)}>Patient Comfort and Care</h2>
+            <h2 className={cls('white split-text ', styles.mainTitle)}>Patient Comfort and Care</h2>
 
           </div>
           <div className="wPer40">
@@ -150,7 +168,7 @@ const ExpertiseComponent = () => {
 
       <div id="exp-collaborations" className={cls(styles.container)}>
 
-        <h1 className={cls(" blue bold text-large", styles.mainTitle)}>Collaborations with Healthcare</h1>
+        <h1 className={cls(" blue bold text-large split-text ", styles.mainTitle)}>Collaborations with Healthcare</h1>
         <div className="title-bd-container hero-titles ">
           <p className="blue bold">Comfort</p>
           <div className="title-bd-blue" ></div>
@@ -187,9 +205,9 @@ const ExpertiseComponent = () => {
       </div>
 
       <div id="exp-serving" className={cls('blue-gr2 ', styles.container)}>
-        <div className={cls("gap40", styles.flex2)}>
+        <div className={cls("gap40 ", styles.flex2)}>
           <div className="wPer2">
-            <h2 className={cls('white', styles.mainTitle)}>Serving To A Diverse Community</h2>
+            <h2 className={cls('white split-text ', styles.mainTitle)}>Serving To A Diverse Community</h2>
 
           </div>
           <div className={cls(styles.flex2)}>

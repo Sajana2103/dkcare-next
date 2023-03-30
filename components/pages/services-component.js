@@ -16,7 +16,8 @@ const ServicesHTML = () => {
 
       <div className={cls("gap40", styles.flex2)}>
         <div className="wPer40">
-          <h1 className={cls(" blue bold text-large", styles.mainTitle)}>We are available in</h1>
+          
+          <h1 className={cls("split-text blue bold text-large", styles.mainTitle)}>We are available in</h1>
 
           <p className={cls("text-med blue  pdTopBtm", styles.pdTopBtm, styles.textM)}
           >We are currently adding more counties to our transportation network if your county
@@ -36,17 +37,17 @@ const ServicesHTML = () => {
     </div>
 
     <div id="services-nemt" className={cls(styles.container)}>
-      <h1 className={cls(" blue bold text-large", styles.mainTitle)}>NEMT Services</h1>
-      <h2 style={{ paddingBottom: '4rem' }} className={cls(" blue semi-bold ", styles.textXL)}>Non-Emergency Medical Transportation</h2>
+      <h1 className={cls("split-text blue bold text-large", styles.mainTitle)}>NEMT Services</h1>
+      <h2 style={{ paddingBottom: '4rem' }} className={cls("split-text blue semi-bold ", styles.textXL)}>Non-Emergency Medical Transportation</h2>
 
 
-      <div className={cls("fg2", styles.flex2, styles.fg2)} >
-        <div className=" wPer2"  >
+      <div className={cls(styles.servicesNemt)} >
+        <div className={cls(styles.wPer45)}   >
 
           <div >
             <div className="title-bd-container hero-titles" >
               <h4 className="blue ">Transportation Services</h4>
-              <div className="title-bd-blue"></div>
+              <div className="title-bd-blue single-line"></div>
             </div>
           </div>
           <div className={cls("flex blue bold ", styles.textS)} >
@@ -66,7 +67,7 @@ const ServicesHTML = () => {
             </div>
           </div>
         </div>
-        <p className={cls(" regular blue wPer40 ", styles.textL)}
+        <p className={cls(" regular blue  ", styles.textL,styles.wPer45)}
         >Ensuring that everyone has access to the healthcare and other
           essential services they need.
         </p>
@@ -75,7 +76,7 @@ const ServicesHTML = () => {
 
     <div id="services-types-emergencies" className={cls('blue-gr2 ', styles.container)}>
       <div className="">
-        <h2 className={cls('white', styles.mainTitle)}>Types of Non-Emergencies</h2>
+        <h2 className={cls('split-text white', styles.mainTitle)}>Types of Non-Emergencies</h2>
 
       </div>
       <div className="">
@@ -114,13 +115,13 @@ const ServicesHTML = () => {
 
     <div id="services-convenience" className={cls('', styles.container)}>
       <div className="">
-        <h2 className={cls('blue', styles.mainTitle)}>Where convenience meets comfort</h2>
+        <h2 className={cls('split-text blue', styles.mainTitle)}>Where convenience meets comfort</h2>
 
       </div>
       <div className="">
         <div className="title-bd-container hero-titles">
           <p className="blue bold">DK Care Vehicles</p>
-          <div className="title-bd-blue" ></div>
+          <div className=" title-bd-blue" ></div>
         </div>
 
         <div className={cls('gap40', styles.flex2)}>
@@ -158,7 +159,7 @@ const ServicesHTML = () => {
 
     <div id="services-success" className={cls('', styles.container)}>
       <div className="">
-        <h2 className={cls('blue', styles.mainTitle)}>Our success depends on our drivers.</h2>
+        <h2 className={cls('split-text blue', styles.mainTitle)}>Our success depends on our drivers.</h2>
 
       </div>
       <div className="">
@@ -203,7 +204,7 @@ const ServicesHTML = () => {
     <div id="services-safety" className={cls('blue-gr2 ', styles.container)}>
       <div className={cls("gap40", styles.flex2)}>
         <div className="wPer2">
-          <h2 className={cls('white', styles.mainTitle)}>Safety Protocols & Equipment</h2>
+          <h2 className={cls('split-text white', styles.mainTitle)}>Safety Protocols & Equipment</h2>
 
         </div>
         <div className="wPer40">
@@ -231,7 +232,7 @@ const ServicesHTML = () => {
 
     <div id="exp-covid" className={cls('blue-gr2 ', styles.container)}>
       <div className={cls("gap40", styles.flex2)}>
-        <h2 className={cls('white', styles.mainTitle)}>Covid Prevention Guidelines</h2>
+        <h2 className={cls('split-text white', styles.mainTitle)}>Covid Prevention Guidelines</h2>
 
         <div className={cls('gap40', styles.flex2)}>
           <div className=" wPer40">

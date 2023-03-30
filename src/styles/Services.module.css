@@ -51,7 +51,7 @@
 .flex2{
   display: flex;
   flex-wrap: wrap;
- 
+
 }
 .fg2{
   gap: 5rem;
@@ -99,8 +99,26 @@
   background-color: #ed7036;
   padding: 1rem;
 }
+.servicesNemt{
+  display: flex;
+  flex-wrap: nowrap;
+  gap:2rem;
+}
+.wPer45{
+  width: 45%;
+}
+@media only screen and (max-width:1280px) {
+
+.servicesNemt{
+  flex-wrap: wrap;
+}
+.wPer45{
+  width: 100%;
+}
+}
 /*1080 for each page Needs update */
 @media only screen and (max-width:1080px) {
+
   .container{
     padding:  5rem 1rem 5rem 1rem;
   }
@@ -159,6 +177,7 @@
   .tab2 {
     grid-template-columns: 2rem auto;
   }
+  
 }
 @media only screen and (max-width:800px){
   .textXL{
@@ -232,5 +251,11 @@
   }
   .tab2 {
     grid-template-columns: 2rem auto;
+  }
+  .servicesNemt{
+    flex-wrap: wrap;
+  }
+  .wPer45{
+    width: 100%;
   }
 }

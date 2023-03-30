@@ -6,10 +6,11 @@
 .secTitle{
   font-size: 4rem;
   font-weight: 600;
-  border-top: 1px var(--blue) solid;
-  border-bottom: 1px var(--blue) solid;
+  /* border-top: 1px var(--blue) solid;
+  border-bottom: 1px var(--blue) solid; */
 
 }
+
 .container{
   padding: 5rem 10rem 5rem 10rem;
 }
