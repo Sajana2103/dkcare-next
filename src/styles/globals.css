@@ -798,18 +798,33 @@ progress::-webkit-progress-value {
   padding-left: 1rem;
   padding-right: 0.2rem;
   transition-duration: 0.3s;
+  height: 100%;
+  transition-duration: 0.3s;
 
 }
 
-#svg-menuicon:hover {
-  scale: 1.1;
+.menu-icon:hover {
+  /* scale: 1.1; */
   transition-duration: 0.3s;
   stroke-width: 4px;
-  padding-right: 1rem;
+  transition-duration: 0.3s;
 
 }
 
-#svg-menuicon:hover .st0 {
+.menu-text {
+  color: #1e4d8c;
+  font-weight: 500;
+  font-size: 1rem;
+  transition-duration: 0.3s;
+
+}
+.menu-icon:hover .menu-text{
+  font-weight: 700;
+  padding-left: 0.5rem;
+  transition-duration: 0.3s;
+}
+
+.menu-icon:hover .st0 {
   stroke-width: 4px;
   transition-duration: 0.3s;
 }
@@ -828,7 +843,7 @@ progress::-webkit-progress-value {
 
 #logo-white {
   object-fit: scale-down;
-  padding: 0 1rem 1.3rem 1rem;
+  padding: 1rem 1rem 0 1rem;
   width: 90%;
   height: auto;
   opacity: 0;
@@ -853,9 +868,7 @@ progress::-webkit-progress-value {
   height: auto;
 }
 
-.menu-text {
-  color: #1e4d8c;
-}
+
 
 .menu-icon {
   display: flex;
@@ -865,7 +878,7 @@ progress::-webkit-progress-value {
   fill: #1e4d8c;
   width: 100%;
   padding: 0 5px 0 0;
-
+  height: 100%;
 }
 
 .menu-icon:hover {
@@ -2275,7 +2288,7 @@ progress::-webkit-progress-value {
     font-size: small;
   }
 
-  #logo {
+  #logo,#logo-white {
     padding: 1rem;
     width: 90%;
   }
@@ -2421,7 +2434,7 @@ progress::-webkit-progress-value {
   }
 
 
-  #logo {
+  #logo,#logo-white {
     padding: 1rem;
     width: 90%;
   }

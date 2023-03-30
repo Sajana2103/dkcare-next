@@ -42,9 +42,11 @@ console.log(imgRef)
           .fromTo(menuRef.current, { display: 'none' }, { display: 'block', duration: 0 })
           .fromTo('#scroll-skip', { display: path === '/' && pageName.location === 'hero' 
           && isDesktop ? 'flex' : 'none',opacity:1 }, { display: 'none',opacity:0 }, '<')
-          .fromTo('#menu-logo', { yPercent: -100 }, { yPercent: 0 }, '<')
-          .to('#st1', { duration: 1, rotation: 45, transformOrigin: "40% 0px" }, '<')
-          .to('#st2', { duration: 1, rotation: -45, yPercent: -50, transformOrigin: "40%  0px" }, '<')
+          .to(imgRef.current, {display:'none',opacity:0},'<')
+          .to('#logo-white',{display:'block',opacity:1})
+          .fromTo('#menu-logo', { yPercent: -100 }, { yPercent: 0 }, '<-=75%')
+          .to('#st1', { duration: 1, rotation: 45,translateY: '9px', transformOrigin: "50% 0px" }, '<')
+          .to('#st2', { duration: 1, rotation: -45,transformOrigin: "50%  0px" }, '<')
           .fromTo('#menu-links', { yPercent: 100 }, { yPercent: 0 })
           .to('.menu-text', { color: 'white' }, '<')
           .to('#st1', { stroke: 'white' }, '<')
@@ -59,10 +61,11 @@ console.log(imgRef)
           .pause()
           .fromTo(menuRef.current, { display: 'none' }, { display: 'block', duration: 0 })
           .fromTo(menuRef.current, { yPercent: 100 }, { yPercent: 0 })
+          .to(imgRef.current, {display:'none',opacity:0},'<')
+          .to('#logo-white',{display:'block',opacity:1})
           .fromTo('#scroll-skip-mobile', { display: path === '/' && pageName.location === 'hero' 
           && !isDesktop ? 'flex' : 'none' }, { display: 'none' }, '<')
-          .set(imgRef.current, { attr: { src: '/logo-white.png' } })
-          .to('#st1', { duration: 1, rotation: 45, transformOrigin: "40% 0px" }, '<')
+          .to('#st1', { duration: 1, rotation: 45,translateY: '-1px', transformOrigin: "40% 0px" }, '<')
           .to('#st2', { duration: 1, rotation: -45, yPercent: -50, transformOrigin: "40%  0px" }, '<')
           .to('#st1', { stroke: 'white' }, '<')
           .to('#st2', { stroke: 'white' }, '<')
@@ -93,10 +96,10 @@ console.log(imgRef)
 
         <Link style={{pointerEvents:path==='/'?'none':''}} target="_self" href="/">
           <Image ref={imgRef} width={300} height={200} alt="Dk Care LLC Logo" id="logo" src="/logo.png" />
-          {/* <Image width={300} height={200} alt="Dk Care LLC Logo" id="logo-white" src="/logo-white.png" /> */}
+          <Image width={300} height={200} alt="Dk Care LLC Logo" id="logo-white" src="/logo-white.png" />
 
           </Link>
-        <div onClick={throttledClick} className="menu-icon " >
+        <div onClick={throttledClick} className="menu-icon" >
           {/* <Image ref={iconRef} width={300} height={200} alt="Dk Care LLC Logo" 
           id="menuicon" className="icons" src="/icons/menuicon-01.svg" /> */}
           <svg version="1.1" id="svg-menuicon" x="0px"
@@ -106,7 +109,7 @@ console.log(imgRef)
             <line id="st2" className="st0" x1="74.2" y1="33.2" x2="-0.8" y2="33.2" />
           </svg>
 
-          <h3 className="menu-text">
+          <h3 className="menu-text" id="#menu-text">
             Menu
           </h3>
         </div>
