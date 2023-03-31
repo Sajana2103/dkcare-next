@@ -12,6 +12,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
 import { InertiaPlugin } from 'gsap/dist/InertiaPlugin';
 import { MorphSVGPlugin } from 'gsap/dist/MorphSVGPlugin';
+import { SplitText } from 'gsap/dist/SplitText';
 import Stats from 'stats.js'
 import { sky } from './background.jsx';
 import ContentContainer from './content-container.jsx';
@@ -19,7 +20,6 @@ import { chart } from './homepage/chart.jsx';
 
 function App({ isLoaded, models, animation }) {
   // console.log('device pixal ratio :',window.devicePixelRatio)
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, InertiaPlugin, MorphSVGPlugin)
   let scrollSmooth = useRef()
 
   let isDesktop = useRef()
@@ -477,6 +477,7 @@ function App({ isLoaded, models, animation }) {
 
   useEffect(() => {
     if (mainRef.current && container.current && contentRef.current && isLoaded) {
+      gsap.registerPlugin(ScrollTrigger, ScrollSmoother, InertiaPlugin, MorphSVGPlugin,SplitText)
 
 
       changeAnimationDesktop()
@@ -584,7 +585,9 @@ function App({ isLoaded, models, animation }) {
     window.scrollTo(0, 0)
 
   }
+  
   const gsapTimelines = (screen, action, ) => {
+    
     let pixelRatio = window.devicePixelRatio < 2
     let ctx = gsap.context(() => {
 
@@ -744,7 +747,6 @@ function App({ isLoaded, models, animation }) {
 
         expTl
           // to(anchors[0], { color: '#ed7036' }, '<')
-          .fromTo('#expertise-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo('.exp-img', { scale: 0 }, { scale: 1, stagger: 1 }, '<')
           .fromTo('.exp-text-boxes', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 })
 
@@ -752,7 +754,6 @@ function App({ isLoaded, models, animation }) {
         servicesTl
           // .to(anchors[0], { color: '#1e4d8c' }, '<')
           // .to(anchors[1], { color: '#ed7036' }, '<')
-          .fromTo('#services-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
 
           .fromTo('.serv-right-top-img', { objectPosition: '0 20%' }, { objectPosition: '0 40%' }, '<')
           .fromTo('.serv-right-btm-img', { opacity: 0, objectPosition: '0 20%' }, { opacity: 1, objectPosition: '0 40%', stagger: 1 }, '<')
@@ -763,7 +764,6 @@ function App({ isLoaded, models, animation }) {
         techTl
           // .to(anchors[1], { color: '#1e4d8c' }, '<')
           // .to(anchors[2], { color: '#ed7036' }, '<')
-          .fromTo('#tech-title-main', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo('#tech-img-box-1', { opacity: 0 }, { opacity: 1, stagger: 1 })
           .fromTo('#tech-bd-left', { opacity: 0, height: '0%' }, { opacity: 1, height: '100%' })
           .fromTo('#tech-bd-left', { opacity: 0, width: '0%' }, { opacity: 1, width: '100%' }, '<+=25%')
@@ -779,7 +779,6 @@ function App({ isLoaded, models, animation }) {
         evoTl
           // .to(anchors[2], { color: '#1e4d8c' }, '<')
           // .to(anchors[3], { color: '#ed7036' }, '<')
-          .fromTo('#evo-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
         let svgItems = gsap.utils.toArray(".svg-items");
         let chartDetails = gsap.utils.toArray(".chart-details");
         let svgTween = gsap.timeline({
@@ -847,9 +846,6 @@ function App({ isLoaded, models, animation }) {
           .set(reviewBox, { translateX: size.width / 2 })
           .fromTo('#customer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
 
-        covidTL.fromTo('#covid-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
-
-        footerTL.fromTo('.footer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
         
       }
 
@@ -923,11 +919,13 @@ function App({ isLoaded, models, animation }) {
           }
         })
 
-        expTlMobile.fromTo('#expertise-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+        expTlMobile
+        // .fromTo('#expertise-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo('.exp-img', { scale: 0 }, { scale: 1, stagger: 1 }, '<')
           .fromTo('.exp-text-boxes', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 })
 
-        servicesTlMobile.fromTo('#services-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+        servicesTlMobile
+        // .fromTo('#services-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo('.patient-health', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 }, '<')
           .fromTo('.serv-right-top-img', { objectPosition: '0 20%' }, { objectPosition: '0 40%' }, '<')
           .fromTo('.serv-right-btm-img', { opacity: 0, objectPosition: '0 20%' }, { opacity: 1, objectPosition: '0 40%', stagger: 1 }, '<')
@@ -937,12 +935,13 @@ function App({ isLoaded, models, animation }) {
         let dashedLines = techmobile.querySelectorAll('.border-wrapper-mobile')
         console.log(techImgBox, dashedLines)
         techTlMobile.set('.border-mobile', { translateX: dashedLines[0].getBoundingClientRect().width / 2 })
-          .fromTo('#tech-title-main', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+          // .fromTo('#tech-title-main', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo(techImgBox, { opacity: 0, scale: 0 }, { scale: 1, opacity: 1, stagger: 1 })
           .fromTo(dashedLines, { scaleY: 0, yPercent: -60 }, { scaleY: 1.2, stagger: 1, yPercent: 0 }, '<+=25%')
 
 
-        evoTlMobile.fromTo('#evo-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+        evoTlMobile
+        // .fromTo('#evo-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
         let svgItems = gsap.utils.toArray(".svg-items");
         let chartDetails = gsap.utils.toArray(".chart-details");
         console.log('chart details',chartDetails)
@@ -1327,9 +1326,6 @@ function App({ isLoaded, models, animation }) {
         <div id="scene" ref={container} >
         </div>
      
-          
-    
-        
       </div>
       <div ref={contentRef}>
         <ContentContainer skipHeroDesktop={skipHeroDesktop}

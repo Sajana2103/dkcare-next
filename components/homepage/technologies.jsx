@@ -10,8 +10,8 @@ const Technologies = () => {
       <div className="technologies-wrapper con-pd con-tb" >
         <div>
           <div className="tech-header-shrink" style={{ paddingBottom: '1rem' }}>
-            <h1 className="title blue bold tc " id="tech-title-shrink">Technologies</h1>
-            <h2 className="text-large blue tc" >
+            <h1 className="title blue bold tc split-text" id="tech-title-shrink">Technologies</h1>
+            <h2 className="text-large blue tc split-text" >
               We work continuously to innovate and improve our technology
               and business processes over time.
               We pride ourselves on our ability to go above and
@@ -37,7 +37,7 @@ const Technologies = () => {
 
                 <div className="tech-header-main-replace"></div>
                 <div className="tech-header-main" id="tech-title-main" style={{ paddingBottom: '1rem' }}>
-                  <h1 className="title blue bold tc">Technologies</h1>
+                  <h1 className="title blue bold tc split-text">Technologies</h1>
                   <h2 className="text-large blue tc" >
                     We work continuously to innovate and improve our technology
                     and business processes over time.

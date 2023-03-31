@@ -8,7 +8,7 @@ const Covid = () => {
       <div className="final-wrapper blue-gr2 con-pd" style={{ paddingTop: '10rem', paddingBottom: '10rem' }}>
         <a id="covid-anchor"></a>
 
-        <h2 id="covid-title" className="title white text-large" >COVID-19 Guidelines and Preventive Measures</h2>
+        <h2 id="covid-title" className="title white text-large " >COVID-19 Guidelines and Preventive Measures</h2>
         <br />
 
         <div className="flex-container wrap " id="covid-home-content">

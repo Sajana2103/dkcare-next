@@ -11,8 +11,7 @@ const Expertise = ({ setPageName, openModal }) => {
       <div className="expertise-wrapper grey-gr con-pd " >
 
 
-        <h2 id="expertise-title" className="title blue">Our Expertise
-        </h2>
+        <h2 id="expertise-title" className="title blue split-text">Our Expertise</h2>
 
         <div className="flex-container wrap exp-text">
 

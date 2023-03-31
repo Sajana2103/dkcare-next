@@ -8,12 +8,6 @@ import Image from "next/image";
 
 const Stories = () => {
   const reviewRef = useRef()
-  let reviewCards =useRef([])
-  let oldx = 0
-  let direction = ''
-  let cardWidth
-  let xPerCard 
-  let xProgress = 0
   useEffect(() => {
     if (reviewRef.current) {
       if(window.devicePixelRatio < 2){
@@ -37,37 +31,17 @@ const Stories = () => {
       //   Draggable.get('.slide').applyBounds("#container");
       // });
       
-      cardWidth = document.querySelector('.review-box-wrapper').offsetWidth + 30
-      reviewCards.current = gsap.utils.toArray('.review-box-wrapper')
-      xPerCard = 100 / reviewCards.current.length - 1
-    }
-  }, [reviewRef.current])
 
-  const slideBtns = gsap.timeline({ defaults: { duration: 0.3, ease: 'Power2.in', } })
-  const leftBtn = () => {
-    if (xProgress > (-cardWidth * reviewCards.current.length - 1)) {
-
-      xProgress -= cardWidth
-      // console.log('left', xProgress)
-      slideBtns.to(reviewCards.current, { translateX: xProgress })
     }
+  }, [])
 
-  }
-  const rightBtn = () => {
-    if (xProgress < 0) {
-      xProgress += cardWidth
-      // console.log('right', xProgress)
-      slideBtns.to(reviewCards.current, { translateX: xProgress })
-    }
-  }
-  let dataSpeed = 0.1
   return (
     <div className="main-section" id="customers" >
         <a id="customers-anchor"></a>
 
       <div className="customers-wrapper con-pd con-tb" >
         <div>
-          <h1 className="title blue bold tc" id="customer-title">Customer Stories</h1>
+          <h1 className="title blue bold tc " id="customer-title">Customer Stories</h1>
           <br />
         </div>
 

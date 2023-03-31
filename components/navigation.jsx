@@ -19,7 +19,7 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
   useEffect(() => {
     if (navRef.current) {
       setPath(window.location.pathname)
-console.log(imgRef)
+      console.log(imgRef)
     }
   }, [path])
 
@@ -34,24 +34,26 @@ console.log(imgRef)
       menuTl = gsap.timeline({ defaults: { duration: 0.6, ease: 'Power4.easeIn' } })
       console.log('navigation runs')
       if (isDesktop) {
-        console.log('desktop menu')
+        console.log('desktop menu', pageName.location)
 
         menuTl
           .pause()
 
           .fromTo(menuRef.current, { display: 'none' }, { display: 'block', duration: 0 })
-          .fromTo('#scroll-skip', { display: path === '/' && pageName.location === 'hero' 
-          && isDesktop ? 'flex' : 'none',opacity:1 }, { display: 'none',opacity:0 }, '<')
-          .to(imgRef.current, {display:'none',opacity:0},'<')
-          .to('#logo-white',{display:'block',opacity:1})
+          // .fromTo('#scroll-skip', { display: path === '/' && pageName.location === 'hero' 
+          // && isDesktop ? 'flex' : 'none',opacity:1 }, { display: 'none',opacity:0 }, '<')
+          .to(imgRef.current, { display: 'none', opacity: 0 }, '<')
+          .to('#logo-white', { display: 'block', opacity: 1 })
           .fromTo('#menu-logo', { yPercent: -100 }, { yPercent: 0 }, '<-=75%')
-          .to('#st1', { duration: 1, rotation: 45,translateY: '9px', transformOrigin: "50% 0px" }, '<')
-          .to('#st2', { duration: 1, rotation: -45,transformOrigin: "50%  0px" }, '<')
-          .fromTo('#menu-links', { yPercent: 100 }, { yPercent: 0 })
+          .fromTo('#menu-links', { yPercent: 100 }, { yPercent: 0 }, '<')
+          .fromTo('#menu-contact-wrapper', { yPercent: 100 }, { yPercent: 0 }, '<')
+          .fromTo('#menu-contact', { opacity: 0 }, { opacity: 1 }, '<+=25%')
+
+          .to('#st1', { duration: 1, rotation: 45, translateY: '9px', transformOrigin: "50% 0px" }, '<')
+          .to('#st2', { duration: 1, rotation: -45, transformOrigin: "50%  0px" }, '<')
           .to('.menu-text', { color: 'white' }, '<')
           .to('#st1', { stroke: 'white' }, '<')
           .to('#st2', { stroke: 'white' }, '<')
-          .fromTo('#menu-contact', { yPercent: -100 }, { yPercent: 0 })
 
 
 
@@ -59,13 +61,15 @@ console.log(imgRef)
         console.log('mobile menu')
         menuTl
           .pause()
-          .fromTo(menuRef.current, { display: 'none' }, { display: 'block', duration: 0 })
+          .fromTo(menuRef.current, { display: 'none' }, { display: 'flex', duration: 0 })
           .fromTo(menuRef.current, { yPercent: 100 }, { yPercent: 0 })
-          .to(imgRef.current, {display:'none',opacity:0},'<')
-          .to('#logo-white',{display:'block',opacity:1})
-          .fromTo('#scroll-skip-mobile', { display: path === '/' && pageName.location === 'hero' 
-          && !isDesktop ? 'flex' : 'none' }, { display: 'none' }, '<')
-          .to('#st1', { duration: 1, rotation: 45,translateY: '-1px', transformOrigin: "40% 0px" }, '<')
+          .fromTo('#scroll-skip-mobile', {
+            display: path === '/' && pageName.location === 'hero'
+              && !isDesktop ? 'flex' : 'none'
+          }, { display: 'none' }, '<')
+          .to(imgRef.current, { display: 'none', opacity: 0 }, '<')
+          .to('#logo-white', { display: 'block', opacity: 1 },)
+          .to('#st1', { duration: 1, rotation: 45, translateY: '-1px', transformOrigin: "40% 0px" }, '<')
           .to('#st2', { duration: 1, rotation: -45, yPercent: -50, transformOrigin: "40%  0px" }, '<')
           .to('#st1', { stroke: 'white' }, '<')
           .to('#st2', { stroke: 'white' }, '<')
@@ -94,11 +98,11 @@ console.log(imgRef)
     <div ref={navRef}>
       <div className="navigation-main blue">
 
-        <Link style={{pointerEvents:path==='/'?'none':''}} target="_self" href="/">
+        <Link style={{ pointerEvents: path === '/' ? 'none' : '' }} target="_self" href="/">
           <Image ref={imgRef} width={300} height={200} alt="Dk Care LLC Logo" id="logo" src="/logo.png" />
           <Image width={300} height={200} alt="Dk Care LLC Logo" id="logo-white" src="/logo-white.png" />
 
-          </Link>
+        </Link>
         <div onClick={throttledClick} className="menu-icon" >
           {/* <Image ref={iconRef} width={300} height={200} alt="Dk Care LLC Logo" 
           id="menuicon" className="icons" src="/icons/menuicon-01.svg" /> */}
@@ -114,7 +118,7 @@ console.log(imgRef)
           </h3>
         </div>
         {
-          path === '/' && pageName && pageName.location==='hero' ?
+          path === '/' && pageName && pageName.location === 'hero' ?
             <div className='' id="scroll-skip-mobile" >
 
               <h3 className="orange  skip"
@@ -156,45 +160,48 @@ console.log(imgRef)
               </Link>
             </div>
           </div>
+          <div id="menu-contact-wrapper">
+            <div id="menu-contact">
 
-          <div id="menu-contact">
+              <div id="contact-numbers" >
+                <div className="contact-number">
+                  <h2 className="white semi-bold text-xlarge tc">Dispatch Number</h2>
+                  <div className="number">
+                    <h3 className="black ">
+                      <a href="tel://845-705-9741">845-705-9741</a>
+                    </h3></div>
 
-            <div id="contact-numbers" >
-              <div className="contact-number">
-                <h2 className="white semi-bold text-xlarge tc">Dispatch Number</h2>
-                <div className="number">
-                  <h3 className="black bold text-xlarge">
-                    845-705-9741
-                  </h3></div>
+                </div>
+                <div className="contact-number">
+                  <h2 className="white semi-bold text-xlarge tc">Office Number</h2>
+                  <div className="number">
+                    <h3 className="black">
+                      <a href="tel://845-214-0212">
+                        845-214-0212</a>
+
+                    </h3></div>
+
+                </div>
 
               </div>
-              <div className="contact-number">
-                <h2 className="white semi-bold text-xlarge tc">Office Number</h2>
-                <div className="number">
-                  <h3 className="black bold text-xlarge">
-                    845-214-0212
-                  </h3></div>
 
-              </div>
+              <div id="menu-other-links">
+                <div id="links-faq" className=" ">
 
-            </div>
+                  <h2 className="text-xlarge">FAQ</h2>
+                  <h2 className="text-xlarge">Careers</h2>
+                  <h2 className="text-xlarge">Contact</h2>
+                </div>
+                <div id='menu-privacy' className=" ">
 
-            <div id="menu-other-links">
-              <div id="links-faq" className=" ">
-
-                <h2 className="text-xlarge">FAQ</h2>
-                <h2 className="text-xlarge">Careers</h2>
-                <h2 className="text-xlarge">Contact</h2>
-              </div>
-              <div id='menu-privacy' className=" ">
-
-                <p className="">Privacy Policy & Cookies</p>
-                <p className="">Terms & Conditions</p>
-              </div>
-              <div className="madeBy">
-                <p className="text-med">
-                  Made by XYZ
-                </p>
+                  <p className="">Privacy Policy & Cookies</p>
+                  <p className="">Terms & Conditions</p>
+                </div>
+                <div className="madeBy">
+                  <p className="text-med">
+                    Made by XYZ
+                  </p>
+                </div>
               </div>
             </div>
           </div>

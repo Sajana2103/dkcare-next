@@ -5,7 +5,7 @@ import Button from "./Button.js";
 const Services = () => {
   return (
     <div className="main-section" id="services" >
-              <a id="services-anchor"></a>
+      <a id="services-anchor"></a>
 
       <div className="blue-gr services-grid-1 " >
         <div className="services-left-img flex wrap f-align-cen" >
@@ -20,8 +20,7 @@ const Services = () => {
 
         </div>
         <div className="services-wrapper " >
-          <h2 className="title white " id="services-title" >Services
-</h2>
+          <h2 className="title white split-text" id="services-title" >Services</h2>
 
           <div className="flex-container wrap ">
             <div className="">
@@ -53,8 +52,8 @@ const Services = () => {
 
               </article>
               <br />
-              <p className="semi-bold wPer3">We understand that working with multiple transportation providers can be 
-frustrating, which is why we strive to provide a seamless and high-quality experience from start to finish. Our team is experienced i</p>
+              <p className="semi-bold wPer3">We understand that working with multiple transportation providers can be
+                frustrating, which is why we strive to provide a seamless and high-quality experience from start to finish. Our team is experienced i</p>
               <br />
               <div className="flex-container wrap" style={{ alignItems: 'center' }}>
                 <Button name="Services" />

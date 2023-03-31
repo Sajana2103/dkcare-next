@@ -12,7 +12,7 @@ const Footer = ({ setPageName, openModal }) => {
       <div id="footer-content" className="">
 
         <div className="footer-title ">
-          <h2 className="white semi-bold" >
+          <h2 className="white semi-bold split-text" >
             We are here to support you.
           </h2>
 

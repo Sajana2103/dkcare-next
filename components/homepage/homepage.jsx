@@ -7,74 +7,96 @@ import Stories from "./stories.jsx";
 import Technologies from "./technologies.jsx";
 import Footer from "./footer.jsx";
 import { useThrottledCallback } from "use-debounce";
-import EvolutionCom from "./evolution-component.jsx";
 import ScrollSmoother from "gsap/dist/ScrollSmoother";
+import { SplitText } from 'gsap/dist/SplitText';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
 import gsap from "gsap";
 
 const HomePage = ({ size, setPageName, openModal, backToHeroDesktop, backToHero }) => {
-  console.log('GSAP at Home',gsap)
+  // console.log('GSAP at Home',gsap)
   let scrollSmooth = ScrollSmoother.get()
   const [homeLoaded, setHomeLoaded] = useState(false)
   const [pixelRatio, setPixelRatio] = useState(1)
-  console.log(scrollSmooth)
   const homeRef = useRef()
-  let footer
-  let atags
-  let scrollPositions = []
-  let scrollNames = []
-  let scrollItems = [{ name: 'top', position: 0 }]
-  // let bodyHeight = document.body.scrollHeight
-  let homepageH = 0
-  let mainSections = []
-  let mainSectionsPositions = []
+  let homepageH = useRef()
 
+  function setupSplits() {
+    let quotes = document.querySelectorAll('.split-text')
+    let lineWrapper = document.querySelectorAll('.bd-line-wrapper')
+    let lines = document.querySelectorAll('.bd-line')
+    console.log('split text',quotes)
+    if(lineWrapper){
+      lineWrapper.forEach((line,idx) =>{
+       let currentIdx = idx*2
+          gsap.from(lines[currentIdx], {
+            scaleX: 0,
+            duration: 2,
+            transformOrigin: "left center",
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineWrapper[idx],
+              start: "top 75%",
+              toggleActions: "play none none reverse"
+            }
+          });
+          gsap.from(lines[currentIdx+1], {
+            scaleX: 0,
+            duration: 2,
+            transformOrigin: "left center",
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: lineWrapper[idx],
+              start: "top 75%",
+              toggleActions: "play none none reverse"
+            }
+          });
+        
+      })
+    }   
+    quotes.forEach(quote => {
+      console.log('split text',quote)
+
+      // Reset if needed
+      if (quote.anim) {
+        quote.anim.progress(1).kill();
+        quote.split.revert();
+      }
+      quote.split = new SplitText(quote, {
+        type: "lines,words",
+        linesClass: "split-line"
+      });
+      // Set up the anim
+      quote.anim = gsap.from(quote.split.words, {
+        scrollTrigger: {
+          trigger: quote,
+          toggleActions: "restart pause resume reverse",
+          start: "top 70%",
+        },
+        duration: 0.6,
+        ease: "circ.out",
+        y: 150,
+        stagger: 0.1,
+      });
+    });
+  }
   const checkPosition = () => {
-    if (homepageH !== 0 && !homeLoaded) {
+    if (homepageH.current !== 0 && !homeLoaded) {
       setTimeout(() => {
         setHomeLoaded(true)
+        setPageName({ pageName: 'back-hero', location: 'home' })
       }, 1000);
     }
-
-    let previous
-    let next
-    let current
-    let name
-    let hash
-    // for (let p = 1; p < scrollItems.length - 1; p++) {
-    //   previous = scrollItems[p - 1].position
-    //   next = scrollItems[p + 1].position
-    //   current = scrollItems[p].position
-    //   if (p > 0 && p < scrollItems.length - 1 && atags[p-1]) hash = atags[p - 1].hash
-
-    //   if (scrollY > current && scrollY < next && scrollY > previous) {
-    //     name = scrollItems[p].name
-    //   }
-    //   if (name === hash) {
-    //     atags[p - 1].style.color = '#ed7036'
-    //   } else atags[p - 1].style.color = '#1e4d8c'
-    // }
-
   }
   const posHandler = useThrottledCallback(checkPosition, 500)
   useEffect(() => {
     if (homeRef.current) {
-      homepageH = document.querySelector('#homepage')
+      gsap.registerPlugin(ScrollTrigger,SplitText)
+
+      setupSplits() 
+      homepageH.current = document.querySelector('#homepage')
       setPixelRatio(window.devicePixelRatio)
-      if (pixelRatio === 1) {
-
-        // atags = document.querySelectorAll('.a-tags')
-        // for (let a = 0; a < atags.length; a++) {
-        //   let hash = atags[a].hash
-        //   scrollNames.push(hash)
-        //   let ele = document.querySelector(hash).getBoundingClientRect().top
-        //   scrollPositions.push(ele)
-        //   let item = { name: hash, position: ele }
-        //   scrollItems.push(item)
-        // }
-      }
-      // scrollItems.push({ name: 'bottom', bodyHeight })
       window.addEventListener('scroll', posHandler)
-
 
     }
   }, [homeLoaded])
