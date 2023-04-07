@@ -1,17 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useThrottledCallback } from "use-debounce";
+import { useRouter } from "next/router";
 import gsap from "gsap";
 import Link from "next/link";
 import Image from "next/image";
 
 
 const Navigation = ({ skipHeroDesktop, pageName }) => {
-
+  const router = useRouter()
+  const { pathname } = router
   const [path, setPath] = useState('/')
   const navRef = useRef()
   const menuRef = useRef()
   const iconRef = useRef()
   const imgRef = useRef()
+  const splitWords = useRef()
   let open = false
   let menuTl
   let pathRef = useRef()
@@ -19,22 +22,30 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
   useEffect(() => {
     if (navRef.current) {
       setPath(window.location.pathname)
-      console.log(imgRef)
+      splitWords.current = pathname.split('/')
+      console.log('split words', pathname, splitWords)
     }
   }, [path])
+  function capitalizeFirstLetter(str) {
+
+    // converting first letter to uppercase
+    const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
+
+    return capitalized;
+}
 
   const openMenu = () => {
-    console.log(iconRef.current)
+
 
     let isDesktop = window.devicePixelRatio < 2
 
     console.log('menu location', pathRef.current)
     if (!menuTl) {
 
-      menuTl = gsap.timeline({ defaults: { duration: 0.6, ease: 'Power4.easeIn' } })
+      menuTl = gsap.timeline({ defaults: { duration: 0.4, ease: 'Power4.easeIn' } })
       console.log('navigation runs')
       if (isDesktop) {
-        console.log('desktop menu', pageName.location)
+        // console.log('desktop menu', pageName.location)
 
         menuTl
           .pause()
@@ -51,7 +62,8 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
 
           .to('#st1', { duration: 1, rotation: 45, translateY: '9px', transformOrigin: "50% 0px" }, '<')
           .to('#st2', { duration: 1, rotation: -45, transformOrigin: "50%  0px" }, '<')
-          .to('.menu-text', { color: 'white' }, '<')
+          .to('.menu-text1', { color: 'white' }, '<')
+          .to('.menu-text2', { color: 'white' }, '<')
           .to('#st1', { stroke: 'white' }, '<')
           .to('#st2', { stroke: 'white' }, '<')
 
@@ -73,7 +85,8 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
           .to('#st2', { duration: 1, rotation: -45, yPercent: -50, transformOrigin: "40%  0px" }, '<')
           .to('#st1', { stroke: 'white' }, '<')
           .to('#st2', { stroke: 'white' }, '<')
-          .to('.menu-text', { color: 'white' }, '<')
+          .to('.menu-text1', { color: 'white' }, '<')
+          .to('.menu-text2', { color: 'white' }, '<')
 
           .fromTo('#menu-links', { opacity: 0 }, { opacity: 1 })
           .fromTo('#menu-contact', { opacity: 0 }, { opacity: 1 })
@@ -103,34 +116,54 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
           <Image width={300} height={200} alt="Dk Care LLC Logo" id="logo-white" src="/logo-white.png" />
 
         </Link>
-        <div onClick={throttledClick} className="menu-icon" >
+        <div className="menu-icon" >
           {/* <Image ref={iconRef} width={300} height={200} alt="Dk Care LLC Logo" 
           id="menuicon" className="icons" src="/icons/menuicon-01.svg" /> */}
-          <svg version="1.1" id="svg-menuicon" x="0px"
+          <svg onClick={throttledClick} version="1.1" id="svg-menuicon" x="0px"
             y="0px" viewBox="0 0 74.5 57.3" >
 
             <line id="st1" className="st0" x1="-0.8" y1="24.2" x2="74.2" y2="24.2" />
             <line id="st2" className="st0" x1="74.2" y1="33.2" x2="-0.8" y2="33.2" />
           </svg>
 
-          <h3 className="menu-text" id="#menu-text">
-            Menu
+          {
+            splitWords.current && splitWords.current[1] ?
+              <Link target="_self" href={`/${splitWords.current[1]}`}>
+                <h3 className="menu-text1" >
+                  {capitalizeFirstLetter(splitWords.current[1])}
+                </h3>
+              </Link>
+              :
+              <h3 className="menu-text1"> Menu</h3>
+          }
+
+
+          <h3 className="menu-text2" >
+
+            {
+              splitWords.current && splitWords.current[2] ?
+             <span>
+               <span className="seperator">&#62;</span>
+              <span>{capitalizeFirstLetter(splitWords.current[2])}</span>
+             </span> 
+             : <></>
+            }
           </h3>
         </div>
-        {
-          path === '/' && pageName && pageName.location === 'hero' ?
-            <div className='' id="scroll-skip-mobile" >
-
-              <h3 className="orange  skip"
-                onClick={() => {
-                  skipHeroDesktop()
-                }}> Skip Intro</h3>
-            </div>
-            : <></>
-        }
-
 
       </div>
+      {
+        path === '/' && pageName && pageName.location === 'hero' ?
+          <div className='' id="scroll-skip-mobile" >
+
+            <h3 className="orange  skip"
+              onClick={() => {
+                skipHeroDesktop()
+              }}> Skip Intro</h3>
+          </div>
+          : <></>
+      }
+
       <div ref={menuRef} id="menu" className="">
         <div id="menu-container" >
           <div id="menu-logo">

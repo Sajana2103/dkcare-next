@@ -6,10 +6,13 @@ import Navigation from '../../components/navigation'
 
 const manrope = Manrope({subsets:['latin']})
 export default function App({ Component, pageProps }) {
+  const hello = () => {
+    console.log('HELLO')
+  }
   return (
     <div className={`${manrope.className}`}>
   
-      <Component {...pageProps} />
+      <Component {...pageProps} hello={hello} />
     </div>
   )
 }

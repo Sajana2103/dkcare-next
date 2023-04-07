@@ -73,7 +73,12 @@ const ContentContainer = ({ backToHero, backToHeroDesktop, isLoaded, skipHeroDes
           }}> Skip Intro</h3>
       </div>
 
+      {
+      contentRef.current?
+      
       <Modal pageName={pageName} openModal={openModal} modalOpen={modalOpen} setModalOpen={setModalOpen} />
+        : <></>
+      }
       <Navigation skipHeroDesktop={skipHeroDesktop} pageName={pageName} />
 
 

@@ -132,7 +132,7 @@ const HomePage = ({ size, setPageName, openModal, backToHeroDesktop, backToHero 
 
 
         <Expertise setPageName={setPageName} openModal={openModal} />
-        <Services />
+        <Services setPageName={setPageName} openModal={openModal} />
         <Technologies />
         <Evolution size={size} home={homeRef} homeLoaded={homeLoaded} />
         <Stories />

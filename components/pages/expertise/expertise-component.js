@@ -1,21 +1,22 @@
 
 import cls from 'classnames'
-import styles from '../../src/styles/Expertise.module.css'
+import styles from './Expertise.module.css'
 import Image from "next/image"
-import Button from "../../components/homepage/Button"
+import Button from "../../homepage/Button"
 import Link from "next/link"
 import Head from "next/head"
+import NextPage from '../next-page.svg'
+import NextPageBtn from '../../svg-components/nextpage-btn'
 
-const ExpertiseComponent = () => {
-
+const ExpertiseComponent = (props) => {
   return (
     <div className='page-content-wrapper'>
       <Head>
         <title>Expertise</title>
       </Head>
-      <div id="exp-intro" className={cls(styles.container)} >
+      <div id="exp-intro" className={cls('pageContainer',styles.container)} >
 
-        <h1 id='exp-main-title' className={cls("split-text blue bold text-large", styles.mainTitle)}>Our Expertise</h1>
+        <h1 id='exp-main-title' className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>Our Expertise</h1>
         <div className={cls("gap40", styles.flex2)}>
           <p className={cls("text-large blue bold wPer40 pdTopBtm", styles.pdTopBtm, styles.textL)}>We provide a vital lifeline
             for individuals who need to get to medical appointments.</p>
@@ -38,10 +39,10 @@ const ExpertiseComponent = () => {
         </div>
       </div>
 
-      <div id="exp-reliability " className={cls(styles.container)}>
+      <div id="exp-reliability " className={cls('pageContainer',styles.container)}>
         <div className='bd-line-wrapper'>
           <div className='bd-line'></div>
-          <h2 className={cls('blue split-text', styles.secTitle)}>Reliability</h2>
+          <h2 className={cls('blue split-text pageTitle', styles.secTitle)}>Reliability</h2>
           <div className='bd-line'></div>
         </div>
 
@@ -54,10 +55,12 @@ const ExpertiseComponent = () => {
             <p className={cls("text-med semi-bold blue  pdTopBtm", styles.pdTopBtm, styles.textM)}
             >We understand that working with multiple transportation providers can be frustrating, which is why
               we strive to provide a seamless and high-quality experience from start to finish.</p>
+            <Link href="/expertise/reliability" target="_self" >
             <div className={cls("", styles.flex2)} style={{ alignItems: 'center' }}>
               <Button name="Read More" />
               <p className={cls('blue bold')}>Read more on our services page.</p>
             </div>
+            </Link>
           </div>
           <Image alt="Reliability" className={styles.img50} width={400} height={100}
             src="/Dk-Care-LLC-about-us-2.jpg" />
@@ -65,10 +68,10 @@ const ExpertiseComponent = () => {
 
       </div>
 
-      <div id="exp-passenger-safety " className={cls(styles.container)}>
+      <div id="exp-passenger-safety " className={cls('pageContainer',styles.container)}>
         <div className='bd-line-wrapper'>
           <div className='bd-line'></div>
-          <h2 className={cls('blue split-text ', styles.secTitle)}>Passenger Safety</h2>
+          <h2 className={cls('blue split-text pageTitle', styles.secTitle)}>Passenger Safety</h2>
           <div className='bd-line'></div>
         </div>
         <div className={cls("gap40", styles.flex2)}>
@@ -90,10 +93,10 @@ const ExpertiseComponent = () => {
         </div>
       </div>
 
-      <div id="exp-autonomy " className={cls(styles.container)}>
+      <div id="exp-autonomy " className={cls('pageContainer',styles.container)}>
         <div className='bd-line-wrapper'>
           <div className='bd-line'></div>
-          <h2 className={cls('blue split-text ', styles.secTitle)}>Autonomy</h2>
+          <h2 className={cls('blue split-text pageTitle', styles.secTitle)}>Autonomy</h2>
           <div className='bd-line'></div>
         </div>
         <div className={cls("gap40", styles.flex2)}>
@@ -116,10 +119,10 @@ const ExpertiseComponent = () => {
 
       </div>
 
-      <div id="exp-convenience" className={cls(styles.container)}>
+      <div id="exp-convenience" className={cls('pageContainer',styles.container)}>
       <div className='bd-line-wrapper'>
           <div className='bd-line'></div>
-          <h2 className={cls('blue split-text ', styles.secTitle)}>Convenience</h2>
+          <h2 className={cls('blue split-text pageTitle', styles.secTitle)}>Convenience</h2>
           <div className='bd-line'></div>
         </div>
         <div className={cls("gap40", styles.flex2)}>
@@ -142,11 +145,11 @@ const ExpertiseComponent = () => {
         </div>
       </div>
 
-      <div id="exp-patient-comfort-care" className={cls('blue-gr2 ', styles.container)}>
+      <div id="exp-patient-comfort-care" className={cls('blue-gr2 pageContainer', styles.container)}>
       
         <div className={cls("gap40", styles.flex2)}>
           <div className="wPer2">
-            <h2 className={cls('white split-text ', styles.mainTitle)}>Patient Comfort and Care</h2>
+            <h2 className={cls('white split-text pageTitle', styles.mainTitle)}>Patient Comfort and Care</h2>
 
           </div>
           <div className="wPer40">
@@ -166,9 +169,9 @@ const ExpertiseComponent = () => {
           alt="Patient comfort and care" />
       </div>
 
-      <div id="exp-collaborations" className={cls(styles.container)}>
+      <div id="exp-collaborations" className={cls('pageContainer',styles.container)}>
 
-        <h1 className={cls(" blue bold text-large split-text ", styles.mainTitle)}>Collaborations with Healthcare</h1>
+        <h1 className={cls(" blue bold text-large split-text pageTitle", styles.mainTitle)}>Collaborations with Healthcare</h1>
         <div className="title-bd-container hero-titles ">
           <p className="blue bold">Comfort</p>
           <div className="title-bd-blue" ></div>
@@ -204,10 +207,10 @@ const ExpertiseComponent = () => {
 
       </div>
 
-      <div id="exp-serving" className={cls('blue-gr2 ', styles.container)}>
+      <div id="exp-serving" className={cls('blue-gr2 pageContainer', styles.container)}>
+            <h2 className={cls('white split-text pageTitle', styles.mainTitle)}>Serving To A Diverse Community</h2>
         <div className={cls("gap40 ", styles.flex2)}>
           <div className="wPer2">
-            <h2 className={cls('white split-text ', styles.mainTitle)}>Serving To A Diverse Community</h2>
 
           </div>
           <div className={cls(styles.flex2)}>
@@ -236,7 +239,7 @@ const ExpertiseComponent = () => {
 
         </div>
         <div id="" className="nextBtn">
-          <Link href='/services'> <button><Image alt="Dk Care LLC " width={50} height={50} src="/right-arrow.svg" /></button></Link>
+          <Link href='/services'> <button><NextPageBtn/></button></Link>
           <h1 className="title white">Services</h1>
         </div>
       </div>

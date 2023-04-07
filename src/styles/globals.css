@@ -116,6 +116,15 @@ section {
 .btn-black-pd {
   padding: 1rem 1rem 1rem 0;
 }
+#btn-svg{
+  stroke-width: 2px;
+  transition-duration: 0.2s;
+}
+.btn-black:hover  #btn-svg{
+  stroke-width: 3px;
+  transition-duration: 0.3s;
+
+}
 
 .round-right-arrow {
   background-color: white;
@@ -198,7 +207,7 @@ section {
 }
 
 .blue-gr2 {
-  background: radial-gradient(circle, rgb(0, 24, 84) 0%, rgb(36, 138, 182) 84%, rgb(97, 177, 210) 98%);
+  background: radial-gradient(circle, rgb(33, 64, 143) 0%, rgb(36, 138, 182) 84%, rgb(97, 177, 210) 98%);
 }
 
 .text-med {
@@ -343,6 +352,13 @@ section {
 .bd-btm {
   border-bottom: white 1px solid;
 }
+.bd-btm-blue {
+  border-bottom: var(--blue) 1px solid;
+}
+.bd-btm-blue2 {
+  border-bottom: var(--blue) 2px solid;
+}
+
 
 .btn-orange {
   background-color: #ed7036;
@@ -757,6 +773,7 @@ progress::-webkit-progress-value {
   display: none;
   align-items: center;
   max-width: 10rem;
+  /* border: 1px solid red; */
 }
 
 #anchors-con {
@@ -768,7 +785,9 @@ progress::-webkit-progress-value {
   padding-left: 10%;
   padding-right: 10%;
   font-size: 1.2ch;
+  font-weight: 600;
   transition-duration: 0.2s;
+  padding-bottom: 0.5rem;
 }
 
 #anchors span:hover {
@@ -799,10 +818,9 @@ progress::-webkit-progress-value {
 #svg-menuicon {
   width: 3rem;
   padding-left: 1rem;
-  padding-right: 0.2rem;
+  padding-right: 1rem;
   transition-duration: 0.3s;
   height: 100%;
-  transition-duration: 0.3s;
 
 }
 
@@ -814,22 +832,32 @@ progress::-webkit-progress-value {
 
 }
 
-.menu-text {
+.menu-text1,.menu-text2 {
   color: #1e4d8c;
   font-weight: 500;
   font-size: 1rem;
   transition-duration: 0.3s;
-
 }
+.menu-icon:hover .menu-text1 {
 
-.menu-icon:hover .menu-text {
+  padding-left: 1.5rem;
+  transition-duration: 0.3s;
+}
+.menu-text1:hover{
   font-weight: 700;
   padding-left: 0.5rem;
   transition-duration: 0.3s;
 }
+.menu-text2:hover {
+  pointer-events: none;
+}
+.seperator{
+  margin-left: 1rem;
+  margin-right: 1rem;
 
+}
 .menu-icon:hover .st0 {
-  stroke-width: 4px;
+  stroke-width: 3px;
   transition-duration: 0.3s;
 }
 
@@ -1030,7 +1058,9 @@ progress::-webkit-progress-value {
   font-weight: 400;
 }
 
-
+#portal{
+  display: none;
+}
 .modal-wrapper {
   top: 0;
   left: 0;
@@ -1044,7 +1074,12 @@ progress::-webkit-progress-value {
   display: grid;
   align-content: center;
   justify-content: center;
-
+ 
+}
+.modal-container{
+  padding:1rem;
+  background-color: white;
+  border-radius: 1rem;
 }
 
 #homepage {}
@@ -1074,8 +1109,8 @@ progress::-webkit-progress-value {
   display: grid;
   align-content: center;
   justify-content: center;
-  width: 80vw;
-  height: 80vh;
+  width: 90vw;
+  height: 90vh;
   /* padding: 5rem; */
   overflow-y: scroll;
 }
@@ -1289,9 +1324,32 @@ progress::-webkit-progress-value {
   width: 7rem;
   height: 7rem;
   border-radius: 5rem;
-  border: none;
+  border: 2px white solid;
+  transition-duration: 0.3s;
+}
+.nextBtn:hover button{
+  background-color: transparent;
+  transition-duration: 0.3s;
+  border: 2px white solid;
+  cursor: pointer;
+}
+#right-arrow{
+  scale: 40%;
+  transition-duration: 0.3s;
+
+}
+.nextBtn:hover #right-arrow{
+  scale: 50%;
+  transition-duration: 0.3s;
+
 }
 
+.nextBtn:hover .right-arrow-line{
+  stroke: white;
+}
+.nextBtn:hover .right-arrow-head{
+  stroke: white;
+}
 .nextBtn img {
   width: 2rem;
   height: 2rem;
@@ -1967,6 +2025,20 @@ progress::-webkit-progress-value {
   .link-box .text-med {
     padding-top: 1rem 0 0 0;
   }
+  .nextBtn h1 {
+    text-align: center;
+    font-size: 5rem;
+    padding: 0 0 2rem 0;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+  }
+  .nextBtn button {
+    transform: translate(0, 2rem);
+    width: 5rem;
+    height: 5rem;
+    border-radius: 3rem;
+    border: none;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -2405,7 +2477,7 @@ progress::-webkit-progress-value {
   }
 
   .navigation-main {
-    grid-template-columns: 45% 25%30%;
+    grid-template-columns: 45% auto;
 
     padding: 0rem 0rem 4rem 0rem;
     height: 1rem;

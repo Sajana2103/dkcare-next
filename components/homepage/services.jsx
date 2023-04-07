@@ -2,7 +2,7 @@ import Image from "next/image.js";
 import React from "react";
 import Button from "./Button.js";
 
-const Services = () => {
+const Services = ({ setPageName, openModal }) => {
   return (
     <div className="main-section" id="services" >
       <a id="services-anchor"></a>
@@ -55,7 +55,11 @@ const Services = () => {
               <p className="semi-bold wPer3">We understand that working with multiple transportation providers can be
                 frustrating, which is why we strive to provide a seamless and high-quality experience from start to finish. Our team is experienced i</p>
               <br />
-              <div className="flex-container wrap" style={{ alignItems: 'center' }}>
+              <div className="flex-container wrap" style={{ alignItems: 'center' }}
+               onClick={() => {
+                setPageName({ pageName: 'services', location: 'home' })
+                openModal('home','services')
+              }}>
                 <Button name="Services" />
                 <p style={{ paddingRight: '1rem' }}>Read more on our services page.</p>
               </div>

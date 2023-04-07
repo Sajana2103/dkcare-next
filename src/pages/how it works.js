@@ -1,7 +1,7 @@
 import PageWrapper from "../../components/page-wrapper"
 import cls from 'classnames'
 
-import styles from '../styles/Services.module.css'
+import styles from '../styles/Pages.module.css'
 
 const HowItWorks = () => {
   let title = 'How It Works'
