@@ -2,8 +2,8 @@ import {ScrollSmoother} from 'gsap/dist/ScrollSmoother';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 import { useRef ,useState} from 'react';
-import gsap from 'gsap/dist/gsap';
-import Head from 'next/head';
+import { gsap } from "gsap/dist/gsap";
+import { InertiaPlugin } from 'gsap/dist/InertiaPlugin';
 import { useEffect } from 'react';
 import Footer from './homepage/footer';
 import Navigation from './navigation';
@@ -76,7 +76,8 @@ const PageWrapper = (props) => {
   useEffect(() => {
     if(contentRef.current){
       // useeffect++
-      gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText)
+      gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText,InertiaPlugin)
+
       gsap.fromTo('body',{overflowY:'hidden'},{overflowY:'scroll'})
       gsap.fromTo('#anchors',{display:'none'},{display:'block'})
       gsap.fromTo('#anchors',{opacity:0},{opacity:1})

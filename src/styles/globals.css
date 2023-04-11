@@ -1,6 +1,8 @@
 :root {
   --blue: #1e4d8c;
   --orange: #ed7036;
+  --darkBlack : #333333;
+  --lightBlack : #888888;
 }
 
 * {
@@ -62,6 +64,11 @@ section {
 .bd-line {
   height: 1px;
   background-color: var(--blue);
+
+}
+.bd-line-b{
+  height: 1px;
+  background-color: var(--darkBlack);
 
 }
 
@@ -193,7 +200,12 @@ section {
 .black {
   color: black;
 }
-
+.darkBlack{
+  color: #333333;
+}
+.lightBlack{
+  color: #888888;
+}
 .gray {
   color: rgb(167, 167, 167);
 }
@@ -299,7 +311,21 @@ section {
 .wPer40 {
   width: 40%;
 }
-
+.wPer45 {
+  width: 45%;
+}
+.wPer47 {
+  width: 47.5%;
+}
+.fg10{
+  gap:10%;
+}
+.fg5{
+  gap:5%;
+}
+.wPer33{
+  width: 33%;
+}
 .gap40 {
   gap: 10%
 }
@@ -348,7 +374,12 @@ section {
 .wrap {
   flex-wrap: wrap;
 }
-
+.ai{
+  align-items: center;
+}
+.jc{
+  justify-content: center;
+}
 .bd-btm {
   border-bottom: white 1px solid;
 }
@@ -358,7 +389,9 @@ section {
 .bd-btm-blue2 {
   border-bottom: var(--blue) 2px solid;
 }
-
+.bd-btm-black {
+  border-bottom: var(--darkBlack) 1px solid;
+}
 
 .btn-orange {
   background-color: #ed7036;
@@ -402,6 +435,18 @@ section {
   transform: translate(1ch, -40%) scale(0.95);
 }
 
+.title-bd-black {
+  width: auto;
+  border-bottom: var(--darkBlack) solid 1px;
+  margin-left: 1ch;
+  transform: translate(0, -40%) ;
+}
+.title-bd-black2 {
+  width: auto;
+  border-bottom: var(--darkBlack) solid 1px;
+  margin-left: 1ch;
+  transform: translate(0, -40%) ;
+}
 .bd-title-blue {
   width: 100%;
   border-bottom: #1e4d8c 1px solid;
@@ -999,7 +1044,7 @@ progress::-webkit-progress-value {
 .contact-number {
   display: grid;
   padding-bottom: 1rem;
-  height: 2rem;
+  height: auto;
   grid-template-rows: 1fr 1fr;
 }
 
@@ -1236,12 +1281,132 @@ progress::-webkit-progress-value {
 .review-box-wrapper .fg {
   gap: 5px;
 }
-
-
-.review-box-wrapper:hover {
-  cursor: grab;
+.team-member {
+  flex: 0 0 auto;
+  float: right;
+  background-color: rgb(247, 247, 247);
+  width: 20rem;
+  box-shadow: 0rem 0.5rem 1rem rgb(220, 224, 226);
+  border: solid 2px rgb(247, 247, 247);
+  padding: 2rem 1rem 2rem 1rem;
+  text-align: center;
+  z-index: 100;
+  transition-duration: 0.3s;
 }
 
+.team-member:hover {
+  transition-duration: 0.3s;
+  box-shadow: 0rem 0.5rem 1rem rgb(210, 214, 216);
+
+}
+.team-img{
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  filter: grayscale(50%);
+  transition-duration: 0.3s;
+}
+.team-member:hover .team-img{
+  filter: grayscale(0%);
+  transition-duration: 0.3s;
+
+}
+.team-member-wrapper:hover {
+  cursor: grab;
+}
+.team-member-wrapper .fg {
+  gap: 5px;
+}
+
+
+.team-member-wrapper:hover {
+  cursor: grab;
+}
+#our-team-wrapper {
+  width: 90vw;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+#our-team-wrapper::-webkit-scrollbar {
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+#our-team-wrapper::-webkit-scrollbar-track {
+  background-color: var(--lightBlack);
+}
+
+#our-team-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--darkBlack);
+}
+#company-humble-beginnings{
+  padding: 5rem 0 5rem 0;
+}
+#company-collaborations{
+  background-color: #eaedf1;
+}
+.beginnings {
+  flex: 0 0 auto;
+  float: right;
+  width: 25rem;
+  
+  padding: 2rem 1rem 2rem 1rem;
+  text-align: center;
+  z-index: 100;
+  transition-duration: 0.3s;
+  border-top: transparent solid 2px;
+  border-bottom: transparent solid 2px;
+
+}
+
+.beginnings:hover {
+  transition-duration: 0.3s;
+  border-top: white solid 2px;
+  border-bottom: white solid 2px;
+
+}
+.beginnings-img{
+  width: 100%;
+  height: 30vh;
+
+  transition-duration: 0.3s;
+}
+.beginnings:hover .team-img{
+  transition-duration: 0.3s;
+
+}
+
+.beginnings-wrapper:hover {
+  cursor: grab;
+
+}
+.beginnings-wrapper .fg {
+  gap: 5px;
+}
+
+
+.beginnings-wrapper:hover {
+  cursor: grab;
+}
+#beginnings-con{
+  width: 90vw;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding-left: 10rem;
+}
+#beginnings-con::-webkit-scrollbar {
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+#beginnings-con::-webkit-scrollbar-track {
+  background-color: var(--lightBlack);
+}
+
+#beginnings-con::-webkit-scrollbar-thumb {
+  background-color: var(--darkBlack);
+}
 .slide-btn-wrapper {
   display: grid;
   align-items: center;
@@ -1659,7 +1824,40 @@ progress::-webkit-progress-value {
 #customers {
   height: 100vh;
 }
+.company-intro-top{
+  background-color: #def6fe;
+  width: 100vw;
+  height: 10vh;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+#company-intro{
+  background-image: url('/images/company/bg-company-dkcare-transformed.png');
+  background-size:100vw;
+  /* width: 100vw; */
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+    /* border: red solid 1px; */
+}
+#background-logo{
+  background-image: url('/images/company/logo-3d-dkcare-transformed.png');
+  background-size:100%;
+  /* border: red solid 1px; */
 
+  
+  background-attachment: scroll;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+
+}
+.answer{
+  height: 0px;
+  display: none;
+}
 @media only screen and (max-width: 1400px) {
   #desktop-third h1 {
     font-size: 4rem;
@@ -1675,6 +1873,8 @@ progress::-webkit-progress-value {
 }
 
 @media only screen and (max-width: 1200px) {
+  #company-intro{
+  }
   #anchors {
 
     z-index: 10001;
@@ -1903,7 +2103,9 @@ progress::-webkit-progress-value {
   .wPer40 {
     width: 100%;
   }
-
+  .wPer33{
+    width: 66%;
+  }
   .title {
     font-size: 4rem;
     font-weight: 400;
@@ -1947,7 +2149,9 @@ progress::-webkit-progress-value {
   .wPer20 {
     width: 30%;
   }
-
+  .wPer47 {
+    width: 100%;
+  }
   .mid-bd {
     transform: translate(0, -1rem);
   }
@@ -2445,7 +2649,7 @@ progress::-webkit-progress-value {
     display: grid;
     justify-content: center;
     padding-bottom: 1rem;
-    height: 1.5rem;
+    /* height: 1.5rem; */
 
 
   }
@@ -2595,12 +2799,13 @@ progress::-webkit-progress-value {
     display: grid;
     justify-content: center;
     padding-bottom: 1rem;
-    height: 1.5rem;
+    /* height: 1.5rem; */
   }
 
   .contact-number h2 {
     padding-bottom: 0.3rem;
     font-size: 0.8rem;
+
   }
 
   #contact-numbers .number {
@@ -2755,7 +2960,9 @@ progress::-webkit-progress-value {
   .wPer20 {
     width: 100%;
   }
-
+  .wPer33{
+    width: 100%;
+  }
   .con-pd {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -2953,5 +3160,52 @@ progress::-webkit-progress-value {
   .links {
     flex-wrap: wrap;
   }
+  .company-intro-top{
+    background-color: #e0f6ff;
 
+    width: 100%;
+    height: 10vh;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  #company-intro{
+    background-image: url('/images/company/bg-company-dkcare-transformed.png');
+    background-size:cover;
+    /* width: 100vw; */
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+      /* border: red solid 1px; */
+  }
+  #background-logo{
+    background-image: url('/images/company/logo-3d-dkcare-transformed.png');
+    background-size:contain;
+    /* border: red solid 1px; */
+    background-attachment: scroll;
+    background-position:0px 60%;
+    background-repeat: no-repeat;
+  
+  }
+  .team-member {
+    width: 10rem;
+  
+  }
+  #our-team-wrapper{
+    width: 100vw;
+    padding: 1rem;
+  }
+  .team-member h1{
+    font-size: 1.5rem;
+  }
+  #beginnings-con{
+    width: 90vw;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    
+  }
+  #right-arrow{
+    enable-background:new 0 0 30 30;
+  
+  }
 }

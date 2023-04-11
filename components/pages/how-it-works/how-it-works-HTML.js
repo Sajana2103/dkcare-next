@@ -1,0 +1,404 @@
+import cls from 'classnames'
+import Image from "next/image"
+import Link from "next/link"
+import Button from "../../homepage/Button"
+import styles from '../../../src/styles/Pages.module.css'
+import Head from "next/head"
+import NextPageBtn from '../../svg-components/nextpage-btn'
+import { gsap } from "gsap/dist/gsap";
+import { useEffect, useRef } from 'react'
+const HowItWorksHTML = () => {
+  const howRef = useRef()
+  let clicked = useRef(false)
+  let faqTl = useRef()
+  function setupFaq() {
+    let questions = document.querySelectorAll('.question')
+    let answers = document.querySelectorAll('.answer')
+    console.log('questions answers',questions,answers)
+    // let faqTl
+    // if (!faqTl) {
+    //   faqTl = gsap.timeline({ defaults: { duration: 1, ease: 'Power4.easeIn' } })
+    //   faqTl
+    //     .pause()
+    //     .fromTo('.answer', { display: 'none' }, { display: 'block', duration: 0 })
+    //     .fromTo('.answer', { height: '0px' }, { height: 'auto', })
+    // }
+    // if (!clicked.current) {
+    //   clicked.current = true
+    //   faqTl.play()
+    // } else {
+    //   clicked.current = false
+    //   faqTl.reverse()
+    // }
+  }
+
+  useEffect(() => {
+    if (howRef.current) {
+      setupFaq()
+    }
+  }, [])
+  return (
+    <div ref={howRef} className='page-content-wrapper'>
+      <Head>
+        <title>How It Works</title>
+      </Head>
+      <div className='company-intro-top'></div>
+      <div className={cls('pageContainer',)}>
+        <div style={{ backgroundColor: '#dce6eb' }}>
+          <div id="company-intro" >
+
+            <div className={cls('', styles.container)}>
+              <h1 className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>How it works?</h1>
+
+
+              <h2 className={cls('blue semi-bold', styles.textXL)}>It&apos;s simple...</h2>
+              <div className={cls('', styles.flex2, styles.pdTopBtm)}>
+                <div className={cls("gap40 wPer40", styles.callus)}>
+                  <div className={cls('', styles.flex2, styles.pdTopBtm)}>
+                    <p className={cls('white semi-bold', styles.orangeBox2, styles.textM)}>You</p>
+                    <p style={{ paddingLeft: '0.5rem' }} className={cls('darkBlack semi-bold', styles.textM)}>Call your insurance provider</p>
+                  </div>
+                  <h2 className={cls('blue semi-bold', styles.textXL)}>Schedule</h2>
+                  <p className={cls("darkBlack regular  ", styles.pdTopBtm, styles.textS)}>
+                    Serve upstate counties in New York with reliable, safe and convenient transportation.</p>
+
+                </div>
+                <div className={cls("gap40 wPer40", styles.callus)}>
+                  <div className={cls('', styles.flex2, styles.pdTopBtm)}>
+                    <p className={cls('white semi-bold', styles.orangeBox2, styles.textM)}>DK Care</p>
+                    <p style={{ paddingLeft: '0.5rem' }} className={cls('darkBlack semi-bold', styles.textM)}>
+                      Will take care of
+                    </p>
+                  </div>
+                  <h2 className={cls('blue semi-bold', styles.textXL)}>Pickup &gt; Return</h2>
+                  <p className={cls("darkBlack regular  ", styles.pdTopBtm, styles.textS)}>
+                    Serve upstate counties in New York with reliable, safe and convenient transportation.</p>
+
+                </div>
+
+              </div>
+
+
+              <br />
+              <div className='wPer1'>
+                <p className={cls('blue  semi-bold', styles.textS)}>Scroll down for more information</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div className={cls('', styles.comapanyIntro2, styles.container)} >
+
+          <p className={cls("wPer3 text-large blue bold  pdTopBtm", styles.pdTopBtm, styles.textL)}>
+            If you have medical insurance, you are able to receive non-emergency medical transportation
+            services &#40;NEMT&#41; through your insurance provider.</p>
+          <p className={cls("wPer2 darkBlack bold  pdTopBtm", styles.pdTopBtm, styles.textM)}>
+            To find out if you are eligible, contact your insurance provider and ask about your
+            coverage options.</p>
+        </div>
+      </div>
+
+      {/* <div id="technologies-nemt" className={cls('pageContainer', styles.container)}>
+        <h1 className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>Our Technologies</h1>
+        <h2 style={{ paddingBottom: '4rem' }} className={cls("split-text blue semi-bold ", styles.textXL)}
+        >Non-Emergency Medical Transportation</h2>
+
+
+        <div className={cls(styles.servicesNemt)} >
+          <div className={cls(styles.wPer45)}   >
+
+
+            <div id='' className={cls("flex blue bold ", styles.ourTechnologies, styles.textS)} >
+              <div className="section flex " style={{ flexWrap: 'wrap', }}>
+                <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4>Doctors Appointments</h4><span >&gt;</span></div>
+                <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4 >Physical Therapy</h4><span >&gt;</span></div>
+                <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4 >Dialysis Treatment</h4><span >&gt;</span></div>
+                <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4 >Outpatient Surgery</h4><span >&gt;</span></div>
+              </div>
+
+            </div>
+          </div>
+          <p className={cls(" semi-bold blue wPer2 ", styles.textL,)}
+          >NEMT is most often utilized by eligible Medicaid and Medicare memebers
+            requesting a ride to their medical appointments.
+          </p>
+        </div>
+      </div> */}
+
+      <div id="how-eligible" className={cls('blue-gr2 pageContainer', styles.container)}>
+        <div className={cls('fg', styles.flex2)}>
+          <h2 className={cls('split-text white pageTitle wPer40', styles.mainTitle)}>Who is Eligible?</h2>
+          <Image className={cls('', styles.img100small2)} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+            width={400} height={100} />
+        </div>
+        <div className="">
+          <div className="title-bd-container hero-titles">
+            <p className="white bold">Getting our services</p>
+            <div className="title-bd-white" ></div>
+          </div>
+          <div className='' >
+            <p className={cls("text-large white semi-bold pdTopBtm ", styles.pdTopBtm, styles.textL)}
+            >Our services are primarily for individuals who have Medicaid, Medicare, or other medical
+              insurances that cover non-emergency medical transportation.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div className="title-bd-container hero-titles">
+            <p className="white bold">Getting our services</p>
+            <div className="title-bd-white" ></div>
+          </div>
+          <div className={cls('fw flex', styles.fg2)}>
+            <div className='wPer2' >
+
+              <p className={cls("text-large white semi-bold ", styles.textL)}
+              >Can individuals without medical insurance use DK Care LLC&apos;s transportation services?
+              </p>
+            </div>
+            <div className='wPer40' >
+              <p className={cls(" semi-bold white", styles.textM)}
+              >Unfortunately, we are not able to provide transportation services to individuals without
+                medical insurance coverage for non-emergency medical transportation.
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <br />
+        <div className="">
+
+          <div className={cls('fg5', styles.getInTouch)} >
+            <div className={cls('wPer47')}>
+              <p className={cls('darkBlack semi-bold', styles.textM, styles.pdTopBtm)}>
+                Please get in touch with following agencies to get support
+              </p>
+              <div className={cls("title-bd-container hero-titles", styles.pdTopBtm)}>
+                <p className="darkBlack bold">DK Care affiliated insurance providers</p>
+                <div className="title-bd-black" ></div>
+              </div>
+              <div className={cls(styles.servicesNemt, styles.pdTopBtm)} >
+
+                <div id='' className={cls("flex blue bold ", styles.ourTechnologies, styles.textS)} >
+                  <div className="section flex " style={{ flexWrap: 'wrap', }}>
+                    <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4>Doctors Appointments</h4><span >&gt;</span></div>
+                    <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4 >Medicaid.Gov</h4><span >&gt;</span></div>
+                    <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4 >United Healthcare</h4><span >&gt;</span></div>
+                    <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4 >Nascentia Health</h4><span >&gt;</span></div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+            <div className={cls('wPer47')}>
+              <p className={cls('lightBlack semi-bold', styles.textS, styles.pdTopBtm)}>
+                Non-emergency medical transportation
+                &#40;NEMT&#41; is a Medicaid program created to provide transportation to
+                and from medical facilities.
+              </p>
+              <div className={cls("title-bd-container hero-titles", styles.pdTopBtm)}>
+                <p className="darkBlack bold">Call us for information and support
+                </p>
+                <div className="title-bd-black" ></div>
+              </div>
+              <div className={cls(styles.pdTopBtm)} >
+
+                <p className={cls('darkBlack semi-bold', styles.textM, styles.pdTopBtm)}>
+                  You can always call us for support
+                </p>
+                <div className={cls('fg5 ', styles.contact,)} >
+                  <div className="contact-number">
+                    <h2 className="lightBlack semi-bold text-xlarge tc">Dispatch Number</h2>
+                    <div className={cls(styles.numberBg)}>
+                      <h3 className="darkBlack ">
+                        <a href="tel://845-705-9741">845-705-9741</a>
+                      </h3></div>
+
+                  </div>
+                  <div className="contact-number">
+                    <h2 className="lightBlack semi-bold text-xlarge tc">Office Number</h2>
+                    <div className={cls(styles.numberBg)}>
+                      <h3 className="darkBlack">
+                        <a href="tel://845-214-0212">
+                          845-214-0212</a>
+
+                      </h3></div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <div id="how-ride" className={cls('pageContainer', styles.container)}>
+        <div className="">
+          <h2 className={cls('split-text blue ', styles.mainTitle)}>How can I get a ride?</h2>
+          <p className='pageTitle' style={{ display: 'none' }}>Get a Ride</p>
+        </div>
+        <div className="">
+          <div className="title-bd-container hero-titles">
+            <p className="darkBlack bold">To use NEMT services</p>
+            <div className=" title-bd-black" ></div>
+          </div>
+
+          <div className={cls('fw flex', styles.fg2)}>
+            <div className='wPer2' >
+              <p className={cls("text-large darkBlack bold pdTopBtm ", styles.pdTopBtm, styles.textL)}
+              >Patients or their caregivers can contact DK Care.
+              </p>
+
+
+            </div>
+            <div className='wPer40' >
+              <p className={cls(" semi-bold lightBlack", styles.pdTopBtm, styles.textM)}
+              >We will verify the patient&apos;s eligibility for transportation services,
+                including any necessary medical documentation.
+              </p>
+              <p className={cls(" semi-bold lightBlack", styles.pdTopBtm, styles.textM)}
+              >Once eligibility is confirmed, DK Care will schedule the patient&apos;s
+                ride and arrange for a driver and appropriate vehicle to transport them to
+                their destination.
+              </p>
+            </div>
+          </div>
+          <Image className={styles.img100small} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+            width={400} height={100} />
+
+        </div>
+      </div>
+
+      <div id="how-faq" className={cls('pageContainer', styles.container)}>
+        <div className="">
+          <h1 className={cls('split-text blue howfaq pageTitle', styles.mainTitle,)}>FAQ</h1>
+
+        </div>
+        <div className="">
+          <div className="title-bd-container hero-titles">
+            <p className="darkBlack bold">Some of the most requested questions from us</p>
+            <div className=" title-bd-black" ></div>
+          </div>
+
+          <div className={cls('fw flex', styles.fg2)}>
+            <div className='wPer2' >
+              <p className={cls("text-large darkBlack bold  ", styles.pdTopBtm, styles.textL)}
+              >Frequently asked questions.
+              </p>
+
+
+            </div>
+            <div className='wPer40' >
+              <p className={cls(" semi-bold lightBlack", styles.pdTopBtm, styles.textS)}
+              >Please do not hesitate to contact us if you have specific questions
+                or inquiries. You can reach us via e-mail or call.
+              </p>
+              <div className={cls("fw flex ",)} style={{ alignItems: 'center' }}>
+                <Button name="Contact us" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div className={cls('question', styles.faqCon)}>
+
+          <div className={cls('ai', styles.faqWrapper)}>
+            <div className={cls(styles.numberCon)}>01</div>
+            <div>
+
+              <div className='bd-btm-black' >
+                <div className="title-bd-container ">
+                  <p className="darkBlack bold">Some of the most requested questions from us</p>
+                  <div className=" title-bd-black2" ></div>
+                </div>
+                <p className={cls(' semi-bold', styles.textL, styles.faq, styles.pdTopBtm)}>
+                  What is DK Care?
+                </p>
+
+              </div>
+
+            </div>
+          </div>
+          <div style={{ marginLeft: '5rem' }} className='answer'>
+
+            <p className={cls('wPer3 lightBlack semi-bold', styles.textS, styles.pdTopBtm)}>
+              DK Care provides transportation services to and from medical appointments,
+              procedures, and treatments for patients with medical insurance coverage.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="how-getInTouch" className={cls('blue-gr2 pageContainer', styles.container)}>
+        <h2 className={cls('split-text white tc ', styles.pdTopBtm, styles.secTitle2)}>
+          New York State provides a range of long term services and supports for people of
+          all ages or with any disability.
+        </h2>
+        <p className='pageTitle' style={{ display: 'none' }}>Get In Touch</p>
+        <div className={cls("gap40", styles.flex2,)}>
+
+          <div className={cls('fg5', styles.flex2)}>
+            <div className=" wPer47">
+              <div className={cls('fg5', styles.getInTouch)} >
+                <div className={cls('',)}>
+                  <p className={cls('darkBlack semi-bold', styles.textM, styles.pdTopBtm)}>
+                    Please get in touch with following agencies to get support
+                  </p>
+                  <div className={cls("title-bd-container hero-titles", styles.pdTopBtm)}>
+                    <p className="darkBlack bold">DK Care affiliated insurance providers</p>
+                    <div className="title-bd-black" ></div>
+                  </div>
+                  <div className={cls(styles.servicesNemt, styles.pdTopBtm)} >
+
+                    <div id='' className={cls("flex blue bold ", styles.ourTechnologies, styles.textS)} >
+                      <div className="section flex " style={{ flexWrap: 'wrap', }}>
+                        <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4>Doctors Appointments</h4><span >&gt;</span></div>
+                        <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4 >Medicaid.Gov</h4><span >&gt;</span></div>
+                        <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4 >United Healthcare</h4><span >&gt;</span></div>
+                        <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4 >Nascentia Health</h4><span >&gt;</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <br />
+            <div className={cls('wPer40', styles.pdTopBtm)} style={{ display: 'grid', alignItems: 'center' }}>
+              <div>
+                <p className={cls("text-small regular white   ", styles.textS)}
+                >In addition, we follow social distancing guidelines and limit the number of passengers
+                  in our vehicles to ensure adequate spacing. We also provide hand sanitizer and encourage
+                  our customers to wear masks during their trips.
+                </p>
+                <br />
+                <p className={cls("text-small regular white   ", styles.textS)}
+                >Rest assured that when you ride with DK Care, you can have peace of mind knowing that we
+                  are doing everything we can to prevent the spread of COVID-19
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div id="" className="nextBtn">
+          <Link href='/company'> <button><NextPageBtn /></button></Link>
+          <h1 className="title white">Company</h1>
+        </div>
+      </div>
+
+
+
+    </div>
+  )
+}
+export default HowItWorksHTML

@@ -9,13 +9,27 @@
 #services-nemt .mainTitle {
   line-height: 5.5rem;
 }
+.howfaq .mainTitle{
+  font-size: 10rem;
+}
+.titleLarge {
+  font-size: 8rem;
+  font-weight: 600;
+  line-height: 1;
+
+}
 
 .secTitle {
   font-size: 4rem;
   font-weight: 600;
-  border-top: 1px var(--blue) solid;
-  border-bottom: 1px var(--blue) solid;
+  /* border-top: 1px var(--blue) solid;
+  border-bottom: 1px var(--blue) solid; */
 
+}
+
+.secTitle2 {
+  font-size: 3rem;
+  font-weight: 600;
 }
 
 .listItems {
@@ -55,10 +69,23 @@
   margin: 2rem 0 2rem 0;
 }
 
+.img100small {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  border-radius: 2rem;
+  margin: 2rem 0 2rem 0;
+}
+.img100small2 {
+  width: 55%;
+  height: 30vh;
+  object-fit: cover;
+  border-radius: 2rem;
+  margin: 2rem 0 2rem 0;
+}
 .flex2 {
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .fg2 {
@@ -71,6 +98,10 @@
 
 .pdTopBtm {
   padding: 1rem 0 1rem 0;
+}
+
+.textpd1 {
+  padding: 0.5rem 0 0.5rem;
 }
 
 .textXL {
@@ -115,10 +146,15 @@
 
 .orangeBox {
   margin: 1rem 0 1rem 0;
-  background-color: #ed7036;
+  background-color: var(--orange);
   padding: 1rem;
 }
+.orangeBox2{
+  background-color: var(--orange);
+  padding: 0 0.5rem 0 0.5rem ;
+  border-radius: 0.8rem;
 
+}
 .servicesNemt {
   display: flex;
   flex-wrap: nowrap;
@@ -156,8 +192,9 @@
   height: 35vh;
   margin: 2em 0 2rem 0;
   object-fit: cover;
-  
+
 }
+
 .aiPoweredImg img {
 
   width: 49.5%;
@@ -165,17 +202,216 @@
   object-fit: cover;
 
 }
-.aiPoweredImg1{
+
+.aiPoweredImg1 {
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
 }
-.aiPoweredImg2{
+
+.aiPoweredImg2 {
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
-.aiPoweredImgGap{
-background-color: white;
-width: 1%;
+
+.aiPoweredImgGap {
+  background-color: white;
+  width: 1%;
+}
+
+.aboutTitle {
+  font-size: 7rem;
+  font-weight: 550;
+  line-height: 1;
+
+  padding: 0 0 2rem 0;
+}
+
+.imgAbout {
+  width: 50vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutSection {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.aboutContent {
+  width: 35%;
+  margin: 0 5% 0 10%;
+}
+
+.companyHeroImg {
+
+  width: 100vw;
+  height: auto;
+  top: 0;
+  z-index: -2;
+}
+
+.companyHeroLogo {
+  /* position: absolute; */
+  z-index: 1;
+  transform: translate(0, -10%);
+  height:100%;
+  width: auto;
+}
+.introContent1{
+  height: 100vh;
+}
+.comapanyIntro2{
+  background: linear-gradient(180deg, rgba(220,230,235,1) 38%, rgba(220,230,235,0) 100%);
+  margin-bottom: 5rem;
+}
+.availableTitle {
+  font-size: 6rem;
+  font-weight: 500;
+}
+
+.availableContent {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+}
+
+.orangeStrip {
+  background-color: var(--orange);
+  height: 5rem;
+  left: 0;
+  right: 0;
+  position: absolute;
+  transform: translate(0, 25vh);
+}
+
+.jobTitleCon {
+  width: 100%;
+}
+/*COMPANY */
+.mission{
+
+}
+.mission h2{
+  padding-left: 2rem;
+}
+.mission p{
+  background-color: white;
+  padding-left: 2rem;
+}
+.vision{
+
+}
+.vision h2{
+  padding-left: 2rem;
+}
+.vision p{
+  background-color: white;
+  padding-left: 2rem;
+}
+.jobCon {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.applyBtn {
+  padding: 5px;
+  justify-content: center;
+  background-color: var(--orange);
+  border-radius: 2rem;
+  border: transparent 1px solid;
+  width: 150px;
+  height: 50px;
+}
+
+.applyBtn p {
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.circle {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 1.5rem;
+
+}
+
+.applyNow {
+  width: 100%;
+}
+.callus{
+  background-color: white;
+  padding:1rem 2rem 1rem 2rem;
+}
+.getInTouch{
+  display: flex;
+  background-color: white;
+  padding: 2rem 4rem 4rem 4rem;
+  border-radius: 2rem;
+}
+.contact{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.numberBg{
+  background-color: lightgray;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 2rem;
+}
+.faqCon{
+  border-top: 1px solid var(--lightBlack);
+  border-bottom: 1px solid var(--lightBlack);
+  padding: 5rem 0rem 5rem 1rem;
+  background-color: white;
+  transition-duration: 0.3s;
+}
+.faqCon:hover{
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  background-color: var(--blue);
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+.numberCon{
+  color: var(--darkBlack);
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--darkBlack);
+  border-radius: 2rem;
+  display: grid;
+  
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-right: 3rem;
+  transition-duration: 0.3s;
+}
+.faq{
+  color: var(--darkBlack);
+}
+.faqCon:hover .faq{
+  color: white;
+}
+.faqCon:hover .numberCon{
+  color: white;
+  border: 1px solid white;
+  font-weight: 600;
+  transition-duration: 0.3s;
+}
+.faqWrapper{
+  display: grid;
+  grid-template-columns: 5rem 80%;
 }
 @media only screen and (max-width:1280px) {
 
@@ -303,7 +539,9 @@ width: 1%;
   .textS {
     font-size: 1rem;
   }
-
+  .fg2{
+    gap: 1rem;
+  }
   .marText5 {
     margin: 0
   }
@@ -322,6 +560,15 @@ width: 1%;
 
   .tab2 {
     grid-template-columns: 2rem auto;
+  }
+  .contact{
+    flex-wrap: wrap;
+  }
+  .getInTouch{
+    flex-wrap: wrap;
+  }
+  .img100small2 {
+    width: 100%;
   }
 }
 
@@ -348,6 +595,9 @@ width: 1%;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .aboutSection{
+    flex-wrap: wrap;
+  }
   .container {
     padding: 5rem 1rem 5rem 1rem;
   }
@@ -422,5 +672,66 @@ width: 1%;
 
   .wPer45 {
     width: 100%;
+  }
+  .imgAbout {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+  }
+  
+  .aboutContent {
+    width: 100%;
+    padding: 2rem;
+    margin:0;
+  }
+  .aboutTitle {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1;
+  
+    padding: 0 0 2rem 0;
+  }
+  .secTitle2 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .availableTitle {
+    font-size: 2.5rem;
+    font-weight: 500;
+  
+  }
+  .availableContent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0rem;
+    align-items: center;
+    padding-bottom: 1rem;
+  }
+  .titleLarge {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1;
+  
+  }
+  .contact{
+    flex-wrap: wrap;
+  }
+  .getInTouch{
+    flex-wrap: wrap;
+  }
+  .getInTouch{
+ 
+    padding: 1rem 2rem 1rem 2rem;
+  
+  }
+  .img100small2 {
+    width: 100%;
+  }
+  .faqCon{
+    border-top: 1px solid var(--lightBlack);
+    border-bottom: 1px solid var(--lightBlack);
+    padding:1rem;
+    background-color: white;
+    transition-duration: 0.3s;
   }
 }

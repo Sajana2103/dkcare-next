@@ -27,13 +27,14 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
     }
   }, [path])
   function capitalizeFirstLetter(str) {
-
     // converting first letter to uppercase
     const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
-
     return capitalized;
-}
-
+  }
+  function replaceHyphens(str) {
+    const removed = str.replace(/-/g, ' ');
+    return removed
+  }
   const openMenu = () => {
 
 
@@ -130,7 +131,7 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
             splitWords.current && splitWords.current[1] ?
               <Link target="_self" href={`/${splitWords.current[1]}`}>
                 <h3 className="menu-text1" >
-                  {capitalizeFirstLetter(splitWords.current[1])}
+                  {replaceHyphens(capitalizeFirstLetter(splitWords.current[1]))}
                 </h3>
               </Link>
               :
@@ -142,11 +143,11 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
 
             {
               splitWords.current && splitWords.current[2] ?
-             <span>
-               <span className="seperator">&#62;</span>
-              <span>{capitalizeFirstLetter(splitWords.current[2])}</span>
-             </span> 
-             : <></>
+                <span>
+                  <span className="seperator">&#62;</span>
+                  <span>{capitalizeFirstLetter(splitWords.current[2])}</span>
+                </span>
+                : <></>
             }
           </h3>
         </div>
