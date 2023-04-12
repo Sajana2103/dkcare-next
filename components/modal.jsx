@@ -11,6 +11,7 @@ import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import { SplitText } from 'gsap/dist/SplitText';
 
 import ServicesComponent from "./pages/services/services-component";
+import ContactUsHTML from "./pages/contact-us/contact-us-HTML";
 
 
 const Modal = ({ modalOpen, pageName, openModal, setModalOpen }) => {
@@ -151,7 +152,7 @@ const Modal = ({ modalOpen, pageName, openModal, setModalOpen }) => {
       page = <PressRelease />
       break;
     case 'contact':
-      page = <ExpertiseComponent />
+      page = <ContactUsHTML/>
       break;
     case 'services':
       page = <ServicesComponent />
@@ -169,7 +170,16 @@ const Modal = ({ modalOpen, pageName, openModal, setModalOpen }) => {
       }
     }}>
       <div className="modal-container">
+        <div className="modalCloseBtnWrapper" id="modal-close" onClick={(e) => {
+      console.log('Modal component pagename: ', e)
+      if (e.target.id === 'modal-close') {
 
+        if (pageName.location === 'home') openModal()
+        else setModalOpen(false)
+      }
+    }}>
+          <div className="modalClose">Close</div> <div className="modalCloseX">X</div>
+        </div>
         <div ref={modalRef} className="modal" id="modal-content">
 
           {page}

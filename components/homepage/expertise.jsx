@@ -44,7 +44,7 @@ const Expertise = ({ setPageName, openModal }) => {
                 <div name="contact" 
                 onClick={() => {
                   setPageName({ pageName: 'contact', location: 'home' })
-                  openModal('home','expertise')
+                  openModal('home','contact-us')
                 }}
                 >
                   <Button name={'Contact us'} />

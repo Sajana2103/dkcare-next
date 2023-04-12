@@ -40,8 +40,26 @@
 .tab2 {
   display: grid;
   grid-template-columns: 20% auto;
+  align-items: center;
+  transition-duration: 0.3s;
 }
-
+.tab2 span{
+padding-right: 0.5rem;
+}
+.tab2:hover {
+ background-color: var(--blue);
+ cursor: pointer;
+ transition-duration: 0.3s;
+}
+.tab2:hover h4 {
+  color: white;
+  
+  transition-duration: 0.3s;
+ }
+ .tab2:hover span {
+  color: white;
+  transition-duration: 0.3s;
+ }
 .container {
   padding: 5rem 10rem 5rem 10rem;
 }
@@ -158,7 +176,7 @@
 .servicesNemt {
   display: flex;
   flex-wrap: nowrap;
-  gap: 2rem;
+
 }
 
 .wPer45 {
@@ -170,8 +188,8 @@
 
 .ourTechnologies h4 {
   width: 100%;
-
-  margin-bottom: 0.5rem;
+  padding: 1rem 0 1rem 1rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 .ourTechnologies span {
@@ -343,11 +361,49 @@
   height: 35px;
   width: 35px;
   border-radius: 1.5rem;
-
 }
-
+.circle2 {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 1.5rem;
+  background-color: var(--darkBlack);
+  justify-self: end;
+  margin-right: 7px;
+}
 .applyNow {
   width: 100%;
+}
+.numberBtnWrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  gap:2rem;
+  align-items: center;
+  justify-content: center;
+
+}
+.numberBtn{
+  display:grid;
+  /* padding: 5px; */
+  justify-content: center;
+  background-color: #e7ebee;
+  border-radius: 2rem;
+  border: transparent 1px solid;
+  width: auto;
+  height: 50px;
+  align-items: center;
+}
+.numberBtnCon{
+  /* style={{ display: 'grid', alignItems: 'center', gridTemplateColumns: 'auto 50px' }} */
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 50px;
+
 }
 .callus{
   background-color: white;
@@ -365,9 +421,18 @@
   justify-content: center;
 }
 .numberBg{
-  background-color: lightgray;
+  background-color: #e7ebee;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 2rem;
+}
+.numberBg2{
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 2rem;
+}
+.numberBg2 h3{
+  font-size: 1.25rem;
+  width: 100%;
+
 }
 .faqCon{
   border-top: 1px solid var(--lightBlack);
@@ -488,7 +553,15 @@
   }
   
 } */
+@media only screen and (max-width:1400px) {
+  .numberBtnWrapper{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+ 
+}
 @media only screen and (max-width:1080px) {
+
   .container {
     padding: 5rem 1rem 5rem 1rem;
   }
@@ -574,6 +647,19 @@
 }
 
 @media only screen and (max-width:800px) {
+  .circle2 {
+ 
+    height: 25px;
+    width: 25px;
+
+    background-color: var(--darkBlack);
+
+    margin-right: 7px;
+  }
+  .circle2 svg{
+    height: 15px;
+    width: 15px;
+  }
   .textXL {
     font-size: 1.5rem;
   }
@@ -734,5 +820,21 @@
     padding:1rem;
     background-color: white;
     transition-duration: 0.3s;
+  }
+  .numberBg2 h3{
+    font-size: 1rem;
+  }
+  .circle2 {
+ 
+    height: 25px;
+    width: 25px;
+
+    background-color: var(--darkBlack);
+
+    margin-right: 7px;
+  }
+  .circle2 svg{
+    height: 15px;
+    width: 15px;
   }
 }

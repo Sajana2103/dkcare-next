@@ -15,8 +15,8 @@ const TechnologiesHTML = () => {
       </Head>
       <div id="technologies-intro" className={cls('pageContainer',styles.container)}>
 
-        <div className={cls("gap40", styles.flex2)}>
-          <div className="wPer40">
+        <div className={cls("fg", styles.flex2)}>
+          <div className="wPer47">
 
             <h1 className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>Efficient NEMT Technologies</h1>
 
@@ -31,7 +31,7 @@ const TechnologiesHTML = () => {
               <p className={cls("text-med bold blue  pdTopBtm", styles.pdTopBtm, styles.textM)}>Scroll down for more information</p>
             </div>
           </div>
-          <Image alt="Reliability" className={styles.img50} width={400} height={100}
+          <Image alt="Reliability" className={cls('',styles.img50)} width={400} height={100}
             src="/Dk-Care-LLC-about-us-2.jpg" />
         </div>
       </div>
@@ -42,12 +42,12 @@ const TechnologiesHTML = () => {
         >Non-Emergency Medical Transportation</h2>
 
 
-        <div className={cls(styles.servicesNemt)} >
-          <div className={cls(styles.wPer45)}   >
+        <div className={cls('fg5',styles.servicesNemt)} >
+          <div className={cls('wPer47',)}   >
 
 
-            <div id='' className={cls("flex blue bold ", styles.ourTechnologies, styles.textS)} >
-              <div className="section flex " style={{ flexWrap: 'wrap', }}>
+            <div id='' className={cls(" blue semi-bold ",styles.flex2, styles.ourTechnologies, styles.textS)} >
+              <div className={cls('section',styles.flex2, )} style={{ flexWrap: 'wrap', }}>
                 <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4>Doctors Appointments</h4><span >&gt;</span></div>
                 <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4 >Physical Therapy</h4><span >&gt;</span></div>
                 <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4 >Dialysis Treatment</h4><span >&gt;</span></div>
@@ -56,7 +56,7 @@ const TechnologiesHTML = () => {
 
             </div>
           </div>
-          <p className={cls(" semi-bold blue wPer2 ", styles.textL,)}
+          <p className={cls(" semi-bold blue wPer47 ", styles.textL,)}
           >NEMT is most often utilized by eligible Medicaid and Medicare memebers
             requesting a ride to their medical appointments.
           </p>

@@ -131,7 +131,7 @@ const CompanyHTML = (props) => {
             and equipment to provide the best transportation experience for our clients.</p>
           <p className={cls("wPer2 text-large blue bold  pdTopBtm", styles.pdTopBtm, styles.textM)}>
             We aim to create a culture of excellence, where our team members are empowered to go above and
-            beyond to deliver exceptional service and make a difference in people's lives.</p>
+            beyond to deliver exceptional service and make a difference in people&apos;s lives.</p>
         </div>
       </div>
 
@@ -225,7 +225,8 @@ const CompanyHTML = (props) => {
 
             <div className="team-member-wrapper" >
               <div className="team-member" >
-                <Image src="/images/team-members/team1.jpg" className='team-img' height={400} width={300} />
+                <Image src="/images/team-members/team1.jpg" alt="Team member DK Care LLC"
+                 className='team-img' height={400} width={300} />
                 <h1 className={cls('darkBlack tl', styles.secTitle2)}>Nemal Duminda Imaduwa</h1>
                 <br />
                 <div className='bd-line-wrapper'>
@@ -251,7 +252,8 @@ const CompanyHTML = (props) => {
 
             <div className="team-member-wrapper" >
               <div className="team-member" >
-                <Image src="/images/team-members/team1.jpg" className='team-img' height={400} width={300} />
+                <Image src="/images/team-members/team1.jpg" alt="Team member DK Care LLC"
+                 className='team-img' height={400} width={300} />
                 <h1 className={cls('darkBlack tl', styles.secTitle2)}>Nemal Duminda Imaduwa</h1>
                 <br />
                 <div className='bd-line-wrapper'>
@@ -264,7 +266,8 @@ const CompanyHTML = (props) => {
 
             <div className="team-member-wrapper" >
               <div className="team-member" >
-                <Image src="/images/team-members/team1.jpg" className='team-img' height={400} width={300} />
+                <Image src="/images/team-members/team1.jpg" alt="Team member DK Care LLC"
+                 className='team-img' height={400} width={300} />
                 <h1 className={cls('darkBlack tl', styles.secTitle2)}>Nemal Duminda Imaduwa</h1>
                 <br />
                 <div className='bd-line-wrapper'>
@@ -277,7 +280,7 @@ const CompanyHTML = (props) => {
 
             <div className="team-member-wrapper" >
               <div className="team-member" >
-                <Image src="/images/team-members/team1.jpg" className='team-img' height={400} width={300} />
+                <Image src="/images/team-members/team1.jpg" alt="Team member DK Care LLC" className='team-img' height={400} width={300} />
                 <h1 className={cls('darkBlack tl', styles.secTitle2)}>Nemal Duminda Imaduwa</h1>
                 <br />
                 <div className='bd-line-wrapper'>
@@ -415,7 +418,7 @@ const CompanyHTML = (props) => {
 
       </div>
 
-      <div id="company-collaborations" className={cls('pageContainer', styles.container)}>
+      <div id="company-careers" className={cls('pageContainer', styles.container)}>
 
         <h1 className={cls(" blue bold text-large split-text ", styles.mainTitle)}>
           Come work with us!</h1>
@@ -455,7 +458,7 @@ const CompanyHTML = (props) => {
                     if (job.title === title) {
 
                       return (
-                        <div className={cls(styles.jobCon,)}>
+                        <div  key={jId} className={cls(styles.jobCon,)}>
                           <div className={cls(styles.flex2)}>
                             <p className={cls('darkBlack semi-bold', styles.textM,)}>{job.occupation}</p>
                             <p className={cls('lightBlack semi-bold', styles.textM,)}>&nbsp;{job.location ? ` - ${job.location}` : ''}</p>

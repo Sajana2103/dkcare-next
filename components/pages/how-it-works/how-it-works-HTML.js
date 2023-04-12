@@ -8,6 +8,7 @@ import NextPageBtn from '../../svg-components/nextpage-btn'
 import { gsap } from "gsap/dist/gsap";
 import { SplitText } from 'gsap/dist/SplitText';
 import { useEffect, useRef } from 'react'
+import NumberBtn from './numberBtn'
 
 const HowItWorksHTML = () => {
   const howRef = useRef()
@@ -179,7 +180,7 @@ const HowItWorksHTML = () => {
               <div className={cls(styles.servicesNemt, styles.pdTopBtm)} >
 
                 <div id='' className={cls("flex blue bold ", styles.ourTechnologies, styles.textS)} >
-                  <div className="section flex " style={{ flexWrap: 'wrap', }}>
+                  <div className={cls('section',styles.flex2, )} style={{ flexWrap: 'wrap', }}>
                     <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4>Doctors Appointments</h4><span >&gt;</span></div>
                     <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4 >Medicaid.Gov</h4><span >&gt;</span></div>
                     <div className={cls('bd-btm-blue2 semi-bold', styles.textM, styles.listItems, styles.tab2)}><h4 >United Healthcare</h4><span >&gt;</span></div>
@@ -201,31 +202,14 @@ const HowItWorksHTML = () => {
                 </p>
                 <div className="title-bd-black" ></div>
               </div>
-              <div className={cls(styles.pdTopBtm)} >
+              <div  className={cls(styles.pdTopBtm)} >
 
                 <p className={cls('darkBlack semi-bold', styles.textM, styles.pdTopBtm)}>
                   You can always call us for support
                 </p>
-                <div className={cls('fg5 ', styles.contact,)} >
-                  <div className="contact-number">
-                    <h2 className="lightBlack semi-bold text-xlarge tc">Dispatch Number</h2>
-                    <div className={cls(styles.numberBg)}>
-                      <h3 className="darkBlack ">
-                        <a href="tel://845-705-9741">845-705-9741</a>
-                      </h3></div>
-
-                  </div>
-                  <div className="contact-number">
-                    <h2 className="lightBlack semi-bold text-xlarge tc">Office Number</h2>
-                    <div className={cls(styles.numberBg)}>
-                      <h3 className="darkBlack">
-                        <a href="tel://845-214-0212">
-                          845-214-0212</a>
-
-                      </h3></div>
-
-                  </div>
-
+                <div style={{display:'grid',alignItems:'center',height:'20vh'}}>
+     
+                    <NumberBtn/>
                 </div>
               </div>
             </div>

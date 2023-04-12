@@ -1,6 +1,6 @@
-import Image from "next/image";
+import NextPageBtn from "../svg-components/nextpage-btn";
 import React from "react";
-
+import Link from "next/link";
 const Covid = () => {
   return (
     <div className="main-section" id="covid">
@@ -30,8 +30,11 @@ const Covid = () => {
           </div>
         </div>
         <div id="covid-aboutus">
-          <button><Image height={200} width={200} alt="Dk Care Expertise Covid Prevention" src="/right-arrow.svg" /></button>
-          <h1 className="title white">About us</h1>
+        <div id="" className="nextBtn">
+          <Link href='/company'> <button><NextPageBtn /></button></Link>
+          <h1 className="title white">About Us</h1>
+        </div>
+         
         </div>
       </div>
 

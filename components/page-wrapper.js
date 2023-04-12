@@ -20,31 +20,38 @@ const PageWrapper = (props) => {
     let quotes = document.querySelectorAll('.split-text')
     let lineWrapper = document.querySelectorAll('.bd-line-wrapper')
     let lines = document.querySelectorAll('.bd-line')
+    console.log(lineWrapper,lines)
     if(lineWrapper){
       lineWrapper.forEach((line,idx) =>{
        let currentIdx = idx*2
-          gsap.from(lines[currentIdx], {
-            scaleX: 0,
+       gsap.set(lines[currentIdx],{scaleX:0})
+       gsap.set(lines[currentIdx+1],{scaleX:0})
+          gsap.to(lines[currentIdx], {
+            scaleX: 1,
             duration: 2,
             transformOrigin: "left center",
             ease: "power2.inOut",
             scrollTrigger: {
               trigger: lineWrapper[idx],
-              start: "top 75%",
-              toggleActions: "play none none reverse"
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+              // markers:true,
+              // id:'lines'
             }
           });
-          gsap.from(lines[currentIdx+1], {
-            scaleX: 0,
+          gsap.to(lines[currentIdx+1], {
+            scaleX: 1,
             duration: 2,
             transformOrigin: "left center",
-            ease: "power2.inOut",
+            ease: "power2.inOut",onComplete:()=>console.log('complete',lines[currentIdx+1]),
             scrollTrigger: {
               trigger: lineWrapper[idx],
-              start: "top 75%",
+              start: "top 85%",
               toggleActions: "play none none reverse"
             }
           });
+      
+        
         
       })
     }   
@@ -63,9 +70,9 @@ const PageWrapper = (props) => {
         scrollTrigger: {
           trigger: quote,
           toggleActions: "restart pause resume reverse",
-          start: "top 75%",
+          start: "top 85%",
         },
-        duration: 0.6,
+        duration: 0.5,
         ease: "circ.out",
         y: 150,
         stagger: 0.1,
@@ -97,7 +104,8 @@ const PageWrapper = (props) => {
       })
     }
       setPixelRatio(window.devicePixelRatio)
-      if(titles.length){
+      if(titles.length && scrollSmooth.current){
+        
         setupSplits()
         
       }

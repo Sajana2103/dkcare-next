@@ -66,7 +66,6 @@ section {
 .bd-line {
   height: 1px;
   background-color: var(--blue);
-
 }
 .bd-line-b{
   height: 1px;
@@ -99,10 +98,11 @@ section {
 .btn-black {
   background-color: #333333;
   border-radius: 2rem;
-  width: 8rem;
+  width: max-content;
   height: 2.5rem;
   display: grid;
   align-items: center;
+  padding-right:1rem ;
   padding-left: 1ch;
   padding-top: 0.5ch;
   padding-bottom: 0.5ch;
@@ -1040,7 +1040,11 @@ progress::-webkit-progress-value {
   height: 100%;
 }
 
-
+.numberBtnWrapper{
+  display: grid;
+  align-items: center;
+  height: 20vh;
+}
 #contact-numbers {
   display: grid;
   grid-template-rows: 30% 30%;
@@ -1064,12 +1068,15 @@ progress::-webkit-progress-value {
 
 #contact-numbers .number {
   display: grid;
+  grid-template-columns: auto 50px;
   justify-content: center;
   background-color: white;
   border-radius: 2rem;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding-left:1rem ;
   font-weight: 900;
-
+align-items: center;
+width: max-content;
+height: 50px;
 }
 
 #menu-other-links {
@@ -1115,6 +1122,60 @@ progress::-webkit-progress-value {
 #portal{
   display: none;
 }
+.modalCloseBtnWrapper{
+  display: grid;
+  grid-template-columns: auto 3.5rem;
+  align-items: center; 
+  position: absolute;
+  right:7vw;
+  top:6vh;
+  transition-duration: 0.3s;
+
+}
+.modalCloseBtnWrapper:hover .modalCloseX{
+  color: var(--blue);
+  transition-duration: 0.3s;
+ scale: 1.1;
+ font-size:1.75rem;
+ cursor: pointer;
+ background-color: white;
+}
+.modalCloseBtnWrapper:hover .modalClose{
+  opacity: 1;
+  transition-duration: 0.3s;
+}
+.modalCloseX{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border-radius: 3rem;
+
+  background-color: var(--darkBlack);
+  color: white;
+  height: 3.5rem;
+  width: 3.5rem;
+  transition-duration: 0.3s;
+  pointer-events: none;
+}
+.modalClose{
+  color: white;
+  display: grid;
+  border: 2px solid white;
+  height: 2.5rem;
+  width: 5rem;
+  text-align: center;
+  align-items: center;
+  margin-right: -0.5rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  opacity: 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  pointer-events: none;
+}
+
 .modal-wrapper {
   top: 0;
   left: 0;
@@ -1471,7 +1532,7 @@ progress::-webkit-progress-value {
   justify-items: center;
 }
 
-
+/* 
 #covid button {
   transform: translate(0, 4rem);
   width: 7rem;
@@ -1483,7 +1544,7 @@ progress::-webkit-progress-value {
 #covid img {
   width: 2rem;
   height: 2rem;
-}
+} */
 
 .nextBtn {
   padding: 10rem 0 2rem 0;
@@ -1494,6 +1555,10 @@ progress::-webkit-progress-value {
 }
 
 .nextBtn button {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr;
   transform: translate(0, 4rem);
   width: 7rem;
   height: 7rem;
@@ -1506,6 +1571,9 @@ progress::-webkit-progress-value {
   transition-duration: 0.3s;
   border: 2px white solid;
   cursor: pointer;
+  width: 8rem;
+  height: 8rem;
+ 
 }
 #right-arrow{
   scale: 40%;
@@ -1886,7 +1954,8 @@ progress::-webkit-progress-value {
 }
 
 @media only screen and (max-width: 1200px) {
-  #company-intro{
+  .number h3 {
+    font-size: 1rem;
   }
   #anchors {
 
@@ -2259,6 +2328,18 @@ progress::-webkit-progress-value {
 }
 
 @media only screen and (max-width: 800px) {
+  #contact-numbers .number {
+    background-color: white;
+    border-radius: 2rem;
+    font-weight: 900;
+    display: grid;
+    grid-template-columns: auto 40px;
+    justify-content: center;
+    font-weight: 900;
+  align-items: center;
+  width: max-content;
+  height: 40px;
+  }
 
   .desktop-transport-grid2,
   #desktop-transport-2 {
@@ -2823,10 +2904,10 @@ progress::-webkit-progress-value {
 
   #contact-numbers .number {
     background-color: white;
-    border-radius: 2rem;
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    font-weight: 900;
-    height: 1rem;
+ 
+    grid-template-columns: auto 40px;
+
+  height: 40px;
   }
 
   #contact-numbers h3 {
@@ -3154,6 +3235,7 @@ progress::-webkit-progress-value {
     scale: 0.8;
     border-radius: 5rem;
     transform: translateY(2rem);
+    margin-bottom: 1rem;
   }
 
   .nextBtn img {
@@ -3217,8 +3299,9 @@ progress::-webkit-progress-value {
     overflow-x: scroll;
     
   }
-  #right-arrow{
-    enable-background:new 0 0 30 30;
-  
+  .numberBtnWrapper{
+    display: grid;
+    align-items: center;
+    height: 35vh;
   }
 }
