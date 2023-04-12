@@ -56,7 +56,9 @@ section {
   pointer-events: none;
   opacity: 0.5;
 }
-
+.deactive{
+  pointer-events: none;
+}
 .split-line {
   overflow: hidden;
 }
@@ -392,7 +394,12 @@ section {
 .bd-btm-black {
   border-bottom: var(--darkBlack) 1px solid;
 }
+.div1px-black {
+  background-color: var(--lightBlack);
+  height: 1px;
+  width: auto;
 
+}
 .btn-orange {
   background-color: #ed7036;
   display: grid;
@@ -443,9 +450,11 @@ section {
 }
 .title-bd-black2 {
   width: auto;
-  border-bottom: var(--darkBlack) solid 1px;
-  margin-left: 1ch;
-  transform: translate(0, -40%) ;
+  height: 1px;
+  background-color: var(--lightBlack);
+  /* border-bottom: var(--darkBlack) solid 1px; */
+  margin-left: 2ch;
+  transform: translate(0, 10px) ;
 }
 .bd-title-blue {
   width: 100%;
@@ -1854,9 +1863,13 @@ progress::-webkit-progress-value {
   background-repeat: no-repeat;
 
 }
+.questionBox{
+  background-color: white;
+}
 .answer{
   height: 0px;
-  display: none;
+  overflow: hidden;
+  margin-left: 5rem;
 }
 @media only screen and (max-width: 1400px) {
   #desktop-third h1 {

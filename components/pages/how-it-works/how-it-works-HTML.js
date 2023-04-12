@@ -6,34 +6,59 @@ import styles from '../../../src/styles/Pages.module.css'
 import Head from "next/head"
 import NextPageBtn from '../../svg-components/nextpage-btn'
 import { gsap } from "gsap/dist/gsap";
+import { SplitText } from 'gsap/dist/SplitText';
 import { useEffect, useRef } from 'react'
+
 const HowItWorksHTML = () => {
   const howRef = useRef()
-  let clicked = useRef(false)
-  let faqTl = useRef()
+
   function setupFaq() {
-    let questions = document.querySelectorAll('.question')
+    let questionBoxes = document.querySelectorAll('.questionBox')
     let answers = document.querySelectorAll('.answer')
-    console.log('questions answers',questions,answers)
-    // let faqTl
-    // if (!faqTl) {
-    //   faqTl = gsap.timeline({ defaults: { duration: 1, ease: 'Power4.easeIn' } })
-    //   faqTl
-    //     .pause()
-    //     .fromTo('.answer', { display: 'none' }, { display: 'block', duration: 0 })
-    //     .fromTo('.answer', { height: '0px' }, { height: 'auto', })
-    // }
-    // if (!clicked.current) {
-    //   clicked.current = true
-    //   faqTl.play()
-    // } else {
-    //   clicked.current = false
-    //   faqTl.reverse()
-    // }
+
+    questionBoxes.forEach((q, idx) => {
+      let smallTitle = q.querySelectorAll('.title-bd-container')
+      let bdBtm = q.querySelectorAll('.div1px-black')
+      let question = q.querySelector('.question')
+      let number = q.querySelector('.qNum')
+      let smTitleLine = q.querySelector('.title-bd-black2')
+      gsap.set(smallTitle[0], { opacity: 0 })
+      gsap.set(bdBtm[0], { width: 0, })
+
+      let clicked = false
+      let faqTl
+      q.addEventListener('click', () => {
+        if (!faqTl) {
+
+          faqTl = gsap.timeline({
+            defaults: { duration: 0.5, ease: 'Power4.easeIn' },
+            onReverseComplete: () => faqTl.revert()
+          })
+          faqTl
+            .pause()
+            .to(q, { backgroundColor: 'white' }, '<')
+            .to(question, { color: 'var(--blue)' }, '<')
+            .to(number, { border: 'var(--blue) 1px solid', color: 'var(--blue)' }, '<')
+            .fromTo(smallTitle[0], { opacity: 0 }, { opacity: 1 })
+            .fromTo(smTitleLine, { width: '0px' }, { width: 'auto' },'<')
+            .to(bdBtm[0], { width: 'auto' }, '<')
+            .fromTo(answers[idx], { height: '0px' }, { height: 'auto', })
+        }
+        if (!clicked) {
+          clicked = true
+          faqTl.play(0)
+        } else {
+          clicked = false
+          faqTl.reverse()
+        }
+      })
+    })
+
   }
 
   useEffect(() => {
     if (howRef.current) {
+      gsap.registerPlugin(SplitText);
       setupFaq()
     }
   }, [])
@@ -98,33 +123,6 @@ const HowItWorksHTML = () => {
             coverage options.</p>
         </div>
       </div>
-
-      {/* <div id="technologies-nemt" className={cls('pageContainer', styles.container)}>
-        <h1 className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>Our Technologies</h1>
-        <h2 style={{ paddingBottom: '4rem' }} className={cls("split-text blue semi-bold ", styles.textXL)}
-        >Non-Emergency Medical Transportation</h2>
-
-
-        <div className={cls(styles.servicesNemt)} >
-          <div className={cls(styles.wPer45)}   >
-
-
-            <div id='' className={cls("flex blue bold ", styles.ourTechnologies, styles.textS)} >
-              <div className="section flex " style={{ flexWrap: 'wrap', }}>
-                <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4>Doctors Appointments</h4><span >&gt;</span></div>
-                <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4 >Physical Therapy</h4><span >&gt;</span></div>
-                <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4 >Dialysis Treatment</h4><span >&gt;</span></div>
-                <div className={cls('bd-btm-blue2 semi-bold', styles.textL, styles.listItems, styles.tab2)}><h4 >Outpatient Surgery</h4><span >&gt;</span></div>
-              </div>
-
-            </div>
-          </div>
-          <p className={cls(" semi-bold blue wPer2 ", styles.textL,)}
-          >NEMT is most often utilized by eligible Medicaid and Medicare memebers
-            requesting a ride to their medical appointments.
-          </p>
-        </div>
-      </div> */}
 
       <div id="how-eligible" className={cls('blue-gr2 pageContainer', styles.container)}>
         <div className={cls('fg', styles.flex2)}>
@@ -281,6 +279,7 @@ const HowItWorksHTML = () => {
           <h1 className={cls('split-text blue howfaq pageTitle', styles.mainTitle,)}>FAQ</h1>
 
         </div>
+
         <div className="">
           <div className="title-bd-container hero-titles">
             <p className="darkBlack bold">Some of the most requested questions from us</p>
@@ -308,27 +307,25 @@ const HowItWorksHTML = () => {
 
         </div>
 
-        <div className={cls('question', styles.faqCon)}>
-
+        <div className={cls('questionBox', styles.faqCon)}>
           <div className={cls('ai', styles.faqWrapper)}>
-            <div className={cls(styles.numberCon)}>01</div>
+            <div className={cls('qNum', styles.numberCon)}>01</div>
             <div>
 
-              <div className='bd-btm-black' >
+              <div className='' >
                 <div className="title-bd-container ">
                   <p className="darkBlack bold">Some of the most requested questions from us</p>
                   <div className=" title-bd-black2" ></div>
                 </div>
-                <p className={cls(' semi-bold', styles.textL, styles.faq, styles.pdTopBtm)}>
+                <p className={cls('question semi-bold', styles.textL, styles.faq, styles.pdTopBtm)}>
                   What is DK Care?
                 </p>
-
+                <div className='div1px-black'></div>
               </div>
 
             </div>
           </div>
-          <div style={{ marginLeft: '5rem' }} className='answer'>
-
+          <div className='answer'>
             <p className={cls('wPer3 lightBlack semi-bold', styles.textS, styles.pdTopBtm)}>
               DK Care provides transportation services to and from medical appointments,
               procedures, and treatments for patients with medical insurance coverage.
@@ -336,6 +333,126 @@ const HowItWorksHTML = () => {
           </div>
         </div>
 
+        <div className={cls('questionBox', styles.faqCon)}>
+          <div className={cls('ai', styles.faqWrapper)}>
+            <div className={cls('qNum', styles.numberCon)}>02</div>
+            <div>
+              <div className='' >
+                <div className="title-bd-container ">
+                  <p className="darkBlack bold">More information on Services page</p>
+                  <div className="title-bd-black2" ></div>
+                </div>
+                <p className={cls('question semi-bold', styles.textL, styles.faq, styles.pdTopBtm)}>
+                  What Services does DK Care offer?
+                </p>
+                <div className='div1px-black'></div>
+              </div>
+            </div>
+          </div>
+          <div className='answer'>
+            <p className={cls('wPer3 lightBlack semi-bold', styles.textS, styles.pdTopBtm)}>
+              DK Care provides transportation services to and from medical appointments,
+              procedures, and treatments for patients with medical insurance coverage.
+            </p>
+          </div>
+        </div>
+
+        <div className={cls('questionBox', styles.faqCon)}>
+          <div className={cls('ai', styles.faqWrapper)}>
+            <div className={cls('qNum', styles.numberCon)}>03</div>
+            <div>
+              <div className='' >
+                <div className="title-bd-container ">
+                  <p className="darkBlack bold">More information on Services page</p>
+                  <div className="title-bd-black2" ></div>
+                </div>
+                <p className={cls('question semi-bold', styles.textL, styles.faq, styles.pdTopBtm)}>
+                  What Types of vehicles does DK Care have?
+                </p>
+                <div className='div1px-black'></div>
+              </div>
+            </div>
+          </div>
+          <div className='answer'>
+            <p className={cls('wPer3 lightBlack semi-bold', styles.textS, styles.pdTopBtm)}>
+              DK Care provides transportation services to and from medical appointments,
+              procedures, and treatments for patients with medical insurance coverage.
+            </p>
+          </div>
+        </div>
+
+        <div className={cls('questionBox', styles.faqCon)}>
+          <div className={cls('ai', styles.faqWrapper)}>
+            <div className={cls('qNum', styles.numberCon)}>04</div>
+            <div>
+              <div className='' >
+                <div className="title-bd-container ">
+                  <p className="darkBlack bold">More information on Services page</p>
+                  <div className="title-bd-black2" ></div>
+                </div>
+                <p className={cls('question semi-bold', styles.textL, styles.faq, styles.pdTopBtm)}>
+                  Are DK Care drivers trained and licensed?
+                </p>
+                <div className='div1px-black'></div>
+              </div>
+            </div>
+          </div>
+          <div className='answer'>
+            <p className={cls('wPer3 lightBlack semi-bold', styles.textS, styles.pdTopBtm)}>
+              DK Care provides transportation services to and from medical appointments,
+              procedures, and treatments for patients with medical insurance coverage.
+            </p>
+          </div>
+        </div>
+
+        <div className={cls('questionBox', styles.faqCon)}>
+          <div className={cls('ai', styles.faqWrapper)}>
+            <div className={cls('qNum', styles.numberCon)}>05</div>
+            <div>
+              <div className='' >
+                <div className="title-bd-container ">
+                  <p className="darkBlack bold">More information on Services page</p>
+                  <div className="title-bd-black2" ></div>
+                </div>
+                <p className={cls('question semi-bold', styles.textL, styles.faq, styles.pdTopBtm)}>
+                  What if I need to cancel or reschedule a ride?
+                </p>
+                <div className='div1px-black'></div>
+              </div>
+            </div>
+          </div>
+          <div className='answer'>
+            <p className={cls('wPer3 lightBlack semi-bold', styles.textS, styles.pdTopBtm)}>
+              DK Care provides transportation services to and from medical appointments,
+              procedures, and treatments for patients with medical insurance coverage.
+            </p>
+          </div>
+        </div>
+
+        <div className={cls('questionBox', styles.faqCon)}>
+          <div className={cls('ai', styles.faqWrapper)}>
+            <div className={cls('qNum', styles.numberCon)}>06</div>
+            <div>
+              <div className='' >
+                <div className="title-bd-container ">
+                  <p className="darkBlack bold">More information on Services page</p>
+                  <div className="title-bd-black2" ></div>
+                </div>
+                <p className={cls('question semi-bold', styles.textL, styles.faq, styles.pdTopBtm)}>
+                  Do your vehicles have GPS tracking?
+                </p>
+                <div className='div1px-black'></div>
+              </div>
+            </div>
+          </div>
+          <div className='answer'>
+            <p className={cls('wPer3 lightBlack semi-bold', styles.textS, styles.pdTopBtm)}>
+              DK Care provides transportation services to and from medical appointments,
+              procedures, and treatments for patients with medical insurance coverage.
+            </p>
+          </div>
+        </div>
+{/* END OF FAQ */}
       </div>
 
       <div id="how-getInTouch" className={cls('blue-gr2 pageContainer', styles.container)}>

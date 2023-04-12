@@ -371,14 +371,14 @@
 }
 .faqCon{
   border-top: 1px solid var(--lightBlack);
-  border-bottom: 1px solid var(--lightBlack);
+  /* border-bottom: 1px solid var(--lightBlack); */
   padding: 5rem 0rem 5rem 1rem;
   background-color: white;
   transition-duration: 0.3s;
 }
 .faqCon:hover{
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+  /* border-top: 1px solid white;
+  border-bottom: 1px solid white; */
   background-color: var(--blue);
   cursor: pointer;
   transition-duration: 0.3s;
@@ -399,6 +399,7 @@
 }
 .faq{
   color: var(--darkBlack);
+  margin-bottom: 1rem;
 }
 .faqCon:hover .faq{
   color: white;
