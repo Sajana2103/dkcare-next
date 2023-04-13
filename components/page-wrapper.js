@@ -13,14 +13,11 @@ const PageWrapper = (props) => {
   const [titles,setTitles] = useState([])
   const [anchors,setAnchors] = useState([])
   const scrollSmooth = useRef()
-  console.log(props)
   const contentRef = useRef()
-  console.log('expertise ')
   function setupSplits() {
     let quotes = document.querySelectorAll('.split-text')
     let lineWrapper = document.querySelectorAll('.bd-line-wrapper')
     let lines = document.querySelectorAll('.bd-line')
-    console.log(lineWrapper,lines)
     if(lineWrapper){
       lineWrapper.forEach((line,idx) =>{
        let currentIdx = idx*2
@@ -50,9 +47,6 @@ const PageWrapper = (props) => {
               toggleActions: "play none none reverse"
             }
           });
-      
-        
-        
       })
     }   
     quotes.forEach(quote => {

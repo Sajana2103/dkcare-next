@@ -44,39 +44,80 @@ const CompanyHTML = (props) => {
   console.log(titles)
   useEffect(() => {
     if (companyRef.current) {
-
+    let size1080 = window.innerWidth > 1080
+    gsap.registerPlugin(ScrollTrigger,Draggable)
       if (window.devicePixelRatio < 2) {
-        let outTeamWrapper = document.querySelectorAll("#our-team-wrapper")
+        // let outTeamWrapper = document.querySelectorAll("#our-team-wrapper")
 
-        let minX = -(outTeamWrapper[0].getBoundingClientRect().width * outTeamWrapper.length - 1)
+        // let minX = -(outTeamWrapper[0].getBoundingClientRect().width * outTeamWrapper.length - 1)
 
-        gsap.registerPlugin(Draggable)
 
-        Draggable.create('#team-members-con',
-          {
-            bounds: { minX: minX, maxX: 0 },
-            type: 'x',
+        // Draggable.create('#team-members-con',
+        //   {
+        //     bounds: { minX: minX, maxX: 0 },
+        //     type: 'x',
 
-            inertia: true,
-            // autoScroll: 1,
-            edgeResistance: 0.65,
-            // throwProps: true,
-          })
+        //     inertia: true,
+        //     autoScroll: 1,
+        //     edgeResistance: 0.65,
+        //     // throwProps: true,
+        //   })
         let beginningsWrapper = document.querySelectorAll("#beginnings-con")
         let minXBeginnings = -(beginningsWrapper[0].getBoundingClientRect().width * beginningsWrapper.length - 1)
         Draggable.create('#beginnings-content-wrapper',
           {
             bounds: { minX: minXBeginnings, maxX: 0 },
             type: 'x',
-
             inertia: true,
-            // autoScroll: 1,
+            autoScroll: 1,
             edgeResistance: 0.65,
             // throwProps: true,
           })
+          
+          gsap.set("#background-logo", { backgroundPosition: "0 0",scale:0.9 });
+          gsap.set("#company-intro", { backgroundPosition: "0 0",});
+          gsap.set('#vision',{opacity:0,},)          
+          if(!size1080){gsap.set('#companyIntro2',{yPercent:-150})}
+          else {gsap.set('#companyIntro2',{yPercent:-100})}
+          let logoTl = gsap.timeline({defaults:{duration:0.6,ease:'none'},
+          scrollTrigger: {
+            pin: true,
+            trigger: "#companyIntro1",
+            start: "top top",
+            // end: "#company-about",
+            scrub: true,
+            // markers: true
+          },})
+          logoTl.to("#background-logo", { backgroundPosition: "-25vw 0",scale:1
+          });
+          logoTl.to('#mission',{opacity:0,xPercent:-100},'<+=10%')
+          logoTl.to('#vision',{opacity:1,xPercent:size1080?-124:0},'<')          
+
+          let intro2 = gsap.timeline({defaults:{duration:0.6,ease:'Power2.easeIn'},
+          scrollTrigger: {
+            trigger: "#companyIntro2",
+            start: "top bottom",
+            end: "#company-about",
+            scrub: true,
+            // markers: true,
+            id:'companyIntro2'
+          },})
+          intro2.to('#company-intro',{backgroundPosition:size1080?'0 200px':'0 0'},'<')
+          intro2.to('#companyIntro2',{yPercent:size1080?-100:-200},'<')
+      } else {
 
 
+         gsap.set("#background-logo", {scale:0.8 ,backgroundPosition: "-25vw 80%"});
+          gsap.set('#vision',{opacity:0,},)          
+          let logoTl = gsap.timeline({defaults:{duration:1,ease:'none',},
+        scrollTrigger:{trigger:'#companyIntro1',start:'top 100px',toggleActions:'restart complete restart complete'}})
+          logoTl.to("#background-logo", { backgroundPosition: "-25vw 80%",scale:1});
+          logoTl.to('#vision',{opacity:1,},'<')          
+          logoTl.to('#companyIntro2',{yPercent:-50},'<+=50%')
+ 
       }
+     
+      
     }
   }, [])
   return (
@@ -92,12 +133,12 @@ const CompanyHTML = (props) => {
       </div> */}
       <div className='company-intro-top'></div>
       <div className={cls('pageContainer',)}>
-        <div style={{ backgroundColor: '#dce6eb' }}>
+        <div id="companyIntro1" style={{ backgroundColor: '#dce6eb' }}>
           <div id="company-intro" >
             <div id='background-logo'>
               <div className={cls('', styles.introContent1, styles.container)}>
                 <h1 style={{ paddingLeft: '2rem' }} className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>DK Care LLC</h1>
-                <div className={cls('gap40', styles.flex2)}>
+                <div className={cls('gap40 wrap', styles.flex2)}>
                   <div id="mission" className={cls(" wPer40", styles.mission)}>
                     <h2 className={cls('blue semi-bold', styles.textXL)}>Mission</h2>
                     <p className={cls("text-large blue bold  pdTopBtm", styles.pdTopBtm, styles.textL)}>
@@ -111,8 +152,6 @@ const CompanyHTML = (props) => {
 
                   </div>
                 </div>
-
-
                 <br />
                 <div className='wPer1'>
                   <p className={cls('blue  semi-bold', styles.textS)}>Scroll down for more information</p>
@@ -124,14 +163,15 @@ const CompanyHTML = (props) => {
           </div>
         </div>
 
-        <div className={cls('', styles.comapanyIntro2, styles.container)} >
-
+        <div  className={cls('', styles.comapanyIntro2, styles.container)} >
+          <div id="companyIntro2">
           <p className={cls("wPer3 text-large blue bold  pdTopBtm", styles.pdTopBtm, styles.textL)}>
             We focus on continuous improvement and innovation, investing in the latest technologies
             and equipment to provide the best transportation experience for our clients.</p>
           <p className={cls("wPer2 text-large blue bold  pdTopBtm", styles.pdTopBtm, styles.textM)}>
             We aim to create a culture of excellence, where our team members are empowered to go above and
             beyond to deliver exceptional service and make a difference in people&apos;s lives.</p>
+        </div>
         </div>
       </div>
 
@@ -188,11 +228,11 @@ const CompanyHTML = (props) => {
         <div className={cls("gap40", styles.flex2)}>
 
           <div className={cls(styles.availableContent)}>
-            <div className="wPer3">
-              <h2 className={cls('white split-text pageTitle pageSubTitle', styles.availableTitle)}>Available In</h2>
+            <div className={cls(styles.availableTitle)}>
+              <h2 className={cls('white split-text pageTitle pageSubTitle', )}>Available In</h2>
             </div>
-            <div className="wPer2">
-              <p className={cls("split-text white regular ", styles.textL)}
+            <div className={cls( styles.availableCities)}>
+              <p className={cls("split-text white regular tl",)}
               >Dutchess / Orange / Putnam / Ulster / Westchester / Sullivan / Columbia
               </p>
 
@@ -209,6 +249,7 @@ const CompanyHTML = (props) => {
 
       </div>
 
+{/*  Remove this ///
       <div id=" company-team" className={cls('pageContainer', styles.container)}>
         <div className='wPer33'>
           <h2 className={cls('blue split-text ', styles.secTitle2)}>Our team members are our greatest assest</h2>
@@ -293,7 +334,7 @@ const CompanyHTML = (props) => {
 
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div id="company-humble-beginnings" className={cls('blue-gr2 pageContainer',)}>
         <div className='con-pd'>
@@ -477,8 +518,6 @@ const CompanyHTML = (props) => {
             )
           })
         }
-
-
       </div>
 
       <div id="company-solutions" className={cls('blue-gr2 pageContainer', styles.container)}>

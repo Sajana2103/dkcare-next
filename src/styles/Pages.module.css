@@ -283,14 +283,22 @@ padding-right: 0.5rem;
   margin-bottom: 5rem;
 }
 .availableTitle {
-  font-size: 6rem;
+  width:50%;
+  font-size: 3rem;
   font-weight: 500;
 }
+.availableCities{
+width: 50%;
 
+}
+.availableCities p{
+  font-size: 2rem;
+}
 .availableContent {
   display: flex;
-  gap: 2rem;
+  /* gap: 2rem; */
   align-items: center;
+  flex-wrap: wrap;
 
 }
 
@@ -308,7 +316,7 @@ padding-right: 0.5rem;
 }
 /*COMPANY */
 .mission{
-
+ 
 }
 .mission h2{
   padding-left: 2rem;
@@ -316,6 +324,8 @@ padding-right: 0.5rem;
 .mission p{
   background-color: white;
   padding-left: 2rem;
+  padding-right: 2rem;
+
 }
 .vision{
 
@@ -326,6 +336,7 @@ padding-right: 0.5rem;
 .vision p{
   background-color: white;
   padding-left: 2rem;
+  padding-right: 2rem;
 }
 .jobCon {
   padding: 1.5rem;
@@ -345,14 +356,31 @@ padding-right: 0.5rem;
   border: transparent 1px solid;
   width: 150px;
   height: 50px;
+  transition-duration: 0.3s;
+
 }
 
 .applyBtn p {
   color: white;
   font-weight: 500;
   letter-spacing: 1px;
-}
+  transition-duration: 0.3s;
 
+}
+.applyBtn:hover {
+  background-color: #e7ebee;
+  transition-duration: 0.3s;
+ }
+.applyBtn:hover .circle{
+ height: 40px;
+ width: 40px;
+ transition-duration: 0.3s;
+}
+.applyBtn:hover p{
+font-weight: 600;
+color: var(--orange);
+  transition-duration: 0.3s;
+ }
 .circle {
   display: grid;
   align-items: center;
@@ -361,6 +389,8 @@ padding-right: 0.5rem;
   height: 35px;
   width: 35px;
   border-radius: 1.5rem;
+  transition-duration: 0.3s;
+
 }
 .circle2 {
   display: grid;
@@ -561,7 +591,13 @@ padding-right: 0.5rem;
  
 }
 @media only screen and (max-width:1080px) {
-
+  .vision,.mission{
+    width: 50%;
+  }
+  .availableCities,.availableTitle{
+    width: 100%;
+    
+    }
   .container {
     padding: 5rem 1rem 5rem 1rem;
   }
@@ -644,9 +680,42 @@ padding-right: 0.5rem;
   .img100small2 {
     width: 100%;
   }
+  .aboutSection{
+    flex-wrap: wrap;
+  }
+  .aboutContent {
+    width: 100%;
+    padding: 2rem;
+    margin:0;
+  }
+  .aboutTitle {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1;
+  width: 100%;
+    padding: 0 0 2rem 0;
+  }
+  .imgAbout {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+  }
+  .availableCities p{
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (max-width:800px) {
+  
+  .vision,.mission{
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .vision,.mission h2{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
   .circle2 {
  
     height: 25px;
@@ -836,5 +905,17 @@ padding-right: 0.5rem;
   .circle2 svg{
     height: 15px;
     width: 15px;
+  }
+  .jobCon {
+    display: grid;
+    grid-template-columns: 2fr 1fr ;
+    grid-template-rows: 2fr 2fr;
+  }
+
+  .availableCities p{
+    font-size: 1rem;
+  }
+  .availableCities,.availableTitle{
+    width: 100%;
   }
 }

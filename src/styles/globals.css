@@ -821,7 +821,7 @@ progress::-webkit-progress-value {
   color: #1e4d8c;
   height: 100vh;
   position: fixed;
-  width: 10rem;
+  width: max-content;
   top: 45%;
   z-index: 9000;
   display: none;
@@ -1413,7 +1413,7 @@ height: 50px;
 #company-humble-beginnings{
   padding: 5rem 0 5rem 0;
 }
-#company-collaborations{
+#company-careers{
   background-color: #eaedf1;
 }
 .beginnings {
@@ -1923,13 +1923,11 @@ height: 50px;
   background-image: url('/images/company/logo-3d-dkcare-transformed.png');
   background-size:100%;
   /* border: red solid 1px; */
-
-  
   background-attachment: scroll;
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
-
+  background-position: center;
 }
 .questionBox{
   background-color: white;
@@ -1979,7 +1977,19 @@ height: 50px;
 
   #anchors span {
     width: auto;
-    padding: 2%;
+    padding: 5px;
+    border-right: white 2px solid;
+    border-radius: 1px;
+    overflow: hidden;
+    height: 15px;
+    transition-duration: 0.3s;
+
+  }
+  #anchors span:hover {
+    background-color: white;
+    overflow: visible;
+    height: max-content;
+    transition-duration: 0.3s;
   }
 
   #menu-contact {
@@ -3267,17 +3277,16 @@ height: 50px;
   }
   #company-intro{
     background-image: url('/images/company/bg-company-dkcare-transformed.png');
-    background-size:cover;
+    background-size:contain;
     /* width: 100vw; */
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    /* background-attachment: scroll; */
       /* border: red solid 1px; */
   }
   #background-logo{
-    background-image: url('/images/company/logo-3d-dkcare-transformed.png');
-    background-size:contain;
+    background-size:100%;
     /* border: red solid 1px; */
-    background-attachment: scroll;
+    /* background-attachment: scroll; */
     background-position:0px 60%;
     background-repeat: no-repeat;
   
