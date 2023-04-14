@@ -25,6 +25,33 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
       setPath(window.location.pathname)
       splitWords.current = pathname.split('/')
       console.log('split words', pathname, splitWords)
+      // let wrapper = document.querySelector('.page-content-wrapper')
+      // if(wrapper){
+
+      //   console.log('blue gr2',wrapper)
+      //   wrapper.childNodes.forEach((child) => {
+      //     console.log('wrapper children',child.classList.contains('blue-gr2'))
+      //     if(child.classList.contains('blue-gr2')){
+      //       gsap.to('.st0',{
+      //         scrollTrigger:{
+      //           trigger:child,
+      //           start:'top top',
+      //           toggleActions:'play complete reverse reverse'
+      //         },fill:'white',stroke:'white'
+      //       })
+      //     } else {
+      //       gsap.to('.st0',{
+      //         scrollTrigger:{
+      //           trigger:child,
+      //           start:'top top',
+      //           toggleActions:'play complete reverse reverse'
+      //         },fill:'var(--blue)',stroke:'var(--blue)'
+      //       })
+      //     }
+         
+      //   })
+       
+      // }
     }
   }, [path])
   function capitalizeFirstLetter(str) {

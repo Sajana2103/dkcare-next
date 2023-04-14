@@ -8,7 +8,7 @@ const Evolution = ({size}) => {
     <div className="main-section" id="evolution">
             <a id="evolution-anchor"></a>
 
-        <div className="evolution-wrapper blue-gr con-pd con-tb" >
+        <div className="evolution-wrapper blue-gr2 con-pd con-tb" >
           <h1 className="title white split-text" id="evo-title" >The evolution of our company</h1>
           <p className="text-med white evo-tagline max1080">DK Care LLC formed in September 2019 with a
                 couple of fleet and drivers with the mission of providing exceptional NEMT services.</p>

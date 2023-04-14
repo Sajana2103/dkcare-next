@@ -25,7 +25,7 @@ const ContentContainer = ({ backToHero, backToHeroDesktop, isLoaded, skipHeroDes
       console.log('conent container use effect', size, window.devicePixelRatio)
     
       setSize({ width: window.innerWidth, height: window.innerHeight, pixels: window.devicePixelRatio })
-
+      
     }
   }, [contentRef.current, isLoaded])
 

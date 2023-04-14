@@ -364,7 +364,7 @@ const CompanyHTML = (props) => {
             <div className="beginnings-wrapper" >
               <div className="beginnings" >
 
-                <svg version="1.1" id="Isolation_Mode" style={{scale:'1.1' }}  className='beginnings-img' x="0px"
+                <svg version="1.1" id="Isolation_Mode" style={{ scale: '1.1' }} className='beginnings-img' x="0px"
                   y="0px" viewBox="156 -78 612 554" >
 
                   <path class="location1a" d="M506-49.6L606.2,8.2l1.4,0.8l1.6,0.3l120.4,19.5l9.8,1.6l0.6-9.9l2.7-44.8l7.7,0.4l-19.3,299.4l-7.3,106
@@ -485,9 +485,9 @@ const CompanyHTML = (props) => {
             <div className="beginnings-wrapper" >
               <div className="beginnings" >
 
-              <Image loader={customLoader} className={cls('beginnings-img')} width={400} height={100}
-          src="/images/company/timeline-all-cars.png" style={{ objectFit: 'contain',scale:'1.1' }}
-          alt="Patient comfort and care" />
+                <Image loader={customLoader} className={cls('beginnings-img')} width={400} height={100}
+                  src="/images/company/timeline-all-cars.png" style={{ objectFit: 'contain', scale: '1.1' }}
+                  alt="Patient comfort and care" />
 
                 <h1 className={cls('white tl', styles.titleLarge)}>2020</h1>
                 <p className={cls('white tl split-text-small ', styles.textM, styles.textpd1)}>
@@ -499,7 +499,7 @@ const CompanyHTML = (props) => {
 
             <div className="beginnings-wrapper" >
               <div className="beginnings" >
-              <AllLocationsSVG/>
+                <AllLocationsSVG />
                 <h1 className={cls('white tl', styles.titleLarge)}>2021</h1>
                 <p className={cls('white tl split-text-small ', styles.textM, styles.textpd1)}>
                   Despite the challenges posed by the Covid-19 pandemic, our company was able to
@@ -511,11 +511,9 @@ const CompanyHTML = (props) => {
             <div className="beginnings-wrapper" >
               <div className="beginnings" >
 
-                <svg className='beginnings-img' vx="0px" y="0px" 
-                  viewBox="0 0 300 400"
-                  style={{scale:'1.1', fill: 'none', stroke: '#FFFFFF', strokeWidth: '4', strokeMiterlimit: '10' }}>
-                  <path id="XMLID_14_" class="stW" d="M296,4v392H4V4H296 M300,0H0v400h300V0L300,0z" />
-                </svg>
+              <Image loader={customLoader} className={cls('beginnings-img')} width={400} height={100}
+                  src="/images/company/4.png" style={{ objectFit: 'contain', scale: '1.1' }}
+                  alt="Patient comfort and care" />
                 <h1 className={cls('white tl', styles.titleLarge)}>2022</h1>
                 <p className={cls('white tl split-text-small ', styles.textM, styles.textpd1)}>
                   Despite the challenges posed by the Covid-19 pandemic, our company was able to

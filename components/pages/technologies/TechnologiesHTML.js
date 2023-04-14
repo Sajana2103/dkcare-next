@@ -19,7 +19,7 @@ const TechnologiesHTML = () => {
         <div className={cls("", styles.flex2)}>
           <div className="wPer47">
 
-            <h1 className={cls("split-text blue bold text-large pageTitle", styles.techMainTitle)}>Efficient NEMT Technologies</h1>
+            <h1 className={cls("split-text-small blue bold text-large pageTitle", styles.techMainTitle)}>Efficient NEMT Technologies</h1>
 
             <p className={cls("text-med blue  pdTopBtm", styles.pdTopBtm, styles.textM)}
             >Technologies improve driver productivity and safety, ensure on-time arrival, and
@@ -39,7 +39,7 @@ const TechnologiesHTML = () => {
 
       <div id="technologies-nemt" className={cls('pageContainer',styles.container)}>
         <h1 className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>Our Technologies</h1>
-        <h2 style={{ paddingBottom: '4rem' }} className={cls("split-text blue semi-bold ", styles.textXL)}
+        <h2 style={{ paddingBottom: '4rem' }} className={cls("split-text-small blue semi-bold ", styles.textXL)}
         >Non-Emergency Medical Transportation</h2>
 
 
@@ -161,7 +161,7 @@ const TechnologiesHTML = () => {
           </div>
           <div className={cls(styles.aiPoweredImg)}>
 
-            <Image className={cls(styles.aiPoweredImg1)} src="/images/technologies/2.png" alt="Dk-care-llc-about-us"
+            <Image className={cls(styles.aiPoweredImg1)} src="/images/technologies/1.png" alt="Dk-care-llc-about-us"
               width={400} height={100} />
             <div className={cls(styles.aiPoweredImgGap)}></div>
             

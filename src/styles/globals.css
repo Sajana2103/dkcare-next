@@ -239,7 +239,7 @@ section {
 }
 
 .blue-gr2 {
-  background: radial-gradient(circle, rgb(33, 64, 143) 0%, rgb(36, 138, 182) 84%, rgb(97, 177, 210) 98%);
+  background: radial-gradient(circle, rgb(43, 68, 131) 0%, rgb(36, 138, 182) 84%, rgb(97, 177, 210) 98%);
 }
 
 .text-med {
@@ -2100,7 +2100,7 @@ progress::-webkit-progress-value {
 }
 
 #background-logo {
-  background-image: url('/images/company/logo-3d-dkcare-transformed.png');
+  background-image: url('/images/company/BG-logo.png');
   background-size: 100%;
   /* border: red solid 1px; */
   background-attachment: scroll;

@@ -7,7 +7,7 @@ const Services = ({ setPageName, openModal }) => {
     <div className="main-section" id="services" >
       <a id="services-anchor"></a>
 
-      <div className="blue-gr services-grid-1 " >
+      <div className="blue-gr2 services-grid-1 " >
         <div className="services-left-img flex wrap f-align-cen" >
           <div style={{ width: '100%', padding: '2ch' }}>
             <Image width={400} height={300} alt="Dk Care LLc Services" 
