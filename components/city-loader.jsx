@@ -86,30 +86,20 @@ const Loading = () => {
 
   useEffect(() => {
     if (loadingRef.current) {
+      
       const progressBar = document.querySelector('#progress-bar')
+    
       manager.onStart = (url, itemsLoaded, itemsTotal) => {
-        console.log('Started Loading File : ' + url + 'Loaded ' + itemsLoaded + ' of '
-          + itemsTotal + ' files.')
+        // console.log('Started Loading File : ' + url + 'Loaded ' + itemsLoaded + ' of '
+        //   + itemsTotal + ' files.')
 
       }
       manager.onLoad = function () {
-        setTimeout(() => {
-          // loadingRef.current.style.display = 'none'
-          gsap.timeline()
-            .to(progressBar, { opacity: 0, duration: 1 })
-            .to(loadingRef.current, { opacity: 0, duration: 1 }, '<+=50%')
-            .to(progressBar, { display: 'none' })
-            .to(loadingRef.current, { display: 'none' })
-
-          if (models.length && animation.clips) {
-            console.log('models Loaded?', models)
-            setModel(models)
-            setAnimations(animation)
-            setIsLoaded(true)
-          }
-        }, 1500)
-
-        console.log('Models ', models)
+        if (models.length && animation.clips) {
+          setModel(models)
+          setAnimations(animation)
+          setIsLoaded(true)
+        }
       };
       manager.onProgress = function (url, itemsLoaded, itemsTotal) {
         progressBar.value = (itemsLoaded / itemsTotal) * 100

@@ -234,6 +234,13 @@ function App({ isLoaded, models, animation }) {
       onResize();
 
       tick();
+      console.log('renderer',renderer.getContext())
+      gsap.timeline()
+      .to('#progress-bar', { opacity: 0, duration: 1 })
+      .to('#loading-container', {yPercent:-100,  duration: 2,ease:'Power2.easeOut' }, )
+      .from('#scene', {yPercent:100,opacity:0, duration: 2,ease:'Power2.easeOut'},'<')
+      .to('#progress-bar', { display: 'none' })
+      .to('#loading-container', { display: 'none' })
     }
   }, [isLoaded])
 
