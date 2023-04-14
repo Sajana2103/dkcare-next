@@ -1,7 +1,8 @@
 import React from "react";
 import cls from 'classnames'
 import Link from "next/link.js";
-
+import NumberBtn from "./pages/how-it-works/numberBtn";
+import styles from '../src/styles/Pages.module.css'
 const DesktopContent = ({ setPageName, setModalOpen }) => {
   // const [modalOpen,setModalOpen] = useState(false)
 
@@ -23,16 +24,20 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
                 individuals who need to travel to medical appointments,
                 pharmacies, and other essential locations.</p>
             </div>
-            <div className="section flex f-end  pd-title  ">
+            {/* <div className="section flex f-end  pd-title  ">
               <p style={{ paddingBottom: '1rem' }} className="black text-small wPer3 tr">DK Care has offered a range of services for individuals who need to travel to medical appointments,
                 pharmacies, and other essential locations.</p>
-            </div>
+            </div> */}
             {/* <p className="black text-small">2022-08-23</p> */}
+            <div className={cls('section',styles.numberBtnWrapperDesktop)}>
+
+              <NumberBtn />
+            </div>
           </div>
           <div className="section flex f-end ">
             <Link href="/services" target="_blank">
 
-            <button className="btn-orange" 
+              <button className="btn-orange"
               // name="press-release" onClick={(e) => {
               //   setPageName({ pageName: 'press-release', location: 'hero' })
               //   setModalOpen(true)}}
@@ -97,8 +102,8 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
               </div>
               <div id="nemt-content">
 
-                <h1 style={{paddingRight:'1rem'}} className=" white" >NEMT</h1>
-                <p  className="text-small white ">Non Emergency transportation services provide a vital service for individuals who may have
+                <h1 style={{ paddingRight: '1rem' }} className=" white" >NEMT</h1>
+                <p className="text-small white ">Non Emergency transportation services provide a vital service for individuals who may have
                   difficulty getting to appointments or running errands due to physical limitations, disability, or lack of access to a personal vehicle. </p>
               </div>
             </div>

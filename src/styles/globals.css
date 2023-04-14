@@ -1119,7 +1119,10 @@ progress::-webkit-progress-value {
   align-items: center;
   height: 20vh;
 }
+.numberBtnWrapperDesktop {
 
+
+}
 #contact-numbers {
   display: grid;
   grid-template-rows: 30% 30%;

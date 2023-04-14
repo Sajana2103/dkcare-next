@@ -471,7 +471,18 @@ color: var(--orange);
   gap:2rem;
   align-items: center;
   justify-content: center;
-
+}
+.numberBtnWrapperDesktop .numberBtnWrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  gap:2rem;
+  align-items: center;
+  justify-content: end;
+}
+.numberBtnWrapperDesktop h2{
+ color: var(--blue);
 }
 .numberBtn{
   display:grid;
@@ -987,7 +998,7 @@ color: var(--orange);
 
     background-color: var(--darkBlack);
 
-    margin-right: 7px;
+    margin-right: 0px;
   }
   .circle2 svg{
     height: 15px;
@@ -1032,5 +1043,21 @@ color: var(--orange);
     right: 0;
     position: absolute;
     transform: translate(0, 25vh);
+  }
+  .numberBtnWrapperDesktop h3{
+    font-size: 0.8rem;
+   }
+   .numberBtnWrapperDesktop .numberBtnCon{
+    grid-template-columns: auto 25px;
+   }
+   .numberBtnWrapperDesktop .numberBg2{
+    padding:0.3rem;
+    border-radius: 2rem;
+  }
+  
+  .numberBtnWrapperDesktop .numberBtn{
+    padding:0.3rem;
+    border-radius: 2rem;
+    height: 40px;
   }
 }
