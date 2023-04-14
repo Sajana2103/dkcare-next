@@ -54,8 +54,10 @@ const Expertise = ({ setPageName, openModal }) => {
             </article>
           </div>
           <div className="flex-container wPer2 exp-img-con" style={{ height: '100%', }} >
-            <Image height={400} width={600} alt="Dk Care Expertise about us" className="exp-img " src="/Dk-Care-LLC-about-us-1.jpg" />
-            <Image height={400} width={600} alt="Dk Care Expertise about us" className="exp-img  " src="/Dk-Care-LLC-about-us-2.jpg" />
+            <Image height={400} width={600} alt="Dk Care Expertise about us" 
+            className="exp-img " src="/images/home/pexels-uriel-mont-6280700.jpg" />
+            <Image height={400} width={600} alt="Dk Care Expertise about us"
+             className="exp-img  " src="/images/home/pexels-pavel-danilyuk-7403907.jpg" />
           </div>
         </div>
 

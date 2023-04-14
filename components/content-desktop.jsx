@@ -1,8 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import cls from 'classnames'
-import Modal from './modal.jsx';
-import Contact from './pages/contact.jsx';
-import styles from './content-desktop.module.css'
 import Link from "next/link.js";
 
 const DesktopContent = ({ setPageName, setModalOpen }) => {
@@ -17,7 +14,7 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
         <div className="desktop-page " id="desktop-first">
           <div className="" >
             <div className="section flex f-end" >
-              <h1 className={cls("title blue tr ",styles.heroTitle1)} >
+              <h1 className={cls("title blue tr ")} >
                 Providing Reliable and Safe Transportation Since 2019
               </h1>
             </div>

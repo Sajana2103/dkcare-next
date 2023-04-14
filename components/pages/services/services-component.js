@@ -2,9 +2,12 @@ import cls from 'classnames'
 import Image from "next/image"
 import Link from "next/link"
 import Button from "../../homepage/Button"
-import styles from './Services.module.css'
+// import styles from './Services.module.css'
+import styles from '../../../src/styles/Pages.module.css'
+
 import Head from "next/head"
 import NextPageBtn from '../../svg-components/nextpage-btn'
+import { customLoader } from '../custom-loader'
 
 const ServicesHTML = () => {
 
@@ -29,14 +32,14 @@ const ServicesHTML = () => {
               <p className={cls("text-med bold blue  pdTopBtm", styles.pdTopBtm, styles.textM)}>Scroll down for more information</p>
             </div>
           </div>
-          <Image alt="Reliability" className={styles.img50} width={400} height={100}
-            src="/Dk-Care-LLC-about-us-2.jpg" />
+          <Image alt="Reliability" loader={customLoader} className={styles.img50} width={400} height={100}
+            src="/images/services/map.png" style={{objectPosition:'0 0',objectFit:'contain'}} />
         </div>
       </div>
 
       <div id="services-nemt" className={cls('pageContainer',styles.container)}>
         <h1 className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>NEMT Services</h1>
-        <h2 style={{ paddingBottom: '4rem' }} className={cls("split-text blue semi-bold ", styles.textXL)}>Non-Emergency Medical Transportation</h2>
+        <h2 style={{ paddingBottom: '4rem' }} className={cls("split-text-small blue semi-bold ", styles.textXL)}>Non-Emergency Medical Transportation</h2>
 
 
         <div className={cls(styles.servicesNemt)} >
@@ -150,8 +153,8 @@ const ServicesHTML = () => {
               <p className={cls('white semi-bold', styles.textS)}>100% Accident Free Record with
                 3000+ completed Trips</p></div>
           </div>
-          <Image className={styles.img100} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
-            width={400} height={100} />
+          <Image loader={customLoader} className={styles.img100} src="/images/services/cars-services-page.png" alt="Dk-care-llc-about-us"
+            width={400} height={100} style={{scale:'1.5'}} />
         </div>
       </div>
 
@@ -194,7 +197,8 @@ const ServicesHTML = () => {
             </div>
 
           </div>
-          <Image className={styles.img100} width={400} height={100} src="/Dk-Care-LLC-customers-4.jpg"
+          <Image loader={customLoader} className={styles.img100small} width={400} height={100}
+           src="/images/services/pexels-matheus-bertelli-3321789.jpg"
             alt="Patient comfort and care" />
         </div>
       </div>
@@ -223,7 +227,7 @@ const ServicesHTML = () => {
             </p>
           </div>
         </div>
-        <Image className={styles.img100} width={400} height={100} src="/Dk-Care-LLC-customers-4.jpg"
+        <Image loader={customLoader} className={styles.img100small}  width={400} height={100} src="/images/services/last-car-services.png"
           alt="Patient comfort and care" />
       </div>
 

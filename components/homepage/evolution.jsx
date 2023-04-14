@@ -21,8 +21,6 @@ const Evolution = ({size}) => {
 
                 <p className="year-css  white year-small" id="y2021" >2021</p>
                 <p className="year-css  white year-small" id="y2022" >2022</p>
-
-
                 </div>
               <p className="text-med white evo-tagline">DK Care LLC formed in September 2019 with a
                 couple of fleet and drivers with the mission of providing exceptional NEMT services.</p>

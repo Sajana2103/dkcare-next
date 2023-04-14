@@ -1,8 +1,8 @@
 import {ScrollSmoother} from 'gsap/dist/ScrollSmoother';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { useRef ,useState} from 'react';
 import { gsap } from "gsap/dist/gsap";
+import { useRef ,useState} from 'react';
 import { InertiaPlugin } from 'gsap/dist/InertiaPlugin';
 import { useEffect } from 'react';
 import Footer from './homepage/footer';
@@ -16,6 +16,9 @@ const PageWrapper = (props) => {
   const contentRef = useRef()
   function setupSplits() {
     let quotes = document.querySelectorAll('.split-text')
+    let quotesSmall = document.querySelectorAll('.split-text-small')
+    let quotesMedium= document.querySelectorAll('.split-text-medium')
+
     let lineWrapper = document.querySelectorAll('.bd-line-wrapper')
     let lines = document.querySelectorAll('.bd-line')
     if(lineWrapper){
@@ -64,6 +67,75 @@ const PageWrapper = (props) => {
         scrollTrigger: {
           trigger: quote,
           toggleActions: "restart pause resume reverse",
+          start: "top 75%",
+        },
+        duration: 0.5,
+        ease: "circ.out",
+        y: 150,
+        stagger: 0.1,
+      });
+    });
+    quotesSmall.forEach(quote => {
+      // Reset if needed
+      if (quote.anim) {
+        quote.anim.progress(1).kill();
+        quote.split.revert();
+      }
+      quote.split = new SplitText(quote, {
+        type: "lines,words",
+        linesClass: "split-line-small"
+      });
+      // Set up the anim
+      quote.anim = gsap.from(quote.split.words, {
+        scrollTrigger: {
+          trigger: quote,
+          toggleActions: "restart pause resume reverse",
+          start: "top 75%",
+        },
+        duration: 0.5,
+        ease: "circ.out",
+        y: 150,
+        stagger: 0.1,
+      });
+    });
+    quotesMedium.forEach(quote => {
+      // Reset if needed
+      if (quote.anim) {
+        quote.anim.progress(1).kill();
+        quote.split.revert();
+      }
+      quote.split = new SplitText(quote, {
+        type: "lines,words",
+        linesClass: "split-line-medium"
+      });
+      // Set up the anim
+      quote.anim = gsap.from(quote.split.words, {
+        scrollTrigger: {
+          trigger: quote,
+          toggleActions: "restart pause resume reverse",
+          start: "top 75%",
+        },
+        duration: 0.5,
+        ease: "circ.out",
+        y: 150,
+        stagger: 0.1,
+      });
+    });
+    quotesMedium.forEach(quote => {
+      // Reset if needed
+      if (quote.anim) {
+        quote.anim.progress(1).kill();
+        quote.split.revert();
+      }
+      quote.split = new SplitText(quote, {
+        type: "lines,words",
+        linesClass: "split-line-medium"
+      });
+      // Set up the anim
+      quote.anim = gsap.from(quote.split.words, {
+        scrollTrigger: {
+          trigger: quote,
+          toggleActions: "restart pause resume reverse",
           start: "top 85%",
         },
         duration: 0.5,
@@ -72,6 +144,8 @@ const PageWrapper = (props) => {
         stagger: 0.1,
       });
     });
+  
+    
   }
   // let useeffect = 0
   useEffect(() => {

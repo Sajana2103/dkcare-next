@@ -138,8 +138,6 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
               :
               <h3 className="menu-text1"> Menu</h3>
           }
-
-
           <h3 className="menu-text2" >
 
             {
@@ -153,7 +151,6 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
           </h3>
         </div>
 
-      </div>
       {
         path === '/' && pageName && pageName.location === 'hero' ?
           <div className='' id="scroll-skip-mobile" >
@@ -165,6 +162,7 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
           </div>
           : <></>
       }
+      </div>
 
       <div ref={menuRef} id="menu" className="">
         <div id="menu-container" >

@@ -1,8 +1,8 @@
-import Image from "next/image.js";
 import React from "react";
 import Button from "./Button.js";
 
 const Footer = ({ setPageName, openModal }) => {
+
   return (
     <footer id="footer"
       className="main-section blue-gr con-pd" >
@@ -12,7 +12,7 @@ const Footer = ({ setPageName, openModal }) => {
       <div id="footer-content" className="">
 
         <div className="footer-title ">
-          <h2 className="white semi-bold split-text" >
+          <h2 className="white semi-bold" >
             We are here to support you.
           </h2>
 

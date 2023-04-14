@@ -755,7 +755,7 @@ function App({ isLoaded, models, animation }) {
           // .to(anchors[0], { color: '#1e4d8c' }, '<')
           // .to(anchors[1], { color: '#ed7036' }, '<')
 
-          .fromTo('.serv-right-top-img', { objectPosition: '0 20%' }, { objectPosition: '0 40%' }, '<')
+          .fromTo('.serv-right-top-img', { objectPosition: '50% 20%' }, { objectPosition: '50% 40%' }, '<')
           .fromTo('.serv-right-btm-img', { opacity: 0, objectPosition: '0 20%' }, { opacity: 1, objectPosition: '0 40%', stagger: 1 }, '<')
           .fromTo('.patient-health', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 })
 
@@ -927,7 +927,7 @@ function App({ isLoaded, models, animation }) {
         servicesTlMobile
         // .fromTo('#services-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo('.patient-health', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 }, '<')
-          .fromTo('.serv-right-top-img', { objectPosition: '0 20%' }, { objectPosition: '0 40%' }, '<')
+          .fromTo('.serv-right-top-img',  { objectPosition: '50% 20%' }, { objectPosition: '50% 40%' }, '<')
           .fromTo('.serv-right-btm-img', { opacity: 0, objectPosition: '0 20%' }, { opacity: 1, objectPosition: '0 40%', stagger: 1 }, '<')
 
         let techmobile = document.querySelector('.mobile-technologies')

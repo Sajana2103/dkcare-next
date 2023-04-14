@@ -5,6 +5,7 @@ import Button from "../../homepage/Button"
 import styles from '../../../src/styles/Pages.module.css'
 import Head from "next/head"
 import NextPageBtn from '../../svg-components/nextpage-btn'
+import { customLoader } from '../custom-loader'
 
 const TechnologiesHTML = () => {
 
@@ -15,10 +16,10 @@ const TechnologiesHTML = () => {
       </Head>
       <div id="technologies-intro" className={cls('pageContainer',styles.container)}>
 
-        <div className={cls("fg", styles.flex2)}>
+        <div className={cls("", styles.flex2)}>
           <div className="wPer47">
 
-            <h1 className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>Efficient NEMT Technologies</h1>
+            <h1 className={cls("split-text blue bold text-large pageTitle", styles.techMainTitle)}>Efficient NEMT Technologies</h1>
 
             <p className={cls("text-med blue  pdTopBtm", styles.pdTopBtm, styles.textM)}
             >Technologies improve driver productivity and safety, ensure on-time arrival, and
@@ -31,8 +32,8 @@ const TechnologiesHTML = () => {
               <p className={cls("text-med bold blue  pdTopBtm", styles.pdTopBtm, styles.textM)}>Scroll down for more information</p>
             </div>
           </div>
-          <Image alt="Reliability" className={cls('',styles.img50)} width={400} height={100}
-            src="/Dk-Care-LLC-about-us-2.jpg" />
+          <Image loader={customLoader} alt="Reliability" className={cls('wPer47',styles.techMainImg)} width={400} height={100}
+            src="/images/technologies/technologies-main-image.png" />
         </div>
       </div>
 
@@ -107,10 +108,10 @@ const TechnologiesHTML = () => {
           </div>
           <div className={cls(styles.aiPoweredImg)}>
 
-            <Image className={cls(styles.aiPoweredImg1)} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+            <Image className={cls(styles.aiPoweredImg1)} src="/images/technologies/F2NfDCJv_4x.png" alt="Dk-care-llc-about-us"
               width={400} height={100} />
             <div className={cls(styles.aiPoweredImgGap)}></div>
-            <Image className={cls(styles.aiPoweredImg2)} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+            <Image className={cls(styles.aiPoweredImg2)} src="/images/technologies/aiPowered2.png" alt="Dk-care-llc-about-us"
               width={400} height={100} />
           </div>
         </div>
@@ -160,10 +161,11 @@ const TechnologiesHTML = () => {
           </div>
           <div className={cls(styles.aiPoweredImg)}>
 
-            <Image className={cls(styles.aiPoweredImg1)} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+            <Image className={cls(styles.aiPoweredImg1)} src="/images/technologies/2.png" alt="Dk-care-llc-about-us"
               width={400} height={100} />
             <div className={cls(styles.aiPoweredImgGap)}></div>
-            <Image className={cls(styles.aiPoweredImg2)} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+            
+            <Image className={cls(styles.aiPoweredImg2)} src="/images/technologies/2.png" alt="Dk-care-llc-about-us"
               width={400} height={100} />
           </div>
         </div>
@@ -198,10 +200,10 @@ const TechnologiesHTML = () => {
         </div>
         <div className={cls(styles.aiPoweredImg)}>
 
-          <Image className={cls(styles.aiPoweredImg1)} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+          <Image className={cls(styles.aiPoweredImg1)} src="/images/technologies/3.png" alt="Dk-care-llc-about-us"
             width={400} height={100} />
           <div className={cls(styles.aiPoweredImgGap)}></div>
-          <Image className={cls(styles.aiPoweredImg2)} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+          <Image className={cls(styles.aiPoweredImg2)} src="/images/technologies/4.png" alt="Dk-care-llc-about-us"
             width={400} height={100} />
         </div>
       </div>
@@ -235,10 +237,10 @@ const TechnologiesHTML = () => {
         </div>
         <div className={cls(styles.aiPoweredImg)}>
 
-          <Image className={cls(styles.aiPoweredImg1)} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+          <Image className={cls(styles.aiPoweredImg1)} src="/images/technologies/5.png" alt="Dk-care-llc-about-us"
             width={400} height={100} />
           <div className={cls(styles.aiPoweredImgGap)}></div>
-          <Image className={cls(styles.aiPoweredImg2)} src="/Dk-Care-LLC-about-us-1.jpg" alt="Dk-care-llc-about-us"
+          <Image className={cls(styles.aiPoweredImg2)} src="/images/technologies/6.png" alt="Dk-care-llc-about-us"
             width={400} height={100} />
         </div>
       </div>
@@ -351,7 +353,7 @@ const TechnologiesHTML = () => {
         </div>
 
         <div id="" className="nextBtn">
-          <Link href='/technologies'> <button><NextPageBtn/></button></Link>
+          <Link href='/how-it-works'> <button><NextPageBtn/></button></Link>
           <h1 className="title white">How It Works</h1>
         </div>
       </div>
