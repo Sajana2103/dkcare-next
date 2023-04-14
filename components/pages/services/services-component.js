@@ -68,7 +68,7 @@ const ServicesHTML = () => {
               </div>
             </div>
           </div>
-          <p className={cls(" regular blue  ", styles.textL, styles.wPer45)}
+          <p className={cls(" regular blue  ",styles.pdTopBtm, styles.textL, styles.wPer45)}
           >Ensuring that everyone has access to the healthcare and other
             essential services they need.
           </p>
@@ -154,7 +154,7 @@ const ServicesHTML = () => {
                 3000+ completed Trips</p></div>
           </div>
           <Image loader={customLoader} className={styles.img100} src="/images/services/cars-services-page.png" alt="Dk-care-llc-about-us"
-            width={400} height={100} style={{scale:'1.5'}} />
+            width={400} height={100} style={{objectFit:'contain'}} />
         </div>
       </div>
 

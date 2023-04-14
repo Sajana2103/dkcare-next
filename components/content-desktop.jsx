@@ -34,7 +34,7 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
               <NumberBtn />
             </div>
           </div>
-          <div className="section flex f-end ">
+          {/* <div className="section flex f-end ">
             <Link href="/services" target="_blank">
 
               <button className="btn-orange"
@@ -43,7 +43,7 @@ const DesktopContent = ({ setPageName, setModalOpen }) => {
               //   setModalOpen(true)}}
               >Press Release</button>
             </Link>
-          </div>
+          </div> */}
         </div>
 
         <div className='desktop-page ' id='desktop-second'>

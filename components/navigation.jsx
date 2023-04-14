@@ -226,9 +226,6 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
               <div id="contact-numbers" >
                 <div className="contact-number">
                   <h2 className="white semi-bold text-xlarge tc">Dispatch Number</h2>
-      
-
-
                     <div className="number">
                       <h3 className="black ">
                         <a href="tel://845-705-9741">845-705-9741</a>
