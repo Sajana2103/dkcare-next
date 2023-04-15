@@ -137,15 +137,15 @@ const PageWrapper = (props) => {
 
       gsap.to('.page-content-wrapper',{height:'auto'})
       
-      scrollSmooth.current = ScrollSmoother.create({
-        content: '.page-content',
-        wrapper:'.page-wrapper',
-        smooth:1.5,
-        effcts:true,
-        normalizeScroll: true, 
-        ignoreMobileResize: true,
-        preventDefault: true
-      })
+      // scrollSmooth.current = ScrollSmoother.create({
+      //   content: '.page-content',
+      //   wrapper:'.page-wrapper',
+      //   smooth:1.5,
+      //   effcts:true,
+      //   normalizeScroll: true, 
+      //   ignoreMobileResize: true,
+      //   preventDefault: true
+      // })
     }
   },[])
   useEffect(() => {
@@ -194,19 +194,19 @@ const PageWrapper = (props) => {
     <div ref={wrapperRef} className='page-wrapper'>
       <Navigation/>
       {
-        pixelRatio < 2 &&
-        <div id="anchors">
-          <div id="anchors-con" className="flex wrap  bold blue">
-        {
-         titles.length  ?
-          titles.map((title,idx) => {
-           const AnchorTag = <span className="a-tags" onClick={() => {scrollSmooth.current.scrollTo(titles[idx],0.2,'top 100px')}}  >{title.innerText}</span>
+        // pixelRatio < 2 &&
+        // <div id="anchors">
+        //   <div id="anchors-con" className="flex wrap  bold blue">
+        // {
+        //  titles.length  ?
+        //   titles.map((title,idx) => {
+        //    const AnchorTag = <span className="a-tags" onClick={() => {scrollSmooth.current.scrollTo(titles[idx],0.2,'top 100px')}}  >{title.innerText}</span>
           
-            return AnchorTag
-          }) : <></>
-        }
-          </div>
-        </div>
+        //     return AnchorTag
+        //   }) : <></>
+        // }
+        //   </div>
+        // </div>
       }
       <div ref={contentRef} className='page-content'>
    

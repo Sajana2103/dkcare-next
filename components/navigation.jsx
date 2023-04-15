@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useThrottledCallback } from "use-debounce";
 import { useRouter } from "next/router";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+// import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
 import Image from "next/image";
 import styles from '../src/styles/Pages.module.css'
@@ -23,7 +23,7 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
 
   useEffect(() => {
     if (navRef.current) {
-      gsap.registerPlugin(ScrollTrigger)
+      // gsap.registerPlugin(ScrollTrigger)
       setPath(window.location.pathname)
       splitWords.current = pathname.split('/')
       console.log('split words', pathname, splitWords)
