@@ -128,8 +128,7 @@ const PageWrapper = (props) => {
   }
   // let useeffect = 0
   useEffect(() => {
-    if(wrapperRef.current && contentRef.current){
-      // useeffect++
+    if(wrapperRef.current){
       gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText,InertiaPlugin)
 
       gsap.fromTo('body',{overflowY:'hidden'},{overflowY:'scroll'})
@@ -147,6 +146,12 @@ const PageWrapper = (props) => {
         ignoreMobileResize: true,
         preventDefault: true
       })
+    }
+  },[])
+  useEffect(() => {
+    if(wrapperRef.current && contentRef.current){
+      // useeffect++
+      
       if(!titles.length){
         setTitles(prevState => {
         let titles = document.querySelectorAll('.pageTitle')

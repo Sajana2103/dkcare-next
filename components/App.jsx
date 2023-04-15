@@ -433,7 +433,10 @@ function App({ isLoaded, models, animation }) {
           wrapper: '.smooth-wrapper',
           content: '.smooth-content',
           smooth: 2,
-          effects: true
+          effects: true,
+          normalizeScroll: true, 
+        ignoreMobileResize: true,
+        preventDefault: true
         })
         scrollSmooth.current.paused(true)
         console.log('scrollSmooth.current ', scrollSmooth.current)
