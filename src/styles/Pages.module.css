@@ -483,13 +483,12 @@ color: var(--orange);
   justify-content: end;
 }
 .numberBtnWrapperDesktop h2{
- color: var(--blue);
 }
 .numberBtn{
   display:grid;
   /* padding: 5px; */
   justify-content: center;
-  background-color: #e7ebee;
+  background-color: var(--orange);
   border-radius: 2rem;
   border: transparent 1px solid;
   width: auto;
@@ -497,17 +496,33 @@ color: var(--orange);
   align-items: center;
   border: 1px transparent solid;
   transition-duration: 0.3s;
-
+  
 }
+.officeNo h2{
+  color: var(--blue);
+}
+.dispatchNo h2{
+  color: var(--blue);
+}
+ .dispatchNo:hover h2{
+  color: var(--orange);
+}
+.officeNo:hover h2{
+  color: var(--orange);
+}
+.numberBtn:hover .dispatchNo{
+  border: 1px solid red;
 
+  color: var(--orange);
+}
 .numberBtn:hover{
-  background-color: var(--orange);
+  background-color: white;
   /* border: 1px var(--orange) solid; */
 
   transition-duration: 0.3s;
 }
 .numberBtn:hover h3{
-  color: white;
+  color: var(--orange);
 }
 .numberBtnCon{
   /* style={{ display: 'grid', alignItems: 'center', gridTemplateColumns: 'auto 50px' }} */
@@ -1074,5 +1089,14 @@ color: var(--orange);
     padding:0.3rem;
     border-radius: 2rem;
     height: 40px;
+  }
+  .numberBtnWrapperDesktop .numberBtnWrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    row-gap: 2rem;
+  
+    gap:1rem;
+    align-items: center;
+    justify-content: center;
   }
 }

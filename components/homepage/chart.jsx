@@ -36,10 +36,10 @@ export const chart = () => {
   let arr4 = [miles1d, miles2d, miles3d]
 
   let chartDiv = document.querySelector('#chart-div')
-  console.log(chartDiv)
+  // console.log(chartDiv)
   let svg = document.querySelector('.svg-content')
 
-  console.log(svg)
+  // console.log(svg)
   if (svg) svg.remove()
   if (chartDiv) {
     width = chartDiv.offsetWidth,
@@ -80,10 +80,10 @@ export const chart = () => {
         .ticks(6)
         .tickSize(-width)
         .tickFormat((d, c) =>{ 
-          console.log(d,c)
+          // console.log(d,c)
         return  c * yAxesVals[i];
         })
-        console.log(width,months.length - 1,margin,yVals[i],height,miles1a.length / 2,yAxesVals[i],-width)
+        // console.log(width,months.length - 1,margin,yVals[i],height,miles1a.length / 2,yAxesVals[i],-width)
       chart.append('g')
         .call(yAxis)
 
@@ -105,12 +105,12 @@ export const chart = () => {
         .attr("fill", "none")
         .attr("stroke", d => color(d))
         .attr("stroke-width", 2.5)
-      console.log('chart created', chart)
+      // console.log('chart created', chart)
 
     }
     const repeat = () => {
       const charts = d3.selectAll(document.querySelectorAll('.svg-items'))
-      console.log('Charts',charts)
+      // console.log('Charts',charts)
       path = charts.selectAll(".line")
         path.nodes().map((node) => {
           let length = node.getTotalLength()

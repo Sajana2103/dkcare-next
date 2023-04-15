@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useThrottledCallback } from "use-debounce";
 import { useRouter } from "next/router";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
 import Image from "next/image";
 import styles from '../src/styles/Pages.module.css'
@@ -22,36 +23,53 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
 
   useEffect(() => {
     if (navRef.current) {
+      gsap.registerPlugin(ScrollTrigger)
       setPath(window.location.pathname)
       splitWords.current = pathname.split('/')
       console.log('split words', pathname, splitWords)
-      // let wrapper = document.querySelector('.page-content-wrapper')
-      // if(wrapper){
+      let wrapper = document.querySelector('.page-content-wrapper') ? document.querySelector('.page-content-wrapper') : document.querySelector('.smooth-content')
+      if(wrapper){
 
-      //   console.log('blue gr2',wrapper)
-      //   wrapper.childNodes.forEach((child) => {
-      //     console.log('wrapper children',child.classList.contains('blue-gr2'))
-      //     if(child.classList.contains('blue-gr2')){
-      //       gsap.to('.st0',{
-      //         scrollTrigger:{
-      //           trigger:child,
-      //           start:'top top',
-      //           toggleActions:'play complete reverse reverse'
-      //         },fill:'white',stroke:'white'
-      //       })
-      //     } else {
-      //       gsap.to('.st0',{
-      //         scrollTrigger:{
-      //           trigger:child,
-      //           start:'top top',
-      //           toggleActions:'play complete reverse reverse'
-      //         },fill:'var(--blue)',stroke:'var(--blue)'
-      //       })
-      //     }
+        console.log('blue gr2',wrapper)
+        wrapper.childNodes.forEach((child) => {
+          if(child.classList.contains('blue-gr2')){
+            console.log('wrapper children',child.classList.contains('blue-gr2'))
+            gsap.to('.st0',{
+              scrollTrigger:{
+                trigger:child,
+                start:'top top',
+                toggleActions:'play complete restart reverse'
+              },fill:'white',stroke:'white',duration:0.5
+            })
+            gsap.to('.menu-text1',{
+              scrollTrigger:{
+                trigger:child,
+                start:'top top',
+                toggleActions:'play complete restart reverse'
+              },color:'white',duration:0.5
+            })
+          } else {
+            console.log('wrapper children',child.classList.contains('blue-gr2'))
+
+            gsap.to('.st0',{
+              scrollTrigger:{
+                trigger:child,
+                start:'top top',
+                toggleActions:'play complete restart reverse'
+              },fill:'var(--blue)',stroke:'var(--blue)',duration:0.5
+            })
+            gsap.to('.menu-text1',{
+              scrollTrigger:{
+                trigger:child,
+                start:'top top',
+                toggleActions:'play complete restart reverse'
+              },color:'var(--blue)',duration:0.5
+            })
+          }
          
-      //   })
+        })
        
-      // }
+      }
     }
   }, [path])
   function capitalizeFirstLetter(str) {

@@ -5,7 +5,7 @@ const Footer = ({ setPageName, openModal }) => {
 
   return (
     <footer id="footer"
-      className="main-section blue-gr con-pd" >
+      className="main-section blue-gr2 con-pd" >
       <a id="footer-anchor"></a>
    
 

@@ -234,13 +234,12 @@ function App({ isLoaded, models, animation }) {
       onResize();
 
       tick();
-      console.log('renderer',renderer.getContext())
       gsap.timeline()
-      .to('#progress-bar', { opacity: 0, duration: 1 })
-      .to('#loading-container', {yPercent:-100,  duration: 2,ease:'Power2.easeOut' }, )
-      .from('#scene', {yPercent:100,opacity:0, duration: 2,ease:'Power2.easeOut'},'<')
-      .to('#progress-bar', { display: 'none' })
-      .to('#loading-container', { display: 'none' })
+        .to('#progress-bar', { opacity: 0, duration: 1 })
+        .to('#loading-container', { yPercent: -100, duration: 2, ease: 'Power2.easeOut' },)
+        .from('#scene', { yPercent: 100, opacity: 0, duration: 2, ease: 'Power2.easeOut' }, '<')
+        .to('#progress-bar', { display: 'none' })
+        .to('#loading-container', { display: 'none' })
     }
   }, [isLoaded])
 
@@ -389,84 +388,6 @@ function App({ isLoaded, models, animation }) {
     }
 
   }
-  const changeAnimationDesktop = () => {
-    const camTl = gsap.timeline({ defaults: { ease: `Power1.easeOut`, duration: 2 } })
-  
-    console.log(next)
-    if (next === 0) {
-      if(!isDesktop.current){
-      camTl.to(camera.position, { y: -1.2, x: -6, z: -3, duration: 2 })
-
-      camTl.to(position.position, { x: -50, y: 0, z: 250 }, '<')
-     } else {
-      camTl.to(camera.position, { y: -1.3, x: -6, z: -3, duration: 2 })
-
-      camTl.to(position.position, { x: -50, y: 0, z: 300 }, '<')
-     }
-
-    }
-    if (next === 1) {
-      if(!isDesktop.current){
-          camTl.to(camera.position, { y: 2, x: -4, z: 12, duration: 2 })
-      camTl.to(position.position, { x: 100, y: -50, z: 500 }, '<')
-      // camTl.to(camera.rotation, {  x: -3, duration: 2 },'<')
-      mixer.clipAction(clips[0]).play()
-      } else{
-
-        camTl.to(camera.position, { y: 0, x: -1, z: 8, duration: 2 })
-        camTl.to(position.position, { x: 0, y: -150, z: 300 }, '<')
-        // camTl.to(camera.rotation, {  x: -3, duration: 2 },'<')
-        mixer.clipAction(clips[0]).play()
-      }
-
-    }
-
-    else if (next === 2) {
-      console.log('clip', next)
-      camTl.to(camera.position, { y: 50, x: -7, duration: 2 })
-      camTl.to(position.position, { x: -300, y: 1000, z: 300 }, '<')
-    }
-    else if (next === 3) {
-      console.log('clip', next)
-      camTl.to(camera.position, { y: 200, x: -400, duration: 2 })
-
-
-    }
-    else if (next === 4) {
-      camTl.to(camera.position, { y: 50, duration: 2 })
-
-
-      console.log('clip', next)
-      // mixer.clipAction(clips[0]).timeScale = 0
-      gsap.to(mixer.clipAction(clips[0]), { timeScale: 0, duration: 2 })
-      let interval = setInterval(function () {
-        if (rotationSpeed >= 0) {
-          clearInterval(interval)
-          rotationSpeed = 0
-        }
-        else rotationSpeed = rotationSpeed + 0.02;
-      }, 100);
-
-      // mixer.clipAction(clips[0]).stop()
-    }
-    else {
-
-      // camTl.to(camera.position,{y:50,duration:3})
-      let interval = setInterval(function () {
-        if (rotationSpeed <= -0.4) {
-
-          clearInterval(interval)
-          rotationSpeed = -0.4
-        }
-        else rotationSpeed = rotationSpeed - 0.02;
-      }, 100);
-
-      gsap.to(mixer.clipAction(clips[0]), { timeScale: 1, duration: 2 })
-      // mixer.clipAction(clips[0]).startAt(clipTime*timeScale)
-      // mixer.clipAction(clips[0]).play()
-    }
-
-  }
 
   // const touch = {
   //   startX: 0,
@@ -484,42 +405,28 @@ function App({ isLoaded, models, animation }) {
 
   useEffect(() => {
     if (mainRef.current && container.current && contentRef.current && isLoaded) {
-      gsap.registerPlugin(ScrollTrigger, ScrollSmoother, InertiaPlugin, MorphSVGPlugin,SplitText)
+      gsap.registerPlugin(ScrollTrigger, ScrollSmoother, InertiaPlugin, MorphSVGPlugin, SplitText)
 
 
       changeAnimationDesktop()
 
+      if (isDesktop.current) {
+        desktopPages = document.querySelectorAll('.desktop-page')
 
-      desktopPages = document.querySelectorAll('.desktop-page')
+      } else {
+        desktopPages = document.querySelectorAll('.mobile-page')
+        console.log('mobile', desktopPages)
+
+      }
 
       if (contentRef.current && !isDesktop.current) {
         mobileHeroContent = document.querySelector('#mobile-hero-content')
         // sections = mobileHeroContent.querySelectorAll('section')
         sectionChildren = document.querySelectorAll('.sections')
-
       }
 
-      // titles = document.querySelectorAll('.title')
-      // const tl = gsap.timeline({
-      //   ...tlDefaults,
-      //   scrollTrigger: {
-      //     trigger: '#App',
-      //     start: 'top top',
-      //     end: 'bottom bottom',
-      //     ease: 'Power4.in',
-      //     toggleActions: 'play complete reverse reverse',
-      //     // markers: true
-      //   }
-      // })
-      // tl.to('.title', { opacity: 1 })
       slideInDesktop()
-      // if (isDesktop.current) {
-      //   slideInDesktop()
-      // } else slideInMobile();
-      // for (let i = 0; i < sections.length; i++) {
-      //   sectionHeights.push(sections[i].offsetHeight + sectionHeights[i])
-      //   contentHeight += sections[i].offsetHeight
-      // }
+
       if (isDesktop.current) {
         chart()
         scrollSmooth.current = ScrollSmoother.create({
@@ -531,8 +438,6 @@ function App({ isLoaded, models, animation }) {
         scrollSmooth.current.paused(true)
         console.log('scrollSmooth.current ', scrollSmooth.current)
       }
-
-
     }
   }, [isLoaded])
 
@@ -564,8 +469,6 @@ function App({ isLoaded, models, animation }) {
       scrollSmooth.current.scrollTop(0)
       scrollSmooth.current.paused(true)
     }
-    // scrollSmooth.kill()
-
     const backHero = gsap.timeline({
       defaults: tlDefaults,
       onComplete: () => {
@@ -585,16 +488,14 @@ function App({ isLoaded, models, animation }) {
       .to('#scene', { display: 'block', yPercent: 0, }, '<')
       .to('#scene', { opacity: 1, duration: 1 }, '<')
       .to('#desktop-hero-content', { display: 'block', opacity: 1 }, '<')
-      .to('#scroll-skip', { opacity: 1,display:'flex' }, '<')
-    if(!isDesktop)backHero.to('#scroll-skip-mobile', { opacity: 1,display:'flex' }, '<')
-
+      .to('#scroll-skip', { opacity: 1, display: 'flex' }, '<')
+    if (!isDesktop) backHero.to('#scroll-skip-mobile', { opacity: 1, display: 'flex' }, '<')
 
     window.scrollTo(0, 0)
-
   }
-  
-  const gsapTimelines = (screen, action, ) => {
-    
+
+  const gsapTimelines = (screen, action,) => {
+
     let pixelRatio = window.devicePixelRatio < 2
     let ctx = gsap.context(() => {
 
@@ -784,8 +685,8 @@ function App({ isLoaded, models, animation }) {
 
 
         evoTl
-          // .to(anchors[2], { color: '#1e4d8c' }, '<')
-          // .to(anchors[3], { color: '#ed7036' }, '<')
+        // .to(anchors[2], { color: '#1e4d8c' }, '<')
+        // .to(anchors[3], { color: '#ed7036' }, '<')
         let svgItems = gsap.utils.toArray(".svg-items");
         let chartDetails = gsap.utils.toArray(".chart-details");
         let svgTween = gsap.timeline({
@@ -853,7 +754,7 @@ function App({ isLoaded, models, animation }) {
           .set(reviewBox, { translateX: size.width / 2 })
           .fromTo('#customer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
 
-        
+
       }
 
       else if (screen === 'mobile' && action === 'homepage') {
@@ -927,14 +828,14 @@ function App({ isLoaded, models, animation }) {
         })
 
         expTlMobile
-        // .fromTo('#expertise-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+          // .fromTo('#expertise-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo('.exp-img', { scale: 0 }, { scale: 1, stagger: 1 }, '<')
           .fromTo('.exp-text-boxes', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 })
 
         servicesTlMobile
-        // .fromTo('#services-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
+          // .fromTo('#services-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
           .fromTo('.patient-health', { opacity: 0, yPercent: 10 }, { opacity: 1, yPercent: 0, stagger: 1 }, '<')
-          .fromTo('.serv-right-top-img',  { objectPosition: '50% 20%' }, { objectPosition: '50% 40%' }, '<')
+          .fromTo('.serv-right-top-img', { objectPosition: '50% 20%' }, { objectPosition: '50% 40%' }, '<')
           .fromTo('.serv-right-btm-img', { opacity: 0, objectPosition: '0 20%' }, { opacity: 1, objectPosition: '0 40%', stagger: 1 }, '<')
 
         let techmobile = document.querySelector('.mobile-technologies')
@@ -951,7 +852,7 @@ function App({ isLoaded, models, animation }) {
         // .fromTo('#evo-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
         let svgItems = gsap.utils.toArray(".svg-items");
         let chartDetails = gsap.utils.toArray(".chart-details");
-        console.log('chart details',chartDetails)
+        console.log('chart details', chartDetails)
         let svgTween = gsap.timeline({
           ease: "none", // <-- IMPORTANT!
           scrollTrigger: {
@@ -964,7 +865,7 @@ function App({ isLoaded, models, animation }) {
             anticipatePin: 1,
             //  markers: true,
             //snap: directionalSnap(1 / (sections.length - 1)),
-            endTrigger:'#customers',
+            endTrigger: '#customers',
             end: "+=2500",
             id: 'chart',
 
@@ -972,7 +873,7 @@ function App({ isLoaded, models, animation }) {
         })
         for (let i = 0; i < 4; i++) {
           svgTween.set(svgItems[i], { xPercent: i * -100 },);
-          svgTween.set(chartDetails[i], {yPercent: i * -100, opacity: i > 0 ? 0 : 1 });
+          svgTween.set(chartDetails[i], { yPercent: i * -100, opacity: i > 0 ? 0 : 1 });
         }
 
 
@@ -987,10 +888,10 @@ function App({ isLoaded, models, animation }) {
         svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[1].children[3] }, '<');
         svgTween
           .fromTo('#y2020', { translateX: '40vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
-          .fromTo(chartDetails[1], {  opacity: 0,yPercent:0  }, { opacity: 1, yPercent:-100  }, '<')
+          .fromTo(chartDetails[1], { opacity: 0, yPercent: 0 }, { opacity: 1, yPercent: -100 }, '<')
           .fromTo('#y2019', { xPercent: -100, }, { xPercent: -300, },)
-          .fromTo('#y2020', { xPercent: 0, fontSize: '3rem', opacity: 0.5 }, { opacity: 1, xPercent:  -300, fontSize: '1rem' }, '<')
-          .fromTo(chartDetails[1], {  opacity: 1,  }, { opacity: 0}, '<+=50%')
+          .fromTo('#y2020', { xPercent: 0, fontSize: '3rem', opacity: 0.5 }, { opacity: 1, xPercent: -300, fontSize: '1rem' }, '<')
+          .fromTo(chartDetails[1], { opacity: 1, }, { opacity: 0 }, '<+=50%')
 
         svgTween.fromTo(svgItems[1].children[0], { opacity: 1 }, { opacity: 0 });
         svgTween.fromTo(svgItems[2], { opacity: 0 }, { opacity: 1 }, '<');
@@ -999,10 +900,10 @@ function App({ isLoaded, models, animation }) {
         svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[2].children[3] }, '<');
         svgTween
           .fromTo('#y2021', { translateX: '55vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
-          .fromTo(chartDetails[2], {  opacity: 0,yPercent:-100  }, { opacity: 1, yPercent:-200  }, '<')
+          .fromTo(chartDetails[2], { opacity: 0, yPercent: -100 }, { opacity: 1, yPercent: -200 }, '<')
           .fromTo('#y2020', { xPercent: -100, }, { xPercent: -300, },)
           .fromTo('#y2021', { xPercent: 0, fontSize: '3rem', opacity: 0.5 }, { opacity: 1, xPercent: -300, fontSize: '1rem' }, '<')
-          .fromTo(chartDetails[2], {  opacity: 1,  }, { opacity: 0}, '<+=50%')
+          .fromTo(chartDetails[2], { opacity: 1, }, { opacity: 0 }, '<+=50%')
 
 
         svgTween.fromTo(svgItems[2].children[0], { opacity: 1 }, { opacity: 0 });
@@ -1011,8 +912,8 @@ function App({ isLoaded, models, animation }) {
         svgTween.to(svgItems[0].children[2], { duration: 1, morphSVG: svgItems[3].children[2] }, '<');
         svgTween.to(svgItems[0].children[3], { duration: 1, morphSVG: svgItems[3].children[3] }, '<');
         svgTween.fromTo('#y2022', { translateX: '70vw', fontSize: '1rem', opacity: 0.5 }, { opacity: 1, translateX: '0', fontSize: '3rem' }, '<')
-        .fromTo(chartDetails[2], {  opacity: 0,yPercent:-100 }, { opacity: 1, yPercent:-200  }, '<')
-        .fromTo('#y2021', { xPercent: -200, }, { xPercent: -300, },)
+          .fromTo(chartDetails[2], { opacity: 0, yPercent: -100 }, { opacity: 1, yPercent: -200 }, '<')
+          .fromTo('#y2021', { xPercent: -200, }, { xPercent: -300, },)
 
         customerTLMobile
           .fromTo('#customer-title', { opacity: 0, yPercent: -25 }, { opacity: 1, yPercent: 0 })
@@ -1071,14 +972,15 @@ function App({ isLoaded, models, animation }) {
     })
       .to('#scene', { opacity: 0, duration: 0 })
       .to('#desktop-hero-content', { display: 'none', opacity: 0 }, '<')
-      .to('#scroll-skip', { opacity: 0 ,display:'none'}, '<')
+      .to('#scroll-skip', { opacity: 0, display: 'none' }, '<')
       .to('#scene', { display: 'none', yPercent: -100, duration: 0.1, })
       .to('#App', { position: isDesktop.current ? 'fixed' : 'relative' }, '<')
       .to('#homepage', { display: 'block', }, '<')
       .fromTo('#homepage', { opacity: 0 }, { opacity: 1, duration: 1 })
-      if(!isDesktop.current){
-        console.log('scroll skip mobile')
-        gsap.to('#scroll-skip-mobile', { opacity: 0 ,display:'none'}, '')}
+    if (!isDesktop.current) {
+      console.log('scroll skip mobile')
+      gsap.to('#scroll-skip-mobile', { opacity: 0, display: 'none' }, '')
+    }
     console.log('duration', sceneTl.duration())
     // .to('.sections', { translateY: sectionHeights[sectionHeights.length-1] },'<')
     console.log('sceneTl End of SCENE', listening)
@@ -1101,7 +1003,7 @@ function App({ isLoaded, models, animation }) {
     setTimeout(() => {
       console.log('setTimeout body', funcRan)
       sceneTl.fromTo('body', { overflowY: 'none' }, { overflowY: 'scroll' },)
-      .to('#anchors', { display: 'block', opacity: 1, duration: 2 })
+        .to('#anchors', { display: 'block', opacity: 1, duration: 2 })
 
 
 
@@ -1198,10 +1100,105 @@ function App({ isLoaded, models, animation }) {
   //DESKTOP SLIDE-IN
   let desktopSlide = 0
   let sectionCount
+  const changeAnimationDesktop = () => {
+    const camTl = gsap.timeline({ defaults: { ease: `Power1.easeOut`, duration: 2 } })
+
+    console.log(next)
+    if (next === 0) {
+        if(!isDesktop.current){
+        camTl.to(camera.position, { y: -1.2, x: -6, z: -3, duration: 2 })
+
+        camTl.to(position.position, { x: -50, y: 0, z: 250 }, '<')
+       } 
+       else {
+        camTl.to(camera.position, { y: -1.3, x: -6, z: -3, duration: 2 })
+
+        camTl.to(position.position, { x: -50, y: 0, z: 300 }, '<')
+       }
+
+      }
+      if (next === 1) {
+        if(!isDesktop.current){
+            camTl.to(camera.position, { y: 2, x: -4, z: 12, duration: 2 })
+        camTl.to(position.position, { x: 100, y: -50, z: 500 }, '<')
+        // camTl.to(camera.rotation, {  x: -3, duration: 2 },'<')
+        mixer.clipAction(clips[0]).play()
+        } else{
+
+          camTl.to(camera.position, { y: 0, x: -1, z: 8, duration: 2 })
+          camTl.to(position.position, { x: 0, y: -150, z: 300 }, '<')
+          // camTl.to(camera.rotation, {  x: -3, duration: 2 },'<')
+          mixer.clipAction(clips[0]).play()
+        }
+
+      }
+
+      else if (next === 2) {
+        if(!isDesktop.current){
+
+        } else {
+          console.log('clip', next)
+          camTl.to(camera.position, { y: 50, x: -7, duration: 2 })
+          camTl.to(position.position, { x: -300, y: 1000, z: 300 }, '<')
+        }
+      }
+      else if (next === 3) {
+      console.log('clip', next)
+      // camTl.to(camera.position, { y: 200, x: -400, duration: 2 })
+      if (!isDesktop.current) {
+        camTl.to(camera.position, { y: 50, x: -2, duration: 2 })
+        camTl.to(position.position, { x: 2300, y: 1000, z: 3000 }, '<')
+      }
+      else {
+        console.log('MOBILE', isDesktop)
+        camTl.to(camera.position, { y: 50, x: -7, duration: 2 })
+        camTl.to(position.position, { x: -300, y: 1000, z: 300 }, '<')
+      }
+    }
+    else if(next ===4){
+      console.log('MOBILE', isDesktop)
+      camTl.to(camera.position, { y: 50, x: -7, duration: 2 })
+      camTl.to(position.position, { x: -300, y: 1000, z: 300 }, '<')
+    }
+    // else if (next === 4) {
+    //     camTl.to(camera.position, { y: 50, duration: 2 })
+
+
+    //     console.log('clip', next)
+    //     // mixer.clipAction(clips[0]).timeScale = 0
+    //     gsap.to(mixer.clipAction(clips[0]), { timeScale: 0, duration: 2 })
+    //     let interval = setInterval(function () {
+    //       if (rotationSpeed >= 0) {
+    //         clearInterval(interval)
+    //         rotationSpeed = 0
+    //       }
+    //       else rotationSpeed = rotationSpeed + 0.02;
+    //     }, 100);
+
+    //     // mixer.clipAction(clips[0]).stop()
+    //   }
+    //   else {
+
+    //     // camTl.to(camera.position,{y:50,duration:3})
+    //     let interval = setInterval(function () {
+    //       if (rotationSpeed <= -0.4) {
+
+    //         clearInterval(interval)
+    //         rotationSpeed = -0.4
+    //       }
+    //       else rotationSpeed = rotationSpeed - 0.02;
+    //     }, 100);
+
+    //     gsap.to(mixer.clipAction(clips[0]), { timeScale: 1, duration: 2 })
+    //   mixer.clipAction(clips[0]).startAt(clipTime*timeScale)
+    //   mixer.clipAction(clips[0]).play()
+    // }
+
+  }
 
   function slideInDesktop() {
     desktopSlide++
-    console.log('slide in', desktopSlide)
+    console.log('slide in', desktopSlide, desktopPages[next])
     if (current !== undefined) gsap.set(desktopPages[current], { zIndex: 0 });
     sectionCount = desktopPages[next] ? desktopPages[next].getElementsByClassName('section') : 'end'
     changeAnimationDesktop()
@@ -1318,10 +1315,10 @@ function App({ isLoaded, models, animation }) {
     touch.dx = t.pageX - touch.startX;
     touch.dy = t.pageY - touch.startY;
     console.log
-    if (touch.dy > 20) direction = "up"; else direction='click'
-    if (touch.dy < -20) direction = "down"; 
+    if (touch.dy > 20) direction = "up"; else direction = 'click'
+    if (touch.dy < -20) direction = "down";
 
-      handleDirectionDesktop(); 
+    handleDirectionDesktop();
   }
 
 
@@ -1332,7 +1329,7 @@ function App({ isLoaded, models, animation }) {
 
         <div id="scene" ref={container} >
         </div>
-     
+
       </div>
       <div ref={contentRef}>
         <ContentContainer skipHeroDesktop={skipHeroDesktop}

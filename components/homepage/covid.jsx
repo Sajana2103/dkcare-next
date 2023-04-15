@@ -3,9 +3,9 @@ import React from "react";
 import Link from "next/link";
 const Covid = () => {
   return (
-    <div className="main-section" id="covid">
+    <div className="main-section blue-gr2 " id="covid">
       {/* <Image src="/mesh-gradient-2.png" className="mesh-gradient" height={500} width={500}/> */}
-      <div className="final-wrapper blue-gr2 con-pd" style={{ paddingTop: '10rem', paddingBottom: '10rem' }}>
+      <div className="final-wrapper con-pd" style={{ paddingTop: '10rem', paddingBottom: '10rem' }}>
         <a id="covid-anchor"></a>
 
         <h2 id="covid-title" className="title white text-large " >COVID-19 Guidelines and Preventive Measures</h2>

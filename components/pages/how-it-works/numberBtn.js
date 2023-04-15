@@ -4,13 +4,13 @@ import cls from 'classnames'
 const NumberBtn = () => {
   return (
     <div>
-<div className={cls(styles.numberBtnWrapper)}>
-      <div style={{display:'grid',justifyContent:'center'}}>
-      <h2 className={cls("lightBlack semi-bold text-large tc  ",styles.pdTopBtm)}>DISPATCH NUMBER</h2>
+<div className={cls('',styles.numberBtnWrapper)}>
+      <div style={{display:'grid',justifyContent:'center'}} className={cls(styles.dispatchNo)}>
+      <h2 className={cls(" lightBlack semi-bold text-large tc  ",styles.pdTopBtm)}>DISPATCH NUMBER</h2>
       <button className={cls(styles.numberBtn)}>
         <div className={cls(styles.numberBtnCon)}>
           <div className={cls(styles.numberBg2)} >
-            <h3 className={cls('darkBlack',styles.textM)}>
+            <h3 className={cls('white',styles.textM)}>
               <a href="tel://845-214-0212">
                 845-705-9741</a>
             </h3>
@@ -51,13 +51,13 @@ const NumberBtn = () => {
       </button>
       </div>
 
-    <div className={cls(styles.numberBtnWrapper)}>
-      <div style={{display:'grid',justifyContent:'center'}}>
-      <h2 className={cls("lightBlack semi-bold text-large tc  ",styles.pdTopBtm)}>OFFICE NUMBER</h2>
+    <div className={cls('',styles.numberBtnWrapper)}>
+      <div style={{display:'grid',justifyContent:'center'}} className={cls(styles.officeNo,)}>
+      <h2 className={cls(" lightBlack semi-bold text-large tc  ",styles.pdTopBtm)}>OFFICE NUMBER</h2>
       <button className={cls(styles.numberBtn)}>
         <div className={cls(styles.numberBtnCon)}>
           <div className={cls(styles.numberBg2)} >
-            <h3 className={cls('darkBlack', styles.textM)}>
+            <h3 className={cls('white', styles.textM)}>
               <a href="tel://845-214-0212">
                 845-214-0212</a>
             </h3>

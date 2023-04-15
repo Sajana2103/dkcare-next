@@ -4,10 +4,10 @@ import Button from "./Button.js";
 
 const Services = ({ setPageName, openModal }) => {
   return (
-    <div className="main-section" id="services" >
+    <div className="main-section blue-gr2" id="services" >
       <a id="services-anchor"></a>
 
-      <div className="blue-gr2 services-grid-1 " >
+      <div className=" services-grid-1 " >
         <div className="services-left-img flex wrap f-align-cen" >
           <div style={{ width: '100%', padding: '2ch' }}>
             <Image width={400} height={300} alt="Dk Care LLc Services" 

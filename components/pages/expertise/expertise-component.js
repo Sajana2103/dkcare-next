@@ -27,7 +27,7 @@ const ExpertiseComponent = (props) => {
             essential services they need.</p>
 
         </div>
-        <Image className={styles.img100} src="/images/expertise/pexels-kindel-media-7863115.jpg"
+        <Image loader={customLoader} className={styles.img100} src="/images/expertise/pexels-kindel-media-7863115.jpg"
           alt="Dk-care-llc-about-us" width={400} height={100} style={{ objectPosition: '0 35%', }} />
         <br />
         <div className={cls(styles.marText5)}>

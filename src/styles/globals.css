@@ -518,7 +518,11 @@ section {
   padding-top: 6rem;
   height: 100vh;
 }
-
+.mobile-page{
+  display: none;
+  padding-top: 6rem;
+  height: 100vh;
+}
 
 
 #desktop-transport {
@@ -966,7 +970,7 @@ progress::-webkit-progress-value {
 
 .menu-icon:hover .menu-text1 {
 
-  padding-left: 1.5rem;
+  /* padding-left: 1.5rem; */
   transition-duration: 0.3s;
 }
 
@@ -3147,7 +3151,26 @@ progress::-webkit-progress-value {
     font-size: 2rem;
     font-weight: 600;
   }
+  #desktop-second .title {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  #mobile-first .title {
+    font-size: 2rem;
+    font-weight: 600;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
 
+  }
+  #mobile-first p {
+    font-weight: 600;
+    padding-bottom: 1rem;
+  }
+  #mobile-second .title {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  
   .cen {
     margin: 0;
     width: auto;
@@ -3194,7 +3217,7 @@ progress::-webkit-progress-value {
   #desktop-transport {
     display: flex;
     flex-wrap: wrap;
-    gap: 0;
+    gap: 1rem;
   }
 
   #desktop-transport h1 {
@@ -3208,14 +3231,34 @@ progress::-webkit-progress-value {
   #desktop-third h1 {
     font-size: 1.5rem;
     font-weight: 600;
-
   }
+  #mobile-forth h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    padding-top: 0rem;
+    padding-bottom:1rem ;
+  } 
 
   #desktop-second #comfort p {
-    font-size: small;
+    font-size: large;
     font-weight: 600;
   }
-
+  #mobile-second #comfort p {
+    font-size: large;
+    font-weight: 600;
+  }
+  #mobile-second p {
+    font-size: medium;
+    font-weight: 500;
+  }
+  #mobile-third p {
+    font-size: medium;
+    font-weight: 500;
+  }
+  #mobile-forth p{
+    font-size: large;
+    font-weight: 600;
+  }
   .section p {
     font-size: small;
     font-weight: 400;

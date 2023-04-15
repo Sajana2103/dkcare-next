@@ -55,7 +55,7 @@ const HomePage = ({ size, setPageName, openModal, backToHeroDesktop, backToHero 
       })
     }   
     quotes.forEach(quote => {
-      console.log('split text',quote)
+      // console.log('split text',quote)
 
       // Reset if needed
       if (quote.anim) {
