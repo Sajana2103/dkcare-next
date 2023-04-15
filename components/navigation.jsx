@@ -27,49 +27,49 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
       setPath(window.location.pathname)
       splitWords.current = pathname.split('/')
       console.log('split words', pathname, splitWords)
-      let wrapper = document.querySelector('.page-content-wrapper') ? document.querySelector('.page-content-wrapper') : document.querySelector('.smooth-content')
-      if(wrapper){
+      // let wrapper = document.querySelector('.page-content-wrapper') ? document.querySelector('.page-content-wrapper') : document.querySelector('.smooth-content')
+      // if(wrapper){
 
-        console.log('blue gr2',wrapper)
-        wrapper.childNodes.forEach((child) => {
-          if(child.classList.contains('blue-gr2')){
-            console.log('wrapper children',child.classList.contains('blue-gr2'))
-            gsap.to('.st0',{
-              scrollTrigger:{
-                trigger:child,
-                start:'top top',
-                toggleActions:'play complete restart reverse'
-              },fill:'white',stroke:'white',duration:0.5
-            })
-            gsap.to('.menu-text1',{
-              scrollTrigger:{
-                trigger:child,
-                start:'top top',
-                toggleActions:'play complete restart reverse'
-              },color:'white',duration:0.5
-            })
-          } else {
-            console.log('wrapper children',child.classList.contains('blue-gr2'))
+      //   console.log('blue gr2',wrapper)
+      //   wrapper.childNodes.forEach((child) => {
+      //     if(child.classList.contains('blue-gr2')){
+      //       console.log('wrapper children',child.classList.contains('blue-gr2'))
+      //       gsap.to('.st0',{
+      //         scrollTrigger:{
+      //           trigger:child,
+      //           start:'top top',
+      //           toggleActions:'play complete restart reverse'
+      //         },fill:'white',stroke:'white',duration:0.5
+      //       })
+      //       gsap.to('.menu-text1',{
+      //         scrollTrigger:{
+      //           trigger:child,
+      //           start:'top top',
+      //           toggleActions:'play complete restart reverse'
+      //         },color:'white',duration:0.5
+      //       })
+      //     } else {
+      //       console.log('wrapper children',child.classList.contains('blue-gr2'))
 
-            gsap.to('.st0',{
-              scrollTrigger:{
-                trigger:child,
-                start:'top top',
-                toggleActions:'play complete restart reverse'
-              },fill:'var(--blue)',stroke:'var(--blue)',duration:0.5
-            })
-            gsap.to('.menu-text1',{
-              scrollTrigger:{
-                trigger:child,
-                start:'top top',
-                toggleActions:'play complete restart reverse'
-              },color:'var(--blue)',duration:0.5
-            })
-          }
+      //       gsap.to('.st0',{
+      //         scrollTrigger:{
+      //           trigger:child,
+      //           start:'top top',
+      //           toggleActions:'play complete restart reverse'
+      //         },fill:'var(--blue)',stroke:'var(--blue)',duration:0.5
+      //       })
+      //       gsap.to('.menu-text1',{
+      //         scrollTrigger:{
+      //           trigger:child,
+      //           start:'top top',
+      //           toggleActions:'play complete restart reverse'
+      //         },color:'var(--blue)',duration:0.5
+      //       })
+      //     }
          
-        })
+      //   })
        
-      }
+      // }
     }
   }, [path])
   function capitalizeFirstLetter(str) {
