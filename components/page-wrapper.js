@@ -158,7 +158,7 @@ const PageWrapper = (props) => {
         return [...prevState,...titles]
       })
     }
-      setPixelRatio(window.devicePixelRatio)
+      // setPixelRatio(window.devicePixelRatio)
       if(titles.length && scrollSmooth.current){
         
         setupSplits()
