@@ -63,7 +63,7 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
 
   useEffect(() => {
     if (navRef.current) {
-      gsap.registerPlugin(ScrollTrigger)
+      // gsap.registerPlugin(ScrollTrigger)
       setPath(window.location.pathname)
       splitWords.current = pathname.split('/')
       console.log('split words', pathname, splitWords)
@@ -72,14 +72,14 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
       let otherPages = document.querySelector('.page-content-wrapper') 
       let homePage = document.querySelector('.smooth-content')
       console.log('NAVIGATION',homePage,otherPages)
-      if(homePage){
+      // if(homePage){
   
-        setupMenuTextAnimation(homePage)
+      //   setupMenuTextAnimation(homePage)
        
-      } else if(otherPages){
-        setupMenuTextAnimation(otherPages)
+      // } else if(otherPages){
+      //   setupMenuTextAnimation(otherPages)
   
-      }
+      // }
       
     }
   }, [path])
