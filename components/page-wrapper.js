@@ -14,6 +14,7 @@ const PageWrapper = (props) => {
   const [anchors,setAnchors] = useState([])
   const scrollSmooth = useRef()
   const contentRef = useRef()
+  const wrapperRef= useRef()
   function setupSplits() {
     let quotes = document.querySelectorAll('.split-text')
     let quotesSmall = document.querySelectorAll('.split-text-small')
@@ -127,7 +128,7 @@ const PageWrapper = (props) => {
   }
   // let useeffect = 0
   useEffect(() => {
-    if(contentRef.current){
+    if(wrapperRef.current && contentRef.current){
       // useeffect++
       gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText,InertiaPlugin)
 
@@ -141,7 +142,10 @@ const PageWrapper = (props) => {
         content: '.page-content',
         wrapper:'.page-wrapper',
         smooth:1.5,
-        effcts:true
+        effcts:true,
+        normalizeScroll: true, 
+        ignoreMobileResize: true,
+        preventDefault: true
       })
       if(!titles.length){
         setTitles(prevState => {
@@ -182,7 +186,7 @@ const PageWrapper = (props) => {
     
       <div  id='portal' ></div>
       
-    <div className='page-wrapper'>
+    <div ref={wrapperRef} className='page-wrapper'>
       <Navigation/>
       {
         pixelRatio < 2 &&
