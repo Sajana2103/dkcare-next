@@ -20,46 +20,7 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
   let open = false
   let menuTl
   let pathRef = useRef()
-  const setupMenuTextAnimation = (page) => {
-    console.log('blue gr2',page)
-    page.childNodes.forEach((child) => {
-      if(child.classList.contains('blue-gr2')){
-        console.log('wrapper children',child.classList.contains('blue-gr2'))
-        gsap.to('.st0',{
-          scrollTrigger:{
-            trigger:child,
-            start:'top top',
-            toggleActions:'play complete restart reverse'
-          },fill:'white',stroke:'white',duration:0.3
-        })
-        gsap.to('.menu-text1',{
-          scrollTrigger:{
-            trigger:child,
-            start:'top top',
-            toggleActions:'play complete restart reverse'
-          },color:'white',duration:0.3
-        })
-      } else {
-        console.log('wrapper children',child.classList.contains('blue-gr2'))
-
-        gsap.to('.st0',{
-          scrollTrigger:{
-            trigger:child,
-            start:'top top',
-            toggleActions:'play complete restart reverse'
-          },fill:'var(--blue)',stroke:'var(--blue)',duration:0.3
-        })
-        gsap.to('.menu-text1',{
-          scrollTrigger:{
-            trigger:child,
-            start:'top top',
-            toggleActions:'play complete restart reverse'
-          },color:'var(--blue)',duration:0.3
-        })
-      }
-     
-    })
-  }
+  
 
   useEffect(() => {
     if (navRef.current) {
@@ -68,18 +29,6 @@ const Navigation = ({ skipHeroDesktop, pageName }) => {
       splitWords.current = pathname.split('/')
       console.log('split words', pathname, splitWords)
 
-
-      let otherPages = document.querySelector('.page-content-wrapper') 
-      let homePage = document.querySelector('.smooth-content')
-      console.log('NAVIGATION',homePage,otherPages)
-      // if(homePage){
-  
-      //   setupMenuTextAnimation(homePage)
-       
-      // } else if(otherPages){
-      //   setupMenuTextAnimation(otherPages)
-  
-      // }
       
     }
   }, [path])

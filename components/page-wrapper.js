@@ -7,6 +7,7 @@ import { InertiaPlugin } from 'gsap/dist/InertiaPlugin';
 import { useEffect } from 'react';
 import Footer from './homepage/footer';
 import Navigation from './navigation';
+import { setupMenuTextAnimation } from './gsapFuncs';
 
 const PageWrapper = (props) => {
   const [pixelRatio, setPixelRatio] = useState(1)
@@ -126,6 +127,7 @@ const PageWrapper = (props) => {
   
     
   }
+  
   // let useeffect = 0
   useEffect(() => {
     if(wrapperRef.current){
@@ -153,7 +155,7 @@ const PageWrapper = (props) => {
       gsap.timeline({defaults:{duration:1,ease:'Power1.easeIn'}})
       .fromTo('body',{overflowY:'hidden'},{overflowY:'scroll'})
       .fromTo('#anchors',{display:'none'},{display:'block'})
-      .fromTo('.loadingScreen',{opacity:1},{opacity:0,duration:1})
+      .fromTo('.loadingScreen',{opacity:1},{opacity:0,duration:0.3})
       .fromTo('.loadingScreen',{display:'block'},{display:'none'})
       if(isDesktop)gsap.fromTo('#anchors',{opacity:0},{opacity:1,duration:1})
 
@@ -169,6 +171,9 @@ const PageWrapper = (props) => {
       setPixelRatio(window.devicePixelRatio)
       if(titles.length && scrollSmooth.current){
         
+
+      let otherPages = document.querySelector('.page-content-wrapper') 
+        setupMenuTextAnimation(otherPages,gsap)
         setupSplits()
         
       }
@@ -196,7 +201,6 @@ const PageWrapper = (props) => {
 
   return(
     <div>
-    <div className='loadingScreen'></div>
       <div  id='portal' ></div>
       
     <div ref={wrapperRef} className='page-wrapper'>
@@ -221,7 +225,8 @@ const PageWrapper = (props) => {
         </div>
       }
       <div ref={contentRef} className='page-content'>
-   
+      <div className='loadingScreen'></div>
+
     {props.children}
     <Footer/>
       </div>

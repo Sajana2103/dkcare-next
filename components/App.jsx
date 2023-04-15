@@ -17,6 +17,7 @@ import Stats from 'stats.js'
 import { sky } from './background.jsx';
 import ContentContainer from './content-container.jsx';
 import { chart } from './homepage/chart.jsx';
+import { setupMenuTextAnimation } from './gsapFuncs.js';
 
 function App({ isLoaded, models, animation }) {
   // console.log('device pixal ratio :',window.devicePixelRatio)
@@ -406,8 +407,8 @@ function App({ isLoaded, models, animation }) {
   useEffect(() => {
     if (mainRef.current && container.current && contentRef.current && isLoaded) {
       gsap.registerPlugin(ScrollTrigger, ScrollSmoother, InertiaPlugin, MorphSVGPlugin, SplitText)
-
-
+      let homepage = document.querySelector('.smooth-content')
+      setupMenuTextAnimation(homepage,gsap)
       changeAnimationDesktop()
 
       if (isDesktop.current) {

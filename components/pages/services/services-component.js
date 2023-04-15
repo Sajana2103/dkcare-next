@@ -42,7 +42,7 @@ const ServicesHTML = () => {
         <h2 style={{ paddingBottom: '4rem' }} className={cls("split-text-small blue semi-bold ", styles.textXL)}>Non-Emergency Medical Transportation</h2>
 
 
-        <div className={cls(styles.servicesNemt)} >
+        <div className={cls('fg5',styles.servicesNemt)} >
           <div className={cls(styles.wPer45)}   >
 
             <div >
