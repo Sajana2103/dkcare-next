@@ -129,28 +129,36 @@ const PageWrapper = (props) => {
   // let useeffect = 0
   useEffect(() => {
     if(wrapperRef.current){
-      gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText,InertiaPlugin)
-
-      gsap.fromTo('body',{overflowY:'hidden'},{overflowY:'scroll'})
-      gsap.fromTo('#anchors',{display:'none'},{display:'block'})
-      gsap.fromTo('#anchors',{opacity:0},{opacity:1})
-
-      gsap.to('.page-content-wrapper',{height:'auto'})
-      
-      // scrollSmooth.current = ScrollSmoother.create({
-      //   content: '.page-content',
-      //   wrapper:'.page-wrapper',
-      //   smooth:1.5,
-      //   effcts:true,
-      //   normalizeScroll: true, 
-      //   ignoreMobileResize: true,
-      //   preventDefault: true
-      // })
+     
     }
   },[])
   useEffect(() => {
     if(wrapperRef.current && contentRef.current){
       // useeffect++
+      let isDesktop = window.devicePixelRatio < 2
+      // console.log('SCROLL SMOOTHER',ScrollSmoother.get())
+      gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText,InertiaPlugin)
+      if(!scrollSmooth.current){
+
+        scrollSmooth.current = ScrollSmoother.create({
+          content: '.page-content',
+          wrapper:'.page-wrapper',
+          smooth:1.5,
+          effcts:true,
+          normalizeScroll: true, 
+          ignoreMobileResize: true,
+          preventDefault: true
+        })
+      }
+      gsap.timeline({defaults:{duration:1,ease:'Power1.easeIn'}})
+      .fromTo('body',{overflowY:'hidden'},{overflowY:'scroll'})
+      .fromTo('#anchors',{display:'none'},{display:'block'})
+      .fromTo('.loadingScreen',{opacity:1},{opacity:0,duration:1})
+      .fromTo('.loadingScreen',{display:'block'},{display:'none'})
+      if(isDesktop)gsap.fromTo('#anchors',{opacity:0},{opacity:1,duration:1})
+
+
+      gsap.to('.page-content-wrapper',{height:'auto'})
       
       if(!titles.length){
         setTitles(prevState => {
@@ -158,7 +166,7 @@ const PageWrapper = (props) => {
         return [...prevState,...titles]
       })
     }
-      // setPixelRatio(window.devicePixelRatio)
+      setPixelRatio(window.devicePixelRatio)
       if(titles.length && scrollSmooth.current){
         
         setupSplits()
@@ -188,25 +196,29 @@ const PageWrapper = (props) => {
 
   return(
     <div>
-    
+    <div className='loadingScreen'></div>
       <div  id='portal' ></div>
       
     <div ref={wrapperRef} className='page-wrapper'>
       <Navigation/>
       {
-        // pixelRatio < 2 &&
-        // <div id="anchors">
-        //   <div id="anchors-con" className="flex wrap  bold blue">
-        // {
-        //  titles.length  ?
-        //   titles.map((title,idx) => {
-        //    const AnchorTag = <span className="a-tags" onClick={() => {scrollSmooth.current.scrollTo(titles[idx],0.2,'top 100px')}}  >{title.innerText}</span>
+        pixelRatio < 2 &&
+        <div id="anchors">
+          <div id="anchors-con" className="flex wrap  bold blue">
+        {
+         titles.length  ?
+          titles.map((title,idx) => {
+           const AnchorTag = <span className="a-tags" onClick={() => {
+            if(scrollSmooth.current){
+              scrollSmooth.current.scrollTo(titles[idx],0.2,'top 100px')
+            }
+            }}  >{title.innerText}</span>
           
-        //     return AnchorTag
-        //   }) : <></>
-        // }
-        //   </div>
-        // </div>
+            return AnchorTag
+          }) : <></>
+        }
+          </div>
+        </div>
       }
       <div ref={contentRef} className='page-content'>
    

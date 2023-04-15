@@ -52,7 +52,14 @@ section {
 
   font-size: clamp(0.66rem, 2vw, 1rem);
 }
-
+.loadingScreen{
+  background-color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 .disabled {
   pointer-events: none;
   opacity: 0.5;
@@ -960,7 +967,13 @@ progress::-webkit-progress-value {
 
 }
 
-.menu-text1,
+.menu-text1  {
+  color: #1e4d8c;
+  font-weight: 500;
+  font-size: 1rem;
+  transition-duration: 0.3s;
+}
+
 .menu-text2 h3 {
   color: #1e4d8c;
   font-weight: 500;
@@ -1966,7 +1979,7 @@ progress::-webkit-progress-value {
 }
 
 #chart-container {
-  width: 90vw;
+  /* width: 90vw; */
   display: flex;
   flex-wrap: wrap;
   overflow-y: hidden;

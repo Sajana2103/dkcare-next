@@ -26,7 +26,7 @@ const Evolution = ({size}) => {
                 couple of fleet and drivers with the mission of providing exceptional NEMT services.</p>
             </div>
 
-            <div id="chart-container " className="wPer3">
+            <div id="chart-container" className="wPer3">
               <div id="line-chart" >
                 <LineChart size={size} />
               </div>
