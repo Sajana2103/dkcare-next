@@ -869,7 +869,7 @@ function App({ isLoaded, models, animation }) {
             anticipatePin: 1,
             //  markers: true,
             //snap: directionalSnap(1 / (sections.length - 1)),
-            endTrigger: '#customers',
+            // endTrigger: '#customers',
             end: "+=2500",
             id: 'chart',
 

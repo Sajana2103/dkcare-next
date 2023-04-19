@@ -59,7 +59,31 @@ section {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 20005;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.loadingScreen img{
+  margin: 10rem;
+  width: max-content;
+  height: auto;
+ 
+}
+.navigation-main {
+  width: 100%;
+  height: 6rem;
+  /* transform: translateY(-100%); */
+  position: fixed;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 20% 40% 40%;
+top: 0;
+left: 0;
+  z-index: 10003;
 }
 .disabled {
   pointer-events: none;
@@ -906,22 +930,14 @@ progress::-webkit-progress-value {
   transition-duration: 0.2s;
 }
 
-.navigation-main {
-  width: 100%;
-  height: 6rem;
-  position: fixed;
-  display: grid;
-  align-items: center;
-  grid-template-columns: 20% 40% 40%;
 
-  z-index: 10003;
-}
 
 .st0 {
   fill: none;
   stroke: var(--blue);
   stroke-miterlimit: 10;
   stroke-width: 2px;
+
 }
 
 .location1a {
@@ -973,6 +989,7 @@ progress::-webkit-progress-value {
   font-weight: 500;
   font-size: 1rem;
   transition-duration: 0.3s;
+
 }
 
 .menu-text2 h3 {
@@ -1321,7 +1338,9 @@ progress::-webkit-progress-value {
   height: 100vh;
   padding-top: 10vh;
 }
-
+.page-content{
+  will-change:scroll-position;
+}
 .modal {
   z-index: 10000;
   background-color: white;
@@ -1601,11 +1620,11 @@ progress::-webkit-progress-value {
 }
 
 #beginnings-con::-webkit-scrollbar-track {
-  background-color: var(--lightBlack);
+  background-color: white;
 }
 
 #beginnings-con::-webkit-scrollbar-thumb {
-  background-color: var(--darkBlack);
+  background-color: var(--orange);
 }
 
 .slide-btn-wrapper {
@@ -1837,6 +1856,7 @@ progress::-webkit-progress-value {
 .links {
   padding-top: 1.4rem;
   padding-left: 1.4rem;
+  gap:1rem;
 }
 
 .link-box {
@@ -2135,6 +2155,7 @@ progress::-webkit-progress-value {
 }
 
 .answer {
+  /* display: none; */
   height: 0px;
   overflow: hidden;
   margin-left: 5rem;
@@ -2392,6 +2413,8 @@ progress::-webkit-progress-value {
   #services-main-line {
     font-size: medium;
     font-weight: 400;
+    padding: 0.5rem 0 0.5rem 0;
+
   }
 
 }
@@ -2427,7 +2450,7 @@ progress::-webkit-progress-value {
 
   .max1080 {
     display: block;
-    margin: 1rem 0 1rem 0;
+    margin: 1rem 0 0.25rem 0;
   }
 
   .years-wrapper .chart-vh {
@@ -2761,13 +2784,15 @@ progress::-webkit-progress-value {
 
 @media only screen and (max-width: 600px) {
   .title {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-weight: 600;
   }
 
   #desktop-first .title {
     font-size: 3rem;
     font-weight: 500;
+    padding: 1rem 0 1rem 0;
+
 
   }
 
@@ -2786,7 +2811,7 @@ progress::-webkit-progress-value {
 
   .chart-vh {
     width: 80%;
-    margin: 1rem;
+    margin: 0.5rem 0rem 2rem 2rem;
   }
 }
 
@@ -2795,6 +2820,7 @@ progress::-webkit-progress-value {
   .title {
     font-size: 2rem;
     font-weight: 500;
+    
   }
 
   .customers-wrapper .con-tb {
@@ -2836,7 +2862,7 @@ progress::-webkit-progress-value {
 
   .chart-vh {
     width: 80%;
-    margin: 1rem;
+    margin: 2rem;
   }
 
   #year.chart-vh {
@@ -3016,7 +3042,10 @@ progress::-webkit-progress-value {
     overflow-y: scroll;
     overflow-x: hidden;
   }
+  .title{
+    padding: 1rem 0 1rem 0;
 
+  }
   .navigation-main {
     grid-template-columns: 45% auto 20%;
     padding: 0rem 0rem 4rem 0rem;
@@ -3164,6 +3193,7 @@ progress::-webkit-progress-value {
   #desktop-first .title {
     font-size: 2rem;
     font-weight: 600;
+    
   }
   #desktop-second .title {
     font-size: 2.5rem;
@@ -3445,6 +3475,8 @@ progress::-webkit-progress-value {
   #services-main-line {
     font-size: medium;
     font-weight: 400;
+    padding: 0.5rem 0 0.5rem 0;
+
   }
 
   .services-wrapper {
@@ -3630,5 +3662,8 @@ progress::-webkit-progress-value {
   }
   .split-line-medium,.split-line{
     height: auto;
+}
+.loadingScreen{
+  height: auto;
 }
 }

@@ -199,7 +199,7 @@ align-items: center;
 .servicesNemt {
   display: flex;
   flex-wrap: nowrap;
-
+  
 }
 
 .wPer45 {
@@ -871,7 +871,7 @@ color: var(--orange);
     flex-wrap: wrap;
   }
   .container {
-    padding: 5rem 1rem 5rem 1rem;
+    padding: 3rem 1rem 3rem 1rem;
   }
 
   .mainTitle {
@@ -935,7 +935,7 @@ color: var(--orange);
     padding: 1.5rem 1.5rem 1.5rem 1.5rem;
     gap: 5%;
 
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: repeat(2, 45%);
   }
 
   .listItems {
@@ -949,6 +949,7 @@ color: var(--orange);
 
   .servicesNemt {
     flex-wrap: wrap;
+    gap:2rem;
   }
 
   .wPer45 {

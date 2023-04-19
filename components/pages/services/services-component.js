@@ -204,6 +204,7 @@ const ServicesHTML = () => {
       </div>
 
       <div id="services-safety" className={cls('blue-gr2 pageContainer', styles.container)}>
+       
         <div className={cls("gap40", styles.flex2)}>
           <div className="wPer2">
             <h2 className={cls('split-text white pageTitle', styles.mainTitle)}>Safety Protocols & Equipment</h2>

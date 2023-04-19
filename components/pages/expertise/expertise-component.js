@@ -42,7 +42,7 @@ const ExpertiseComponent = (props) => {
         </div>
       </div>
 
-      <div id="exp-reliability " className={cls('pageContainer', styles.container)}>
+      <div id="exp-reliability" className={cls('pageContainer', styles.container)}>
         <div className='bd-line-wrapper'>
           <div className='bd-line'></div>
           <h2 className={cls('blue split-text-small pageTitle', styles.secTitle)}>Reliability</h2>
@@ -71,7 +71,7 @@ const ExpertiseComponent = (props) => {
 
       </div>
 
-      <div id="exp-passenger-safety " className={cls('pageContainer', styles.container)}>
+      <div id="exp-passenger-safety" className={cls('pageContainer', styles.container)}>
         <div className='bd-line-wrapper'>
           <div className='bd-line'></div>
           <h2 className={cls('blue split-text-small pageTitle', styles.secTitle)}>Passenger Safety</h2>
@@ -97,7 +97,7 @@ const ExpertiseComponent = (props) => {
         </div>
       </div>
 
-      <div id="exp-autonomy " className={cls('pageContainer', styles.container)}>
+      <div id="exp-autonomy" className={cls('pageContainer', styles.container)}>
         <div className='bd-line-wrapper'>
           <div className='bd-line'></div>
           <h2 className={cls('blue split-text-small pageTitle', styles.secTitle)}>Autonomy</h2>

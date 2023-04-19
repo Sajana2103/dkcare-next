@@ -11,14 +11,18 @@ import { useEffect, useRef } from 'react'
 import NumberBtn from './numberBtn'
 import ScrollDownBtn from '../../svg-components/scrolldown-btn'
 import { customLoader } from '../custom-loader'
+import { ScrollSmoother } from 'gsap/dist/ScrollSmoother'
 
 const HowItWorksHTML = () => {
   const howRef = useRef()
+  const scrollSmoother =useRef()
 
   function setupFaq() {
     let questionBoxes = document.querySelectorAll('.questionBox')
     let answers = document.querySelectorAll('.answer')
+    
 
+    console.log('how it works',scrollSmoother)
     questionBoxes.forEach((q, idx) => {
       let smallTitle = q.querySelectorAll('.title-bd-container')
       let bdBtm = q.querySelectorAll('.div1px-black')
@@ -34,9 +38,18 @@ const HowItWorksHTML = () => {
         if (!faqTl) {
 
           faqTl = gsap.timeline({
-            defaults: { duration: 0.5, ease: 'Power4.easeIn' },
-            onReverseComplete: () => faqTl.revert()
-          })
+            defaults: { duration: 0.5, ease: 'Power4.easeIn' },onStart:()=>{
+              // scrollSmoother.current.refresh()
+            },
+            onReverseComplete: () => faqTl.revert(),
+            onComplete:()=>{
+              // let offset = scrollSmoother.current.scrollTo(answers[idx],1,'top center')
+              // gsap.to(scrollSmoother.current, {
+              //   scrollTop: offset,
+              //   duration: 1,onStart:()=>scrollSmoother.current.refresh
+              // });
+            }
+          },)
           faqTl
             .pause()
             .to(q, { backgroundColor: 'white' }, '<')
@@ -46,8 +59,10 @@ const HowItWorksHTML = () => {
             .fromTo(smTitleLine, { width: '0px' }, { width: 'auto' }, '<')
             .to(bdBtm[0], { width: 'auto' }, '<')
             .fromTo(answers[idx], { height: '0px' }, { height: 'auto', })
+            
         }
         if (!clicked) {
+          if(!scrollSmoother.current)scrollSmoother.current = ScrollSmoother.get()
           clicked = true
           faqTl.play(0)
         } else {
@@ -62,6 +77,8 @@ const HowItWorksHTML = () => {
   useEffect(() => {
     if (howRef.current) {
       gsap.registerPlugin(SplitText);
+      // scrollSmoother.current = ScrollSmoother.get()
+      // console.log(scrollSmoother.current)
       setupFaq()
     }
   }, [])
