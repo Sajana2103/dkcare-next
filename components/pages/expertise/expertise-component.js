@@ -21,10 +21,10 @@ const ExpertiseComponent = (props) => {
 
         <h1 id='exp-main-title' className={cls("split-text blue bold text-large pageTitle", styles.mainTitle)}>Our Expertise</h1>
         <div className={cls("gap40", styles.flex2)}>
-          <p className={cls("text-large blue bold wPer40 pdTopBtm", styles.pdTopBtm, styles.textL)}>We provide a vital lifeline
-            for individuals who need to get to medical appointments.</p>
-          <p className={cls("text-med semi-bold blue wPer40 pdTopBtm", styles.pdTopBtm, styles.textM)}>Ensuring that everyone has access to the healthcare and other
-            essential services they need.</p>
+          <p className={cls("text-large blue bold wPer40 pdTopBtm", styles.pdTopBtm, styles.textL)}
+          >We provide a vital lifeline for individuals who need to get to medical appointments.</p>
+          <p className={cls("text-med semi-bold blue wPer40 pdTopBtm", styles.pdTopBtm, styles.textM)}
+          >Ensuring that everyone has access to the healthcare and other essential services they need.</p>
 
         </div>
         <Image loader={customLoader} className={styles.img100} src="/images/expertise/pexels-kindel-media-7863115.jpg"
@@ -32,13 +32,13 @@ const ExpertiseComponent = (props) => {
         <br />
         <div className={cls(styles.marText5)}>
 
-          <h2 className={cls("blue bold ", styles.textL)} >Non-Emergency Medical Transportation(NEMT) covers
-            all transportation services provided to patients not in an emergency situation.
+          <h2 className={cls("blue bold ", styles.textL)} >Non-Emergency Medical Transportation &#40;NEMT&#41;
+            covers all transportation services provided to patients not in an emergency situation.
           </h2>
           <br />
-          <h4 className={cls("blue semi-bold wPer3", styles.textM)} >NEMT is most often utilized by
-            eligible Medicaid and Medicare members requesting a ride to their
-            medical appointment or the pharmacy.</h4>
+          <h4 className={cls("blue semi-bold wPer3", styles.textM)}
+          >NEMT is most often utilized by eligible Medicaid and Medicare members requesting a
+            ride to their medical appointment or the pharmacy.</h4>
         </div>
       </div>
 
@@ -52,16 +52,17 @@ const ExpertiseComponent = (props) => {
         <div className={cls("gap40", styles.flex2)}>
           <div className="wPer40">
             <p className={cls("text-large blue bold pdTopBtm", styles.pdTopBtm, styles.textL)}
-            >Dedicated to ensure that our customers have a positive
-              experience from the moments they book their ride to the
-              moments they are dropped at their destination.</p>
+            >Dedicated to ensure that our customers have a positive experience from
+              the moment they book their ride to the moment they are dropped off at their destination. </p>
             <p className={cls("text-med semi-bold blue  pdTopBtm", styles.pdTopBtm, styles.textM)}
-            >We understand that working with multiple transportation providers can be frustrating, which is why
-              we strive to provide a seamless and high-quality experience from start to finish.</p>
+            >Reliability is at the core of our services.
+              Our customers rely on us to provide safe and timely transportation to their medical appointments,
+              and we take that responsibility seriously. From the moment a customer books their ride with us,
+              we are dedicated to ensuring that they have a positive experience every step of the way.</p>
             <Link href="/expertise/reliability" target="_self" >
               <div className={cls("", styles.flex2)} style={{ alignItems: 'center' }}>
                 <Button name="Read More" />
-                <p className={cls('blue bold')}>Read more on our services page.</p>
+                <p className={cls('blue bold')}>Our commitment to reliability</p>
               </div>
             </Link>
           </div>
@@ -84,14 +85,15 @@ const ExpertiseComponent = (props) => {
 
           <div className="wPer40">
             <p className={cls("text-large blue bold pdTopBtm", styles.pdTopBtm, styles.textL)}
-            >Key Benefit of DK Care transportation service is safety. Our well trained drivers
-              have undergone extensive training to provide a safe and comfortable ride.</p>
+            >Key benefit of DK Care transportation service is safety.
+              Our well trained drivers have undergone extensive training to provide a safe and comfortable ride.</p>
             <p className={cls("text-med semi-bold blue  pdTopBtm", styles.pdTopBtm, styles.textM)}
-            >We understand that working with multiple transportation providers can be frustrating, which is why
-              we strive to provide a seamless and high-quality experience from start to finish.</p>
+            >Safety of our passengers is of utmost importance to us.
+              We take pride in ensuring that our drivers are well trained and experienced
+              to provide a safe and comfortable ride to our passengers</p>
             <div className={cls("", styles.flex2)} style={{ alignItems: 'center' }}>
               <Button name="Read More" />
-              <p className={cls('blue bold')}>Read more on our services page.</p>
+              <p className={cls('blue bold')}>Safe and comfortable transportation service.</p>
             </div>
           </div>
         </div>
@@ -107,15 +109,15 @@ const ExpertiseComponent = (props) => {
           <div className="wPer40">
             <p className={cls("text-large blue bold pdTopBtm", styles.pdTopBtm, styles.textL)}
             >We help individuals to maintain their autonomy and independence.
-              Rather than relying on friends or family members to drive them to appointments
-              or other destinations.
+              Rather than relying on friends or family members to drive them to appointments or other destinations.
             </p>
             <p className={cls("text-med semi-bold blue  pdTopBtm", styles.pdTopBtm, styles.textM)}
-            >We understand that working with multiple transportation providers can be frustrating, which is why
-              we strive to provide a seamless and high-quality experience from start to finish.</p>
+            >Giving our clients the freedom to go where they need to go, when they need to go there.
+              We are dedicated to empowering our clients and helping them maintain their independence,
+              so they can live life on their own terms.</p>
             <div className={cls("", styles.flex2)} style={{ alignItems: 'center' }}>
               <Button name="Read More" />
-              <p className={cls('blue bold')}>Read more on our services page.</p>
+              <p className={cls('blue bold')}>Promoting autonomy and independence.</p>
             </div>
           </div>
           <Image alt="Autonomy" className={styles.img50} width={400} height={100} src="/images/expertise/pexels-tima-miroshnichenko-5717584.jpg" />
@@ -136,15 +138,15 @@ const ExpertiseComponent = (props) => {
 
           <div className="wPer40">
             <p className={cls("text-large blue bold pdTopBtm", styles.pdTopBtm, styles.textL)}
-            >DK Care Non-Emergency Medical Transportation (NEMT) services allow individuals to access the medical care
-              they need, regardless of their ability to drive or use public transportation.
+            >Dk Care Non-Emergency Medical Transportation &#40;NEMT&#41; services allow individuals
+              to access the medical care they need, regardless of their ability to drive or use public transportation.
             </p>
             <p className={cls("text-med semi-bold blue  pdTopBtm", styles.pdTopBtm, styles.textM)}
-            >We understand that working with multiple transportation providers can be frustrating, which is why
-              we strive to provide a seamless and high-quality experience from start to finish.</p>
+            >With our comfortable transportation options, individuals can get to their appointments
+              and medical facilities without the stress and hassle of looking for transportation on their own.</p>
             <div className={cls("", styles.flex2)} style={{ alignItems: 'center' }}>
               <Button name="Read More" />
-              <p className={cls('blue bold')}>Read more on our services page.</p>
+              <p className={cls('blue bold')}>Accessible medical transportation anytime.</p>
             </div>
           </div>
         </div>
@@ -166,8 +168,12 @@ const ExpertiseComponent = (props) => {
             >Patient comfort and care is a top priority during non-medical emergency transportation.
             </p>
             <p className={cls(" semi-bold white  pdTopBtm", styles.pdTopBtm, styles.textM)}
-            >Measures such as providing blankets and pillows, maintaining a comfortable temperature,
-              and regularly checking on the patient&apos;s well-being can help ensure a comfortable journey.</p>
+            >Measures such as providing blankets and pillows, maintaining a comfortable temperature, and regularly checking on the
+              patient&apos;s well-being can help ensure a comfortable journey.</p>
+            <div className={cls("", styles.flex2)} style={{ alignItems: 'center' }}>
+              <Button name="Read More" />
+              <p className={cls('blue bold')}>Ensuring comfort and care for patients</p>
+            </div>
           </div>
         </div>
         <Image className={styles.img100small} width={400} height={100}
@@ -179,17 +185,17 @@ const ExpertiseComponent = (props) => {
 
         <h1 className={cls(" blue bold text-large split-text pageTitle", styles.mainTitle)}>Collaborations with Healthcare</h1>
         <div className="title-bd-container hero-titles ">
-          <p className="blue bold">Comfort</p>
+          <p className="blue bold">Medical partners and service providers</p>
           <div className="title-bd-blue" ></div>
         </div>
         <div className={cls("gap40", styles.flex2)}>
-          <p className={cls("text-large blue bold wPer40 pdTopBtm", styles.pdTopBtm, styles.textL)}
-          >Patient comfort and care is a top priority during non-medical emergency transportation.
+          <p className={cls("text-large blue bold ", styles.pdTopBtm, styles.textL)}
+          >We are able to streamline the transportation process, allowing for a more efficient and coordinated experience for our clients.
 
           </p>
           <p className={cls("text-med semi-bold blue wPer40 pdTopBtm", styles.pdTopBtm, styles.textM)}
-          >Ensuring that everyone has access to the healthcare and other
-            essential services they need.
+          >Our commitment to collaboration and communication with healthcare professionals ensures
+            that our clients receive safe, reliable, and comfortable transportation services to and from their medical appointments.
           </p>
 
         </div>
@@ -197,14 +203,16 @@ const ExpertiseComponent = (props) => {
         <br />
         <div className={cls("fg5", styles.flex2)} style={{ alignItems: 'center' }}>
           <Button name="Read More" />
-          <p className={cls('blue bold wPer47',)}>Read more on our services page.</p>
+          <p className={cls('blue bold wPer47',)}>For better patient outcomes</p>
 
         </div>
         <br />
         <div className={cls(styles.container2)}>
           <br />
-          <p className={cls('blue text-large ', styles.pdTopBtm)} style={{ textAlign: 'center', }}>Ensuring that everyone has access to the healthcare and other
-            essential services they need.</p>
+          <p className={cls('blue text-large ', styles.pdTopBtm)} style={{ textAlign: 'center', }}>By following the links provided,
+            customers can access important information about
+            insurance services and explore their options for coverage.
+          </p>
           <div className={cls(styles.collab)}>
             <div ><Image loader={customLoader} alt="some logo" src="/images/icons/wp-logo.png" className={cls(styles.collabImg)} width={100} height={100} /></div>
             <div>
